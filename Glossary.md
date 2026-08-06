@@ -18,6 +18,10 @@
 | `Server Component` | کامپوننت سرور | کامپوننتی که فقط روی سرور اجرا می‌شود |
 | `Client Component` | کامپوننت کلاینت | کامپوننتی با `"use client"` که در مرورگر اجرا می‌شود |
 | `Suspense` | `Suspense` | نمایش `fallback` تا زمان آماده شدن داده/کامپوننت |
+| `Activity` | `Activity` | مخفی/نمایش UI با حفظ `state` داخلی (React 19.2) |
+| `Concurrent Rendering` | رندر همزمان | رندر قابل `interrupt` با اولویت‌بندی `update` |
+| `Flight` | پروتکل Flight | فرمت سریال RSC برای ارسال از سرور به کلاینت |
+| `use` | `use` | API خواندن `promise`/`context` در `render` (React 19) |
 | `Portal` | `Portal` | `render` فرزند در DOM خارج از والد |
 | `Error Boundary` | مرز خطا | کامپوننتی که خطای زیردرختی را می‌گیرد |
 | `Code Splitting` | تقسیم کد | بارگذاری بخشی از `bundle` فقط هنگام نیاز |

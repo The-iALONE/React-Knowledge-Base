@@ -57,7 +57,7 @@ function LoginForm() {
 
 ```jsx
 async function updateName(formData) {
-  const name = formData.get('name');
+  const name = formData.get("name");
   await saveName(name);
 }
 
@@ -141,7 +141,12 @@ function OrderForm({ pizza, onOrder }) {
   const total = pizza.prices[size] * quantity;
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); onOrder({ size, quantity, total }); }}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onOrder({ size, quantity, total });
+      }}
+    >
       <select value={size} onChange={(e) => setSize(e.target.value)}>
         <option value="small">کوچک</option>
         <option value="medium">متوسط</option>
@@ -171,10 +176,10 @@ function OrderForm({ pizza, onOrder }) {
 
 ## چه زمانی استفاده کنیم؟ / چه زمانی استفاده نکنیم؟
 
-| استفاده کنیم | استفاده نکنیم |
-|--------------|---------------|
+| استفاده کنیم                          | استفاده نکنیم                                         |
+| ------------------------------------- | ----------------------------------------------------- |
 | فرم‌های `interactive` با `validation` | فرم ساده یک‌بار `submit` بدون JS (HTML خالص کافی است) |
-| `wizard` چندمرحله‌ای | هر فیلد `uncontrolled` مگر دلیل خاص (`ref`) |
+| `wizard` چندمرحله‌ای                  | هر فیلد `uncontrolled` مگر دلیل خاص (`ref`)           |
 
 ## ارتباط با مفاهیم دیگر
 
@@ -183,7 +188,7 @@ function OrderForm({ pizza, onOrder }) {
 - [Lifting-State-Up](./Lifting-State-Up.md)
 - [Hooks/useActionState](./Hooks/useActionState.md) — `state` فرم با `Actions`
 - [Hooks/useFormStatus](./Hooks/useFormStatus.md) — وضعیت `submit`
-- [Server-Components](./Server-Components.md) — `Server Actions`
+- [Server-Components](./Escape-Hatches/Server-Components.md) — `Server Actions`
 
 ## 💡 نکات مهم
 

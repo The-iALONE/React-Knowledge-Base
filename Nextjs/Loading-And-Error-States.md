@@ -91,7 +91,11 @@ export default function Error({ error, reset }: Props) {
 import { notFound } from "next/navigation";
 import { getCabin } from "@/lib/data";
 
-export default async function CabinPage({ params }: { params: Promise<{ cabinId: string }> }) {
+export default async function CabinPage({
+  params,
+}: {
+  params: Promise<{ cabinId: string }>;
+}) {
   const { cabinId } = await params;
   const cabin = await getCabin(cabinId);
 
@@ -149,6 +153,7 @@ export default function Loading() {
 ## مثال واقعی در پروژه
 
 Wild Oasis:
+
 - `app/cabins/loading.tsx` — skeleton کارت کابین
 - `app/cabins/[cabinId]/error.tsx` — خطای Supabase
 - `notFound()` وقتی `cabinId` نامعتبر است
@@ -160,7 +165,7 @@ Wild Oasis:
 ✅ skeleton شبیه `layout` نهایی (کاهش CLS)  
 ✅ پیام خطا کاربرپسند؛ جزئیات در log سرور  
 ✅ `reset()` برای re-render segment  
-✅ loading در سطح component با `<Suspense>` برای کنترل دقیق‌تر  
+✅ loading در سطح component با `<Suspense>` برای کنترل دقیق‌تر
 
 ---
 
@@ -168,7 +173,7 @@ Wild Oasis:
 
 - [Streaming-And-Suspense](./Streaming-And-Suspense.md)
 - [Data-Fetching-And-Caching](./Data-Fetching-And-Caching.md)
-- [Suspense](../Suspense.md)
+- [Suspense](../Escape-Hatches/Suspense.md)
 - [Error Boundaries](../Error-Boundaries.md)
 
 ---

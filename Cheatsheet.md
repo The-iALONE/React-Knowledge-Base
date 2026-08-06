@@ -20,6 +20,7 @@
 | `useOptimistic` | UI خوش‌بینانه قبل از پاسخ سرور | [useOptimistic](./Hooks/useOptimistic.md) |
 | `useActionState` | `state` فرم + `Server Action` | [useActionState](./Hooks/useActionState.md) |
 | `useFormStatus` | وضعیت ارسال فرم (از `child`) | [useFormStatus](./Hooks/useFormStatus.md) |
+| `use` | خواندن `promise`/`context` در `render` | [use](./Hooks/use.md) |
 
 ---
 
@@ -40,6 +41,8 @@
 | `state colocation` | `state` را پایین‌تر ببرید |
 | `key` پایدار | لیست‌ها — هرگز `index` به‌عنوان `key` برای `reorder` |
 | `lazy` + `Suspense` | `route`/`component` سنگین |
+| `<Suspense>` + `use(promise)` | داده ناهمگام `declarative` |
+| `<Activity mode="hidden">` | `hide` UI با حفظ `state` |
 
 ---
 
@@ -70,7 +73,7 @@ Trigger → Render Phase → Commit Phase → Browser Paint
 
 | مفهوم | فایل |
 |-------|------|
-| `"use client"` | [Client Components](./Client-Components.md) |
-| کامپوننت سرور (پیش‌فرض) | [Server Components](./Server-Components.md) |
+| `"use client"` | [Client Components](./Escape-Hatches/Client-Components.md) |
+| کامپوننت سرور (پیش‌فرض) | [Server Components](./Escape-Hatches/Server-Components.md) |
 | `loading.js` | [Loading States](./Nextjs/Loading-And-Error-States.md) |
 | `Server Actions` | [Server Actions](./Nextjs/Server-Actions.md) |

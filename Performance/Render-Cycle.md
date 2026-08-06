@@ -12,10 +12,10 @@
 Trigger → Render Phase → Commit Phase → (Effects) → Browser Paint
 ```
 
-| فاز | نام دیگر | کار اصلی |
-|-----|----------|----------|
-| `Render Phase` | `Reconciliation` | اجرای کامپوننت‌ها، ساخت JSX، `diff` |
-| `Commit Phase` | — | اعمال تغییرات DOM، `lifecycle`/`effects` |
+| فاز            | نام دیگر         | کار اصلی                                 |
+| -------------- | ---------------- | ---------------------------------------- |
+| `Render Phase` | `Reconciliation` | اجرای کامپوننت‌ها، ساخت JSX، `diff`      |
+| `Commit Phase` | —                | اعمال تغییرات DOM، `lifecycle`/`effects` |
 
 ---
 
@@ -70,6 +70,7 @@ function Tooltip({ text }) {
 ## چرا این ویژگی وجود دارد؟
 
 جداسازی **محاسبه** (`Render`) از **اعمال** (`Commit`) به React اجازه می‌دهد:
+
 - چند `render` را `batch` کند
 - کار را `interrupt` و اولویت‌بندی کند
 - Effects را بعد از DOM به‌روز اجرا کند
@@ -138,7 +139,7 @@ async function handleSave() {
 `flushSync`: اگر فوراً به DOM نیاز دارید، `batch` را می‌شکند (استفاده نادر).
 
 ```jsx
-import { flushSync } from 'react-dom';
+import { flushSync } from "react-dom";
 
 flushSync(() => {
   setCount(1);
@@ -154,10 +155,10 @@ flushSync(() => {
 function App() {
   const [count, setCount] = useState(0);
 
-  console.log('Render Phase: App runs');
+  console.log("Render Phase: App runs");
 
   useEffect(() => {
-    console.log('After Commit: useEffect runs');
+    console.log("After Commit: useEffect runs");
   });
 
   return <button onClick={() => setCount((c) => c + 1)}>{count}</button>;
@@ -214,10 +215,10 @@ function ConfirmModal({ isOpen, message }) {
 
 ## چه زمانی استفاده کنیم؟ / چه زمانی استفاده نکنیم؟
 
-| `Render Phase` | `Commit Phase` |
-|--------------|--------------|
-| محاسبه JSX، فیلتر، `map` | نوشتن DOM، `focus`، `scroll` |
-| `useMemo` برای محاسبه گران | `useEffect` برای `fetch` |
+| `Render Phase`                          | `Commit Phase`                    |
+| --------------------------------------- | --------------------------------- |
+| محاسبه JSX، فیلتر، `map`                | نوشتن DOM، `focus`، `scroll`      |
+| `useMemo` برای محاسبه گران              | `useEffect` برای `fetch`          |
 | **نه** `fetch`، **نه** `document.title` | **نه** `setState` سنگین بدون نیاز |
 
 ---
@@ -229,7 +230,7 @@ function ConfirmModal({ isOpen, message }) {
 - [Hooks/useLayoutEffect](../Hooks/useLayoutEffect.md)
 - [Hooks/useEffect](../Hooks/useEffect.md)
 - [Effects](../Effects.md)
-- [Concurrent Features](../Concurrent-Features.md)
+- [Concurrent Features](../Escape-Hatches/Concurrent-Features.md)
 
 ---
 

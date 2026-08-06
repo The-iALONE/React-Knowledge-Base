@@ -55,20 +55,20 @@ startTransition(() => {
 
 ## مقدار بازگشتی
 
-| مقدار | نوع | توضیح |
-|-------|-----|-------|
-| `isPending` | `boolean` | آیا `transition` در حال اجراست |
-| `startTransition` | `(callback: () => void) => void` | شروع `transition` |
+| مقدار             | نوع                              | توضیح                          |
+| ----------------- | -------------------------------- | ------------------------------ |
+| `isPending`       | `boolean`                        | آیا `transition` در حال اجراست |
+| `startTransition` | `(callback: () => void) => void` | شروع `transition`              |
 
 ---
 
 ## مثال ساده
 
 ```jsx
-import { useState, useTransition } from 'react';
+import { useState, useTransition } from "react";
 
 function TabPanel() {
-  const [tab, setTab] = useState('home');
+  const [tab, setTab] = useState("home");
   const [isPending, startTransition] = useTransition();
 
   function selectTab(next) {
@@ -92,22 +92,22 @@ function TabPanel() {
 ### Dashboard — حذف رزرو با Server Action
 
 ```jsx
-'use client';
+"use client";
 
-import { useTransition } from 'react';
-import { deleteReservation } from '../_lib/actions';
+import { useTransition } from "react";
+import { deleteReservation } from "../_lib/actions";
 
 function DeleteReservation({ bookingId }) {
   const [isPending, startTransition] = useTransition();
 
   function handleDelete() {
-    if (!confirm('Are you sure?')) return;
+    if (!confirm("Are you sure?")) return;
     startTransition(() => deleteReservation(bookingId));
   }
 
   return (
     <button onClick={handleDelete} disabled={isPending}>
-      {isPending ? <SpinnerMini /> : 'Delete'}
+      {isPending ? <SpinnerMini /> : "Delete"}
     </button>
   );
 }
@@ -117,7 +117,7 @@ function DeleteReservation({ bookingId }) {
 
 ```jsx
 function ProductFilter({ products }) {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [filtered, setFiltered] = useState(products);
   const [isPending, startTransition] = useTransition();
 
@@ -154,7 +154,7 @@ function NavLink({ href, children }) {
         e.preventDefault();
         startTransition(() => router.push(href));
       }}
-      className={isPending ? 'opacity-50' : ''}
+      className={isPending ? "opacity-50" : ""}
     >
       {children}
     </a>
@@ -191,11 +191,11 @@ startTransition(() => setCount(c + 1)); // unnecessary
 
 ## When to Use / Not
 
-| استفاده کنید | استفاده نکنید |
-|-------------|---------------|
-| `render` سنگین بعد از تعامل | `update` ساده و سبک |
+| استفاده کنید                   | استفاده نکنید                         |
+| ------------------------------ | ------------------------------------- |
+| `render` سنگین بعد از تعامل    | `update` ساده و سبک                   |
 | `Server Action` + UI `pending` | جایگزین Suspense برای `data fetching` |
-| `tab`/`filter`/لیست بزرگ | همه `onClick`ها |
+| `tab`/`filter`/لیست بزرگ       | همه `onClick`ها                       |
 
 ---
 
@@ -203,7 +203,7 @@ startTransition(() => setCount(c + 1)); // unnecessary
 
 - [useDeferredValue.md](./useDeferredValue.md) — `defer` مقدار
 - [useOptimistic.md](./useOptimistic.md) — UI خوش‌بینانه
-- [Escape-Hatches.md](../Escape-Hatches.md) — Concurrent features
+- [Escape-Hatches/README.md](../Escape-Hatches/README.md) — Concurrent features
 
 ---
 

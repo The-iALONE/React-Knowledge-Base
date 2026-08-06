@@ -11,9 +11,11 @@
 3. از کاربر بپرسد که آیا ادامه بدهد یا نه، و منتظر تایید بماند قبل از اعمال تغییرات.
 4. قبل از شروع کار روی هر فاز، آخرین نسخه [مستندات رسمی React](https://react.dev) را برای مباحث آن فاز بررسی کند — چون مستندات رسمی، Source of Truth است و جزوه قدیمی به‌تنهایی منبع کاملاً قابل‌اعتمادی نیست.
 5. بعد از هر تغییر (افزودن، ویرایش یا حذف فایل)، `README.md` و `Learning-Path.md` را بررسی و در صورت نیاز به‌روزرسانی کند — لینک جدید، جای‌گذاری در ماژول درست، تیک‌زدن آیتم.
-6. وقتی کاربر گفت **تغییرات را کامیت کن** یا **پوش کن**:
+6. **ساختار فایل‌ها و پوشه‌ها حتماً طبق [Project-Structure.md](./Project-Structure.md) باشد** — محل قرارگیری در درخت مخزن، نام `PascalCase-With-Hyphens.md`، قالب بخش‌های اجباری markdown، و ممنوعیت تکرار فایل در ریشه و زیرپوشه. قبل از ساخت فایل جدید این سند را بخواند.
+7. وقتی کاربر گفت **تغییرات را کامیت کن** یا **پوش کن**:
    - **بازبینی (Review)** روی فایل‌های تغییر یافته انجام دهد (قبل از `git add`):
      - چک‌لیست RTL: جملهٔ اول فارسی در `## 📖 مفهوم`، بدون شروع جمله با انگلیسی، اصطلاحات فنی backtick‌شده
+     - چک‌لیست ساختار: [Project-Structure.md](./Project-Structure.md) — محل پوشه، قالب بخش‌ها، بدون تکرار ریشه/زیرپوشه
      - لینک‌های داخلی شکسته نباشند
      - `README.md` و `Learning-Path.md` با فایل‌های جدید/ویرایش‌شده هم‌خوان باشند
    - `git status` و `git diff` را بررسی کند
@@ -22,11 +24,11 @@
    - `git push origin main` (یا شاخهٔ فعال) به ریپازیتوری GitHub انجام دهد
    - در `ROADMAP.md` changelog ثبت کند
 
-**Milestone فعلی:** `M4` (Patterns — تکمیل شده)  
+**Milestone فعلی:** `M5` (Escape Hatches — تکمیل شده)  
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-06 (M4 Patterns)
+**آخرین به‌روزرسانی:** 2026-08-06 (M5 Escape Hatches)
 
 ---
 
@@ -101,7 +103,17 @@
 - [ ] بخش `## 📖 مفهوم` وجود دارد و جملهٔ اول فارسی است
 - [ ] هیچ جمله‌ای در کل فایل با انگلیسی شروع نشده (به‌جز عناوین `#` فایل)
 - [ ] اصطلاحات فنی backtick دارند
+- [ ] محل فایل و قالب بخش‌ها مطابق [Project-Structure.md](./Project-Structure.md) است
 - [ ] `README.md` و `Learning-Path.md` در صورت افزودن/حذف فایل به‌روز شده‌اند
+
+#### قالب ساختار — مرجع اجباری
+
+**همه فایل‌های محتوایی باید طبق [Project-Structure.md](./Project-Structure.md) ساخته شوند:**
+
+- ماژول‌های موضوعی (`Hooks/`، `Patterns/`، `Escape-Hatches/`، …) → فایل داخل پوشه + `README.md` هاب
+- فایل موضوعی → بخش‌های اجباری: `مفهوم`، `چرا`، `چه مشکلی را حل می‌کند؟`، `ارتباط`، `خلاصه`، `منابع`
+- مثال کد → فقط `Examples/{module}/`
+- **ممنوع:** همان فایل هم در ریشه و هم در زیرپوشه
 
 ---
 
@@ -112,7 +124,7 @@
 | ریپازیتوری | `React-Knowledge-Base` (خصوصی، GitHub) |
 | شاخهٔ اصلی | `main` |
 | مسیر محلی | ریشهٔ همین پوشه (`React-Knowledge-Base/`) |
-| Milestone فعلی | **M4** — Patterns (تکمیل)؛ Milestone بعدی: **M5** — Escape Hatches |
+| Milestone فعلی | **M5** — Escape Hatches (تکمیل)؛ Milestone بعدی: **M6** — Performance |
 
 ### قانون کامیت و پوش
 
@@ -120,6 +132,7 @@
 
 1. **بازبینی (Review)** — قبل از استیج کردن:
    - RTL: `## 📖 مفهوم`، شروع جمله با فارسی، backtick اصطلاحات فنی (بخش «قوانین نگارش فارسی و RTL»)
+   - ساختار: [Project-Structure.md](./Project-Structure.md) — پوشه، قالب بخش‌ها، عدم تکرار
    - لینک‌های داخلی و هم‌خوانی `README.md` / `Learning-Path.md`
 2. `git status` + `git diff` — بررسی تغییرات
 3. `git add` فایل‌های مرتبط (رعایت `.gitignore`)
@@ -154,7 +167,7 @@
 | **M2** | Core React (فایل‌های ریشه) | [x] | 2026-08-06 | 24 فایل ریشه تکمیل شد |
 | **M3** | Hooks | [x] | 2026-08-06 | ۲۰ فایل Hooks (README + ۱۹ hook) — هم‌تراز با react.dev |
 | **M4** | Patterns | [x] | 2026-08-06 | README + ۵ الگو + Examples — جزوه الگوهای پیشرفته |
-| **M5** | Escape Hatches / Concurrent | [ ] | | بدهی react.dev: `use()`, `<Activity>` (React 19.2), ref as prop, ref cleanup (React 19), Context بدون `.Provider` (React 19) |
+| **M5** | Escape Hatches / Concurrent | [x] | 2026-08-06 | ۷ فایل + `Hooks/use.md` + `WhatsNew.md` + Examples — `use()`, `<Activity>`, RSC |
 | **M6** | Performance | [ ] | | |
 | **M7** | State Management | [ ] | | |
 | **M8** | React Router | [ ] | | |
@@ -179,7 +192,24 @@
 | `Next.js/*`                                | Nextjs/\*, Server-Components, Client-Components            | [ ]                      |
 | `Supabase/*`                               | Nextjs/Backend-Integration-Supabase.md                     | [ ]                      |
 | `herlpers for react + rfc +`               | Components.md, Quick-Start.md                              | [x]                      |
-| _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [ ] M5/M10 |
+| _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [ ] M10 |
+
+### 2026-08-06 (ساختار Project-Structure + یکپارچه‌سازی Escape-Hatches/)
+
+- گسترش [Project-Structure.md](./Project-Structure.md) — درخت مخزن مستندات + قالب اجباری بخش‌های markdown
+- قانون ۶ AI و چک‌لیست Review: ساختار حتماً طبق Project-Structure
+- حذف تکرار M5 در ریشه؛ انتقال به `Escape-Hatches/` (مثل `Patterns/`)
+- اصلاح لینک‌های داخلی؛ `Hooks/use.md` → بخش `چه مشکلی را حل می‌کند؟`
+
+### 2026-08-06 (M5 — Escape Hatches)
+
+- ایجاد ۷ فایل: `Escape-Hatches`, `Suspense`, `Lazy-Loading`, `Concurrent-Features`, `Server-Components`, `Client-Components`, `React-Compiler`
+- افزودن `Hooks/use.md` — `use(promise)` و `use(context)` (React 19)
+- پوشش `<Activity>` (React 19.2) در `Escape-Hatches.md`
+- ایجاد `WhatsNew.md` — فهرست مفاهیم غیرجزوه با لینک مستقیم
+- `Examples/escape-hatches/`: `SuspenseLazy.jsx`, `UsePromise.jsx`, `ActivityDemo.jsx`
+- تیک Learning-Path ماژول ۰۵؛ به‌روزرسانی README، Hooks/README، Glossary، Cheatsheet
+- Milestone فعلی: **M5** → بعدی **M6**
 
 ### 2026-08-06 (بازبینی RTL M4 + قانون Review قبل از کامیت)
 

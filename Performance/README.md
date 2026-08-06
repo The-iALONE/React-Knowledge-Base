@@ -17,21 +17,21 @@ Virtual DOM → Render Cycle → Re-render → Reconciliation
 
 ## فهرست کامل
 
-| فایل | موضوع | اولویت |
-|------|-------|--------|
-| [Virtual-DOM.md](./Virtual-DOM.md) | Virtual DOM چیست و چرا وجود دارد | پایه |
-| [Render-Cycle.md](./Render-Cycle.md) | Render Phase vs Commit Phase | پایه |
-| [Re-render.md](./Re-render.md) | چه چیزی re-render ایجاد می‌کند | پایه |
-| [Reconciliation.md](./Reconciliation.md) | فرآیند همگام‌سازی درخت | پایه |
-| [Diffing-Algorithm.md](./Diffing-Algorithm.md) | الگوریتم diff و قوانین آن | پایه |
-| [Keys-And-Performance.md](./Keys-And-Performance.md) | `key` و تأثیر روی performance | پایه |
-| [Memoization.md](./Memoization.md) | `React.memo`, `useMemo`, `useCallback` | بهینه‌سازی |
-| [State-Colocation.md](./State-Colocation.md) | نزدیک‌کردن `state` به مصرف‌کننده | بهینه‌سازی |
-| [Code-Splitting.md](./Code-Splitting.md) | `lazy`, `Suspense`, route splitting | بهینه‌سازی |
-| [Profiling.md](./Profiling.md) | React DevTools Profiler | اندازه‌گیری |
-| [Optimization-Techniques.md](./Optimization-Techniques.md) | جدول کامل تکنیک‌ها + هزینه/فایده | مرجع |
-| [Best-Practices.md](./Best-Practices.md) | چک‌لیست عملی | عملی |
-| [Common-Mistakes.md](./Common-Mistakes.md) | اشتباهات رایج و ضدالگوها | عملی |
+| فایل                                                       | موضوع                                  | اولویت      |
+| ---------------------------------------------------------- | -------------------------------------- | ----------- |
+| [Virtual-DOM.md](./Virtual-DOM.md)                         | Virtual DOM چیست و چرا وجود دارد       | پایه        |
+| [Render-Cycle.md](./Render-Cycle.md)                       | Render Phase vs Commit Phase           | پایه        |
+| [Re-render.md](./Re-render.md)                             | چه چیزی re-render ایجاد می‌کند         | پایه        |
+| [Reconciliation.md](./Reconciliation.md)                   | فرآیند همگام‌سازی درخت                 | پایه        |
+| [Diffing-Algorithm.md](./Diffing-Algorithm.md)             | الگوریتم diff و قوانین آن              | پایه        |
+| [Keys-And-Performance.md](./Keys-And-Performance.md)       | `key` و تأثیر روی performance          | پایه        |
+| [Memoization.md](./Memoization.md)                         | `React.memo`, `useMemo`, `useCallback` | بهینه‌سازی  |
+| [State-Colocation.md](./State-Colocation.md)               | نزدیک‌کردن `state` به مصرف‌کننده       | بهینه‌سازی  |
+| [Code-Splitting.md](./Code-Splitting.md)                   | `lazy`, `Suspense`, route splitting    | بهینه‌سازی  |
+| [Profiling.md](./Profiling.md)                             | React DevTools Profiler                | اندازه‌گیری |
+| [Optimization-Techniques.md](./Optimization-Techniques.md) | جدول کامل تکنیک‌ها + هزینه/فایده       | مرجع        |
+| [Best-Practices.md](./Best-Practices.md)                   | چک‌لیست عملی                           | عملی        |
+| [Common-Mistakes.md](./Common-Mistakes.md)                 | اشتباهات رایج و ضدالگوها               | عملی        |
 
 ---
 
@@ -39,10 +39,10 @@ Virtual DOM → Render Cycle → Re-render → Reconciliation
 
 ### فاز رندر در برابر فاز کامیت (`Render Phase` vs `Commit Phase`)
 
-| فاز | کار | قابل قطع؟ | Side Effect مجاز؟ |
-|-----|-----|-----------|-------------------|
-| `Render` | اجرای کامپوننت، ساخت JSX، Diff | بله (Concurrent) | خیر |
-| `Commit` | اعمال به DOM، Effects | خیر | بله (در Effects) |
+| فاز      | کار                            | قابل قطع؟        | Side Effect مجاز؟ |
+| -------- | ------------------------------ | ---------------- | ----------------- |
+| `Render` | اجرای کامپوننت، ساخت JSX، Diff | بله (Concurrent) | خیر               |
+| `Commit` | اعمال به DOM، Effects          | خیر              | بله (در Effects)  |
 
 جزئیات: [Render-Cycle.md](./Render-Cycle.md)
 
@@ -79,15 +79,15 @@ function App() {
 
 ## تکنیک‌های بهینه‌سازی — نگاه سریع
 
-| تکنیک | مشکل | هزینه | پیچیدگی اضافه؟ |
-|-------|------|-------|----------------|
-| `React.memo` | `re-render` فرزند با `props` یکسان | مقایسه `shallow props` | کم |
-| `useMemo` | محاسبه گران تکراری | حافظه + مقایسه `deps` | متوسط |
-| `useCallback` | تابع جدید هر `render` → شکستن `memo` | حافظه + مقایسه `deps` | متوسط |
-| `State colocation` | `re-render` کل `subtree` | ساختار کد | کم (اغلب ساده‌تر) |
-| `key` پایدار | `re-mount` و `state` اشتباه | — | خیر |
-| `Code splitting` | `bundle` اولیه سنگین | `loading state` | متوسط |
-| `Children pattern` | `re-render` `subtree` سنگین | ساختار JSX | کم |
+| تکنیک              | مشکل                                 | هزینه                  | پیچیدگی اضافه؟    |
+| ------------------ | ------------------------------------ | ---------------------- | ----------------- |
+| `React.memo`       | `re-render` فرزند با `props` یکسان   | مقایسه `shallow props` | کم                |
+| `useMemo`          | محاسبه گران تکراری                   | حافظه + مقایسه `deps`  | متوسط             |
+| `useCallback`      | تابع جدید هر `render` → شکستن `memo` | حافظه + مقایسه `deps`  | متوسط             |
+| `State colocation` | `re-render` کل `subtree`             | ساختار کد              | کم (اغلب ساده‌تر) |
+| `key` پایدار       | `re-mount` و `state` اشتباه          | —                      | خیر               |
+| `Code splitting`   | `bundle` اولیه سنگین                 | `loading state`        | متوسط             |
+| `Children pattern` | `re-render` `subtree` سنگین          | ساختار JSX             | کم                |
 
 جدول کامل: [Optimization-Techniques.md](./Optimization-Techniques.md)
 
@@ -98,9 +98,9 @@ function App() {
 - [Rendering](../Rendering.md) — مقدمه رندر
 - [Hooks/useMemo](../Hooks/useMemo.md) · [Hooks/useCallback](../Hooks/useCallback.md)
 - [Patterns/React-Memo](../Patterns/React-Memo.md)
-- [Lazy Loading](../Lazy-Loading.md) · [Suspense](../Suspense.md)
-- [Concurrent Features](../Concurrent-Features.md)
-- [React Compiler](../React-Compiler.md)
+- [Lazy Loading](../Escape-Hatches/Lazy-Loading.md) · [Suspense](../Escape-Hatches/Suspense.md)
+- [Concurrent Features](../Escape-Hatches/Concurrent-Features.md)
+- [React Compiler](../Escape-Hatches/React-Compiler.md)
 - [Cheatsheet — Performance](../Cheatsheet.md#performance-سریع)
 
 ---

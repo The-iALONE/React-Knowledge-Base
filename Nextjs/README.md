@@ -91,6 +91,7 @@ export default async function HomePage() {
 ## مثال واقعی در پروژه
 
 در دوره Wild Oasis:
+
 - `app/cabins/` لیست کابین‌ها با RSC و `fetch`
 - `app/account/` محافظت‌شده با [Middleware](./Middleware.md) و [NextAuth](./Authentication-NextAuth.md)
 - فرم رزرو با [Server Actions](./Server-Actions.md) و `useOptimistic`
@@ -103,39 +104,39 @@ export default async function HomePage() {
 ✅ `"use client"` فقط وقتی hook یا event لازم است  
 ✅ داده را نزدیک محل مصرف `fetch` کنید ([colocation](../Performance/State-Colocation.md))  
 ✅ از `loading.js` و `error.js` برای UX بهتر استفاده کنید  
-✅ `cache` و `revalidate` را صریح مدیریت کنید  
+✅ `cache` و `revalidate` را صریح مدیریت کنید
 
 ---
 
 ## فهرست این بخش
 
-| موضوع | فایل |
-|-------|------|
-| راه‌اندازی | [Project-Setup](./Project-Setup.md) |
-| مسیریابی | [Routing-And-Pages](./Routing-And-Pages.md) |
-| چیدمان | [Layouts](./Layouts.md) |
-| ناوبری | [Navigation](./Navigation.md) |
-| Loading / Error | [Loading-And-Error-States](./Loading-And-Error-States.md) |
-| داده و cache | [Data-Fetching-And-Caching](./Data-Fetching-And-Caching.md) |
-| SSR / SSG / ISR | [Rendering-Strategies](./Rendering-Strategies.md) |
-| Streaming | [Streaming-And-Suspense](./Streaming-And-Suspense.md) |
-| RSC | [Server-Components](./Server-Components.md) |
-| ترکیب Server/Client | [Client-Server-Interleaving](./Client-Server-Interleaving.md) |
-| Server Actions | [Server-Actions](./Server-Actions.md) |
-| API Routes | [Route-Handlers](./Route-Handlers.md) |
-| Middleware | [Middleware](./Middleware.md) |
-| NextAuth | [Authentication-NextAuth](./Authentication-NextAuth.md) |
-| SEO | [Metadata-And-SEO](./Metadata-And-SEO.md) |
-| Image / Font | [Image-And-Font-Optimization](./Image-And-Font-Optimization.md) |
-| Supabase | [Backend-Integration-Supabase](./Backend-Integration-Supabase.md) |
+| موضوع               | فایل                                                              |
+| ------------------- | ----------------------------------------------------------------- |
+| راه‌اندازی          | [Project-Setup](./Project-Setup.md)                               |
+| مسیریابی            | [Routing-And-Pages](./Routing-And-Pages.md)                       |
+| چیدمان              | [Layouts](./Layouts.md)                                           |
+| ناوبری              | [Navigation](./Navigation.md)                                     |
+| Loading / Error     | [Loading-And-Error-States](./Loading-And-Error-States.md)         |
+| داده و cache        | [Data-Fetching-And-Caching](./Data-Fetching-And-Caching.md)       |
+| SSR / SSG / ISR     | [Rendering-Strategies](./Rendering-Strategies.md)                 |
+| Streaming           | [Streaming-And-Suspense](./Streaming-And-Suspense.md)             |
+| RSC                 | [Server-Components](./Escape-Hatches/Server-Components.md)                       |
+| ترکیب Server/Client | [Client-Server-Interleaving](./Client-Server-Interleaving.md)     |
+| Server Actions      | [Server-Actions](./Server-Actions.md)                             |
+| API Routes          | [Route-Handlers](./Route-Handlers.md)                             |
+| Middleware          | [Middleware](./Middleware.md)                                     |
+| NextAuth            | [Authentication-NextAuth](./Authentication-NextAuth.md)           |
+| SEO                 | [Metadata-And-SEO](./Metadata-And-SEO.md)                         |
+| Image / Font        | [Image-And-Font-Optimization](./Image-And-Font-Optimization.md)   |
+| Supabase            | [Backend-Integration-Supabase](./Backend-Integration-Supabase.md) |
 
 ---
 
 ## ارتباط با مفاهیم دیگر
 
-- [Server Components](../Server-Components.md) — مفهوم RSC در React
-- [Client Components](../Client-Components.md)
-- [Suspense](../Suspense.md)
+- [Server Components](../Escape-Hatches/Server-Components.md) — مفهوم RSC در React
+- [Client Components](../Escape-Hatches/Client-Components.md)
+- [Suspense](../Escape-Hatches/Suspense.md)
 - [React Query](../State-Management/React-Query.md)
 - [Best Practices](../Best-Practices.md)
 

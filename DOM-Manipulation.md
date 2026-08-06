@@ -47,7 +47,7 @@ elementRef.current.focus();
 elementRef.current.scrollIntoView();
 
 // HTML خام
-<div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
+<div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
 ```
 
 ## مثال واقعی در پروژه
@@ -86,7 +86,7 @@ elementRef.current.scrollIntoView();
 - [Refs](./Refs.md)
 - [Effects](./Effects.md)
 - [Hooks/useLayoutEffect](./Hooks/useLayoutEffect.md)
-- [Escape Hatches](./Escape-Hatches.md)
+- [Escape Hatches](./Escape-Hatches/README.md)
 
 ## 💡 نکات مهم
 

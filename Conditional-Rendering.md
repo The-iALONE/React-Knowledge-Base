@@ -30,7 +30,9 @@ if (!user) return <LoginPage />;
 return isLoading ? <Spinner /> : <Content data={data} />;
 
 // Logical AND — مراقب مقدار 0 باشید!
-{items.length > 0 && <ItemList items={items} />}
+{
+  items.length > 0 && <ItemList items={items} />;
+}
 
 // متغیر JSX
 let content;
@@ -45,9 +47,7 @@ return <div>{content}</div>;
 ```jsx
 function Greeting({ isLoggedIn }) {
   return (
-    <div>
-      {isLoggedIn ? <h1>خوش آمدید</h1> : <h1>لطفاً وارد شوید</h1>}
-    </div>
+    <div>{isLoggedIn ? <h1>خوش آمدید</h1> : <h1>لطفاً وارد شوید</h1>}</div>
   );
 }
 ```
@@ -101,24 +101,24 @@ function OrderPage() {
 
 ## چه زمانی استفاده کنیم؟ / چه زمانی استفاده نکنیم؟
 
-| استفاده کنیم | استفاده نکنیم |
-|--------------|---------------|
+| استفاده کنیم                           | استفاده نکنیم                                                                          |
+| -------------------------------------- | -------------------------------------------------------------------------------------- |
 | `loading` / `error` / `empty` / `auth` | برای `toggle` ساده `visibility` که `layout` را حفظ کند (`hidden` CSS یا `aria-hidden`) |
-| نمایش کاملاً متفاوت بر اساس نقش | وقتی هر دو شاخه باید `mount` بمانند (مثلاً برای حفظ `scroll`) |
+| نمایش کاملاً متفاوت بر اساس نقش        | وقتی هر دو شاخه باید `mount` بمانند (مثلاً برای حفظ `scroll`)                          |
 
 ## ارتباط با مفاهیم دیگر
 
 - [State](./State.md)
 - [Rendering](./Rendering.md)
 - [Lists](./Lists.md)
-- [Suspense](./Suspense.md) — `loading` `declarative`
+- [Suspense](./Escape-Hatches/Suspense.md) — `loading` `declarative`
 - [Error-Boundaries](./Error-Boundaries.md)
 - [Sharing-State](./Sharing-State.md)
 
 ## 💡 نکات مهم
 
 - `unmount` شدن کامپوننت `state` داخلی آن را از بین می‌برد
-- [Suspense](./Suspense.md) یک شکل پیشرفته‌تر از `conditional loading` است
+- [Suspense](./Escape-Hatches/Suspense.md) یک شکل پیشرفته‌تر از `conditional loading` است
 - در React 19 می‌توان از `use()` برای `await` کردن `promise` در `render` استفاده کرد
 
 ## 🎯 سوالات رایج مصاحبه

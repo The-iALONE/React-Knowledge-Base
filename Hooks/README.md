@@ -95,6 +95,7 @@ function useCounter() {
 | `Ref` | `useRef`, `useImperativeHandle` | DOM، مقادیر `mutable` بدون `re-render` |
 | `Context` | `useContext` | خواندن `context` بدون `Consumer` |
 | `Concurrent` | `useTransition`, `useDeferredValue`, `useOptimistic` | UI واکنش‌گرا، به‌روزرسانی غیرمسدودکننده |
+| `Escape Hatch` | `use` | خواندن `promise`/`context` در `render` (React 19) |
 | `Forms` (React 19) | `useActionState`, `useFormStatus` | `Server Actions` و وضعیت فرم |
 | `External Store` | `useSyncExternalStore` | `subscribe` به `store` خارجی |
 | `Other` | `useId`, `useImperativeHandle`, `useDebugValue` | ID یکتا، `imperative` API، برچسب DevTools |
@@ -124,6 +125,7 @@ function useCounter() {
 | `useImperativeHandle` | سفارشی‌سازی نمونه `ref` | [useImperativeHandle.md](./useImperativeHandle.md) |
 | `useId` | ID یکتا برای دسترسی‌پذیری | [useId.md](./useId.md) |
 | `useDebugValue` | `label` در DevTools برای `custom hook` | [useDebugValue.md](./useDebugValue.md) |
+| `use` | خواندن `promise` یا `context` (React 19) | [use.md](./use.md) |
 
 ---
 
@@ -150,7 +152,7 @@ function useCounter() {
 - [State.md](../State.md) — مفاهیم `state` در React
 - [Custom-Hooks.md](../Custom-Hooks.md) — ساخت `Hook` سفارشی
 - [Performance/Memoization.md](../Performance/Memoization.md) — `useMemo` و `useCallback` در عمق
-- [Escape-Hatches.md](../Escape-Hatches.md) — `Hook`های `escape hatch`
+- [Escape-Hatches/README.md](../Escape-Hatches/README.md) — `Hook`های `escape hatch`
 
 ---
 

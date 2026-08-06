@@ -12,6 +12,7 @@
 | مرور فشرده `Hook`ها | [Cheatsheet.md](./Cheatsheet.md) |
 | معنی یک اصطلاح | [Glossary.md](./Glossary.md) |
 | پیشرفت پروژه مستندات | [ROADMAP.md](./ROADMAP.md) |
+| مفاهیم جدید (غیرجزوه) | [WhatsNew.md](./WhatsNew.md) |
 | مثال‌های کد | [Examples/](./Examples/README.md) |
 
 ---
@@ -47,13 +48,16 @@
 
 ### Escape Hatches & Modern React
 
-- [Escape Hatches](./Escape-Hatches.md)
-- [Suspense](./Suspense.md)
-- [Lazy Loading](./Lazy-Loading.md)
-- [Concurrent Features](./Concurrent-Features.md)
-- [Server Components](./Server-Components.md)
-- [Client Components](./Client-Components.md)
-- [React Compiler](./React-Compiler.md)
+> نمای کلی: [Escape-Hatches/README.md](./Escape-Hatches/README.md)
+
+- [Escape Hatches](./Escape-Hatches/README.md)
+- [Suspense](./Escape-Hatches/Suspense.md)
+- [Lazy Loading](./Escape-Hatches/Lazy-Loading.md)
+- [Concurrent Features](./Escape-Hatches/Concurrent-Features.md)
+- [Server Components](./Escape-Hatches/Server-Components.md)
+- [Client Components](./Escape-Hatches/Client-Components.md)
+- [React Compiler](./Escape-Hatches/React-Compiler.md)
+- [`use`](./Hooks/use.md) — خواندن `promise`/`context` (React 19)
 
 ### Hooks
 
@@ -64,7 +68,7 @@
 - [useTransition](./Hooks/useTransition.md) · [useDeferredValue](./Hooks/useDeferredValue.md)
 - [useOptimistic](./Hooks/useOptimistic.md) · [useActionState](./Hooks/useActionState.md)
 - [useFormStatus](./Hooks/useFormStatus.md) · [useSyncExternalStore](./Hooks/useSyncExternalStore.md)
-- [useImperativeHandle](./Hooks/useImperativeHandle.md) · [useId](./Hooks/useId.md)
+- [useImperativeHandle](./Hooks/useImperativeHandle.md) · [useId](./Hooks/useId.md) · [use](./Hooks/use.md)
 
 ### Patterns
 
@@ -132,7 +136,7 @@
 
 ## چگونه این مستندات را توسعه دهیم
 
-1. فایل جدید با قالب استاندارد (عنوان → مفهوم → ... → منابع) بسازید.
+1. فایل جدید با قالب استاندارد (عنوان → مفهوم → ... → منابع) بسازید — **طبق [Project-Structure.md](./Project-Structure.md)**.
 2. نام فایل: `PascalCase-With-Hyphens.md` (انگلیسی).
 3. لینک فایل را در `README.md` اصلی، `Learning-Path.md` و `README.md` پوشه مربوطه اضافه کنید.
 4. وضعیت را در `ROADMAP.md` به‌روز کنید.

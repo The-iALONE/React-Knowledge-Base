@@ -36,22 +36,26 @@
 ## Syntax
 
 ```jsx
-const snapshot = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+const snapshot = useSyncExternalStore(
+  subscribe,
+  getSnapshot,
+  getServerSnapshot,
+);
 ```
 
 ```jsx
 function useOnlineStatus() {
   return useSyncExternalStore(
     (callback) => {
-      window.addEventListener('online', callback);
-      window.addEventListener('offline', callback);
+      window.addEventListener("online", callback);
+      window.addEventListener("offline", callback);
       return () => {
-        window.removeEventListener('online', callback);
-        window.removeEventListener('offline', callback);
+        window.removeEventListener("online", callback);
+        window.removeEventListener("offline", callback);
       };
     },
     () => navigator.onLine,
-    () => true // server: assume online
+    () => true, // server: assume online
   );
 }
 ```
@@ -60,18 +64,18 @@ function useOnlineStatus() {
 
 ## پارامترها
 
-| پارامتر | نوع | توضیح |
-|---------|-----|-------|
-| `subscribe` | `(onStoreChange: () => void) => () => void` | `subscribe` + unsubscribe |
-| `getSnapshot` | `() => T` | خواندن مقدار فعلی (client) |
-| `getServerSnapshot` | `() => T` (optional) | `snapshot` برای SSR |
+| پارامتر             | نوع                                         | توضیح                      |
+| ------------------- | ------------------------------------------- | -------------------------- |
+| `subscribe`         | `(onStoreChange: () => void) => () => void` | `subscribe` + unsubscribe  |
+| `getSnapshot`       | `() => T`                                   | خواندن مقدار فعلی (client) |
+| `getServerSnapshot` | `() => T` (optional)                        | `snapshot` برای SSR        |
 
 ---
 
 ## مقدار بازگشتی
 
-| مقدار | نوع | توضیح |
-|-------|-----|-------|
+| مقدار      | نوع | توضیح            |
+| ---------- | --- | ---------------- |
 | `snapshot` | `T` | مقدار فعلی store |
 
 ---
@@ -79,7 +83,7 @@ function useOnlineStatus() {
 ## مثال ساده
 
 ```jsx
-import { useSyncExternalStore } from 'react';
+import { useSyncExternalStore } from "react";
 
 const store = {
   listeners: new Set(),
@@ -100,7 +104,7 @@ const store = {
 function Counter() {
   const { count } = useSyncExternalStore(
     (cb) => store.subscribe(cb),
-    () => store.getSnapshot()
+    () => store.getSnapshot(),
   );
   return <button onClick={() => store.increment()}>{count}</button>;
 }
@@ -114,20 +118,20 @@ function Counter() {
 
 ```jsx
 function subscribeToDarkMode(callback) {
-  const mq = window.matchMedia('(prefers-color-scheme: dark)');
-  mq.addEventListener('change', callback);
-  return () => mq.removeEventListener('change', callback);
+  const mq = window.matchMedia("(prefers-color-scheme: dark)");
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
 }
 
 function getDarkModeSnapshot() {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
 function useDarkMode() {
   return useSyncExternalStore(
     subscribeToDarkMode,
     getDarkModeSnapshot,
-    () => false
+    () => false,
   );
 }
 ```
@@ -135,7 +139,7 @@ function useDarkMode() {
 ### Auth — Zustand store (داخلی از useSyncExternalStore)
 
 ```jsx
-import { create } from 'zustand';
+import { create } from "zustand";
 
 const useAuthStore = create((set) => ({
   user: null,
@@ -153,15 +157,15 @@ function Header() {
 
 ```jsx
 function subscribeToStorage(key, callback) {
-  window.addEventListener('storage', callback);
-  return () => window.removeEventListener('storage', callback);
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
 }
 
 function useStorageItem(key, defaultValue) {
   return useSyncExternalStore(
     (cb) => subscribeToStorage(key, cb),
     () => localStorage.getItem(key) ?? defaultValue,
-    () => defaultValue
+    () => defaultValue,
   );
 }
 ```
@@ -172,16 +176,20 @@ function useStorageItem(key, defaultValue) {
 
 ```jsx
 // ❌ getSnapshot object جدید هر بار
-getSnapshot: () => ({ count: store.count })
+getSnapshot: () => ({ count: store.count });
 
 // ✅ primitive یا cached reference
-getSnapshot: () => store.count
+getSnapshot: () => store.count;
 
 // ❌ بدون getServerSnapshot در Next.js
-useSyncExternalStore(sub, () => window.innerWidth)
+useSyncExternalStore(sub, () => window.innerWidth);
 
 // ✅
-useSyncExternalStore(sub, () => window.innerWidth, () => 1024)
+useSyncExternalStore(
+  sub,
+  () => window.innerWidth,
+  () => 1024,
+);
 ```
 
 ---
@@ -197,11 +205,11 @@ useSyncExternalStore(sub, () => window.innerWidth, () => 1024)
 
 ## When to Use / Not
 
-| استفاده کنید | استفاده نکنید |
-|-------------|---------------|
-| `external store` | `state` محلی کامپوننت |
-| `matchMedia`، وضعیت آنلاین | `context` ساده |
-| `custom pub/sub` | `useState` کافی است |
+| استفاده کنید               | استفاده نکنید         |
+| -------------------------- | --------------------- |
+| `external store`           | `state` محلی کامپوننت |
+| `matchMedia`، وضعیت آنلاین | `context` ساده        |
+| `custom pub/sub`           | `useState` کافی است   |
 
 ---
 
@@ -209,7 +217,7 @@ useSyncExternalStore(sub, () => window.innerWidth, () => 1024)
 
 - [State-Management/README.md](../State-Management/README.md)
 - [useContext.md](./useContext.md)
-- [Escape-Hatches.md](../Escape-Hatches.md)
+- [Escape-Hatches/README.md](../Escape-Hatches/README.md)
 
 ---
 

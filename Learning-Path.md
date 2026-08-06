@@ -77,13 +77,16 @@
 
 ## ماژول ۰۵ — Escape Hatches و React مدرن
 
-- [ ] `44` [Escape Hatches](./Escape-Hatches.md)
-- [ ] `45` [Suspense](./Suspense.md)
-- [ ] `46` [Lazy Loading](./Lazy-Loading.md)
-- [ ] `47` [Concurrent Features](./Concurrent-Features.md)
-- [ ] `48` [Server Components](./Server-Components.md)
-- [ ] `49` [Client Components](./Client-Components.md)
-- [ ] `50` [React Compiler](./React-Compiler.md)
+> نمای کلی: [Escape-Hatches/README.md](./Escape-Hatches/README.md) · مفاهیم جدید: [WhatsNew.md](./WhatsNew.md)
+
+- [x] `44` [Escape Hatches](./Escape-Hatches/README.md)
+- [x] `45` [Suspense](./Escape-Hatches/Suspense.md)
+- [x] `46` [Lazy Loading](./Escape-Hatches/Lazy-Loading.md)
+- [x] `47` [Concurrent Features](./Escape-Hatches/Concurrent-Features.md)
+- [x] `48` [Server Components](./Escape-Hatches/Server-Components.md)
+- [x] `49` [Client Components](./Escape-Hatches/Client-Components.md)
+- [x] `50` [React Compiler](./Escape-Hatches/React-Compiler.md)
+- [x] [`use`](./Hooks/use.md) — خواندن `promise`/`context` (React 19)
 
 ---
 

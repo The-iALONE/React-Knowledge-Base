@@ -1,60 +1,162 @@
 # Project Structure
 
-ساختار پیشنهادی پروژه React.
+ساختار پیشنهادی پروژه React **و** ساختار اجباری مخزن مستندات `React-Knowledge-Base`.
 
 ---
+
 ## 📖 مفهوم
 
-ساختار `feature-based` یا `layer-based` بسته به اندازه پروژه.
+این فایل دو سطح ساختار را تعریف می‌کند: (۱) پوشه‌بندی اپ React در `src/` و (۲) پوشه‌بندی و قالب فایل‌های markdown در همین مخزن دانش. **هر فایل جدید در این پروژه باید طبق بخش دوم همین سند ساخته شود.**
 
 ---
+
 ## چرا این ویژگی وجود دارد؟
 
-سازماندهی فایل‌ها در پروژه بزرگ.
+سازماندهی فایل‌ها در پروژه بزرگ React و یکنواخت نگه داشتن مستندات هنگام رشد چندین milestone.
 
 ---
+
 ## چه مشکلی را حل می‌کند؟
 
-پیدا کردن سریع فایل‌ها.
+پیدا کردن سریع فایل‌ها، جلوگیری از تکرار محتوا در مسیرهای مختلف، و هم‌خوانی با `README.md` و `Learning-Path.md`.
 
 ---
-## ⚙️ نحوه کار
+
+## ⚙️ نحوه کار — ساختار اپ React (`src/`)
 
 ```
 src/
 ├── components/   # UI مشترک
-├── features/       # ماژول‌های دامنه (cart, auth)
-├── hooks/          # custom hooks
-├── contexts/       # React contexts
-├── services/       # API calls
-├── pages/          # route-level components
+├── features/     # ماژول‌های دامنه (cart, auth)
+├── hooks/        # custom hooks
+├── contexts/     # React contexts
+├── services/     # API calls
+├── pages/        # route-level components
 ├── utils/
 └── App.jsx
 ```
 
 ---
+
+## ساختار مخزن مستندات (اجباری)
+
+### درخت پوشه‌ها
+
+```
+React-Knowledge-Base/
+├── README.md              # فهرست اصلی
+├── Learning-Path.md       # مسیر یادگیری
+├── ROADMAP.md             # پیشرفت milestone
+├── WhatsNew.md            # مفاهیم جدید غیرجزوه
+├── Cheatsheet.md · Glossary.md
+│
+├── Introduction.md …      # مبانی Core (M2) — فایل تکی در ریشه
+│
+├── Hooks/                   # هر Hook یک فایل + README.md
+├── Patterns/                # هر الگو یک فایل + README.md
+├── Escape-Hatches/          # هر مبحث M5 یک فایل + README.md
+├── Performance/             # M6
+├── State-Management/        # M7
+├── React-Router/            # M8
+├── Styling/                 # M9
+├── Nextjs/                  # M10
+│
+└── Examples/
+    ├── patterns/
+    ├── escape-hatches/
+    ├── performance/
+    └── …                    # زیرپوشه هم‌نام ماژول
+```
+
+### قوانین قرارگیری فایل
+
+| نوع محتوا | محل | نام فایل |
+|-----------|-----|----------|
+| مبانی Core (M2) | ریشه | `PascalCase-With-Hyphens.md` |
+| `Hook` | `Hooks/` | `useX.md` + `Hooks/README.md` |
+| الگو (M4) | `Patterns/` | `Topic.md` + `Patterns/README.md` |
+| Escape Hatches (M5) | `Escape-Hatches/` | `Topic.md` + `Escape-Hatches/README.md` |
+| ماژول تخصصی | پوشهٔ همان ماژول | `README.md` + فایل‌های موضوع |
+| مثال کد | `Examples/{module}/` | `.jsx` / `.js` |
+| **ممنوع** | ریشه | تکرار فایلی که در پوشهٔ ماژول هست (مثلاً `./Suspense.md` و `Escape-Hatches/Suspense.md`) |
+
+### لینک‌دهی
+
+- از ریشه به ماژول: `./Escape-Hatches/Suspense.md`
+- از داخل پوشه به Core: `../Refs.md`
+- هاب ماژول: `Escape-Hatches/README.md` (نه `Escape-Hatches.md` در ریشه)
+
+---
+
+## قالب اجباری فایل markdown
+
+### فایل موضوعی (غیر README)
+
+ترتیب بخش‌ها **حتماً** رعایت شود. بخش‌های میانی موضوع‌محور (مثل `Syntax`، `💡 مثال`) بین «نحوه کار» و «Best Practices» مجازند.
+
+| # | بخش | اجباری |
+|---|-----|--------|
+| 1 | `# عنوان` + blockquote یک‌خطی (اختیاری) | توصیه |
+| 2 | `## 📖 مفهوم` | **بله** |
+| 3 | `## چرا` یا `## چرا این ویژگی وجود دارد؟` | **بله** |
+| 4 | `## چه مشکلی را حل می‌کند؟` | **بله** |
+| 5 | `## ⚙️ نحوه کار` | بله (اگر مفهوم عملیاتی است) |
+| 6 | `Syntax` / مثال‌ها / جداول تخصصی | بر حسب موضوع |
+| 7 | `## مثال واقعی در پروژه` | توصیه (یک پاراگراف) |
+| 8 | `## 🚀 Best Practices` | توصیه |
+| 9 | `## ⚠️ اشتباهات رایج` | توصیه |
+| 10 | `## ارتباط با مفاهیم دیگر` | **بله** |
+| 11 | `## خلاصه` | **بله** |
+| 12 | `## 📚 منابع` | **بله** |
+
+### فایل `README.md` داخل پوشهٔ ماژول
+
+حداقل: `## 📖 مفهوم` → `## چرا` → نقشه/جدول فایل‌ها → `## خلاصه` → `## 📚 منابع`.  
+بخش `## چه مشکلی را حل می‌کند؟` برای README هاب اختیاری است.
+
+### نام‌گذاری
+
+- فایل: `PascalCase-With-Hyphens.md` (انگلیسی)
+- پوشه ماژول: `PascalCase` یا `kebab-case` مطابق موجود (`Escape-Hatches`، `State-Management`)
+
+---
+
 ## مثال واقعی در پروژه
 
-**پروژه fast-react-pizza:** `features/cart/`, `features/menu/`, `ui/`, `services/apiRestaurant.js`
+**اپ React:** fast-react-pizza — `features/cart/`, `features/menu/`, `ui/`, `services/apiRestaurant.js`
+
+**مخزن مستندات:** الگوی `Patterns/React-Memo.md` برای قالب؛ الگوی `Patterns/` برای پوشه‌بندی ماژول M4 و `Escape-Hatches/` برای M5.
 
 ---
+
 ## 🚀 Best Practices
 
-✅ فایل‌های مرتبط را `colocate` کنید
-✅ پوشه `feature` برای `scale`
+✅ قبل از ساخت فایل جدید، محل و نام را در این سند چک کنید  
+✅ فایل‌های مرتبط را در یک پوشه `colocate` کنید  
+✅ مثال کد فقط در `Examples/{module}/`  
+✅ بعد از افزودن فایل: `README.md`، `Learning-Path.md`، `Glossary.md` (در صورت نیاز)  
+❌ تکرار همان محتوا در ریشه و زیرپوشه  
+❌ ساخت فایل در ریشه وقتی ماژول پوشهٔ اختصاصی دارد
 
 ---
+
 ## ارتباط با مفاهیم دیگر
 
-- [Components](./Components.md)
-- [Custom Hooks](./Custom-Hooks.md)
+- [README.md](./README.md) — فهرست و قوانین توسعه
+- [ROADMAP.md](./ROADMAP.md) — قوانین AI و milestoneها
+- [Learning-Path.md](./Learning-Path.md) — ترتیب مطالعه
+- [Components](./Components.md) · [Custom Hooks](./Custom-Hooks.md)
 
 ---
+
 ## خلاصه
 
-ساختار `feature-based` برای پروژه‌های متوسط به بالا.
+ساختار `feature-based` برای اپ React؛ برای مخزن مستندات، هر ماژول در پوشهٔ خود با `README.md` هاب و قالب بخش‌های اجباری طبق جدول بالا.
 
 ---
+
 ## 📚 منابع
 
 - [React Documentation](https://react.dev)
+- [Patterns/README.md](./Patterns/README.md) — نمونه هاب ماژول
+- [Escape-Hatches/README.md](./Escape-Hatches/README.md) — نمونه هاب M5

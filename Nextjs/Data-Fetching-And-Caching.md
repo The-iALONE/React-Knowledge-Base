@@ -69,11 +69,11 @@ export default async function CabinsPage() {
 
 ## گزینه‌های cache
 
-| روش | رفتار |
-|-----|--------|
-| پیش‌فرض | `cache` می‌شود (static) |
-| `{ cache: 'no-store' }` | همیشه fresh (SSR) |
-| `{ next: { revalidate: 60 } }` | ISR — هر ۶۰ ثانیه |
+| روش                              | رفتار                             |
+| -------------------------------- | --------------------------------- |
+| پیش‌فرض                          | `cache` می‌شود (static)           |
+| `{ cache: 'no-store' }`          | همیشه fresh (SSR)                 |
+| `{ next: { revalidate: 60 } }`   | ISR — هر ۶۰ ثانیه                 |
 | `{ next: { tags: ['cabins'] } }` | `tag` برای on-demand revalidation |
 
 ---
@@ -123,7 +123,7 @@ const getCabins = unstable_cache(
     return data;
   },
   ["cabins-list"],
-  { revalidate: 3600, tags: ["cabins"] }
+  { revalidate: 3600, tags: ["cabins"] },
 );
 ```
 
@@ -137,7 +137,13 @@ export default async function Page() {
     next: { revalidate: 10 },
   }).then((r) => r.json());
 
-  return <ul>{data.map((p: { id: number; title: string }) => <li key={p.id}>{p.title}</li>)}</ul>;
+  return (
+    <ul>
+      {data.map((p: { id: number; title: string }) => (
+        <li key={p.id}>{p.title}</li>
+      ))}
+    </ul>
+  );
 }
 ```
 
@@ -146,6 +152,7 @@ export default async function Page() {
 ## مثال واقعی در پروژه
 
 Wild Oasis:
+
 - لیست کابین‌ها با `revalidate` یا static + `revalidateTag` پس از رزرو
 - صفحه account با `no-store` (داده کاربر خصوصی)
 - `revalidatePath('/cabins')` در Server Action پس از ویرایش
@@ -157,14 +164,14 @@ Wild Oasis:
 ✅ داده را در همان componentی که نیاز دارد `fetch` کنید  
 ✅ داده خصوصی کاربر: `no-store` یا `cookies()` → dynamic  
 ✅ `tag` برای گروه‌های مرتبط داده  
-✅ خطا را throw کنید تا `error.tsx` فعال شود  
+✅ خطا را throw کنید تا `error.tsx` فعال شود
 
 ---
 
 ## ارتباط با مفاهیم دیگر
 
 - [Rendering-Strategies](./Rendering-Strategies.md)
-- [Server-Components](./Server-Components.md)
+- [Server-Components](./Escape-Hatches/Server-Components.md)
 - [Server-Actions](./Server-Actions.md)
 - [Backend-Integration-Supabase](./Backend-Integration-Supabase.md)
 - [React Query](../State-Management/React-Query.md)

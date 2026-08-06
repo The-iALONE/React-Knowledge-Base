@@ -77,7 +77,7 @@ function PizzaMenu({ pizzas, page }) {
       <ul className="menu-grid">
         {visible.map((pizza) => (
           <PizzaCard
-            key={pizza.id}  // id از API — نه index
+            key={pizza.id} // id از API — نه index
             pizza={pizza}
           />
         ))}
@@ -125,10 +125,10 @@ function PizzaCard({ pizza }) {
 
 ## چه زمانی استفاده کنیم؟ / چه زمانی استفاده نکنیم؟
 
-| استفاده کنیم | استفاده نکنیم |
-|--------------|---------------|
+| استفاده کنیم                         | استفاده نکنیم                    |
+| ------------------------------------ | -------------------------------- |
 | همیشه هنگام `map` روی داده `dynamic` | `key` برای عنصر تکی غیرضروری است |
-| `id` پایدار از سرور | `index` وقتی ترتیب عوض می‌شود |
+| `id` پایدار از سرور                  | `index` وقتی ترتیب عوض می‌شود    |
 
 ## ارتباط با مفاهیم دیگر
 
@@ -142,7 +142,7 @@ function PizzaCard({ pizza }) {
 
 - `key` به `child` پاس داده نمی‌شود — در `props` نیست
 - تغییر `key` عمدی راهی برای `reset` کردن `state` فرزند است
-- در [Concurrent Features](./Concurrent-Features.md)، `key` پایدار برای `interruptible render` مهم‌تر است
+- در [Concurrent Features](./Escape-Hatches/Concurrent-Features.md)، `key` پایدار برای `interruptible render` مهم‌تر است
 
 ## 🎯 سوالات رایج مصاحبه
 
