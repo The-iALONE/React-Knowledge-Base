@@ -1,28 +1,26 @@
 # Virtual DOM — درخت مجازی React
 
-> Virtual DOM یک **نمایش در حافظه** از UI است که React برای محاسبه تغییرات لازم قبل از دستکاری DOM واقعی استفاده می‌کند.
+> در React از یک Virtual DOM — **نمایش در حافظه** از UI — برای محاسبه تغییرات لازم قبل از دستکاری DOM واقعی استفاده می‌شود.
 
 ---
 
 ## 📖 مفهوم
 
-وقتی کامپوننت React اجرا می‌شود، خروجی آن `React Element` است — یک شی سبک و توصیفی (مثل `{ type: 'div', props: { children: 'Hello' } }`). مجموعه این `element`ها Virtual DOM (یا `Fiber tree` در پیاده‌سازی داخلی) را می‌سازند.
-
-`React Element` **سبک** است؛ ساختن میلیون‌ها `element` در حافظه ارزان‌تر از دستکاری مستقیم DOM است.
+خروجی هر کامپوننت یک `React Element` سبک و توصیفی است (مثل `{ type: 'div', props: { children: 'Hello' } }`). ساختن میلیون‌ها `element` در حافظه ارزان‌تر از دستکاری مستقیم DOM است. مجموعه این `element`ها Virtual DOM (یا `Fiber tree` در پیاده‌سازی داخلی) را می‌سازند.
 
 ---
 
 ## چرا این ویژگی وجود دارد؟
 
-DOM مرورگر برای خواندن/نوشتن **گران** است. React با نگه‌داشتن یک مدل در حافظه و فقط اعمال **حداقل تغییرات** به DOM واقعی، هزینه را کنترل می‌کند.
+دستکاری DOM مرورگر برای خواندن/نوشتن **گران** است. با نگه‌داشتن یک مدل در حافظه و فقط اعمال **حداقل تغییرات** به DOM واقعی، هزینه کنترل می‌شود.
 
 ---
 
 ## چه مشکلی را حل می‌کند؟
 
-- UI `declarative`: شما `state` را توصیف می‌کنید؛ React تصمیم می‌گیرد DOM چه تغییری کند
-- `Batching updates`: چند تغییر `state` → یک بار `commit` به DOM
-- `Abstraction`: نیازی به `document.getElementById` و دستکاری دستی نیست
+- مدل `declarative` برای UI: شما `state` را توصیف می‌کنید؛ موتور رندر تصمیم می‌گیرد DOM چه تغییری کند
+- `batching` آپدیت‌ها: چند تغییر `state` → یک بار `commit` به DOM
+- لایه `abstraction`: نیازی به `document.getElementById` و دستکاری دستی نیست
 
 ---
 
@@ -127,6 +125,7 @@ function ReservationTable({ reservations }) {
 - [Reconciliation.md](./Reconciliation.md) — مقایسه دو درخت
 - [Diffing-Algorithm.md](./Diffing-Algorithm.md) — قوانین `diff`
 - [Re-render.md](./Re-render.md) — چه زمانی درخت جدید ساخته می‌شود
+- [Keys-And-Performance.md](./Keys-And-Performance.md) — `key` و عملکرد
 - [Rendering](../Rendering.md)
 
 ---
@@ -150,7 +149,7 @@ function ReservationTable({ reservations }) {
 
 ## خلاصه
 
-Virtual DOM نمایش در حافظه UI است. React با `diff` و `commit` انتخابی، هزینه DOM را کم می‌کند. خود Virtual DOM جادو نیست — الگوریتم `reconciliation` و طراحی کامپوننت مهم‌ترند.
+نمایش درختی UI در حافظه همان Virtual DOM است. با `diff` و `commit` انتخابی، هزینه DOM کم می‌شود. خود Virtual DOM جادو نیست — الگوریتم `reconciliation` و طراحی کامپوننت مهم‌ترند.
 
 ---
 

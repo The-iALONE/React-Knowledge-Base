@@ -10,6 +10,25 @@
 
 ---
 
+## M6 — Performance (ماژول جدید + react.dev)
+
+| مفهوم | نسخه React | فایل | خلاصه |
+|-------|------------|------|--------|
+| نمای کلی Performance | — | [Performance/README.md](./Performance/README.md) | هاب ماژول ۰۷ — Virtual DOM تا profiling |
+| `<Profiler>` API | 16+ | [Profiling.md](./Performance/Profiling.md) | اندازه‌گیری programmatic رندر |
+| `React Compiler` در بهینه‌سازی | 19+ | [Optimization-Techniques.md](./Performance/Optimization-Techniques.md) | جایگزینی `memo` دستی |
+| `children-as-prop` optimization | — | [Memoization.md](./Performance/Memoization.md) | جدا کردن `state` از subtree سنگین |
+
+### مثال‌های کد M6
+
+| فایل | موضوع |
+|------|--------|
+| [MemoizedList.jsx](./Examples/performance/MemoizedList.jsx) | `memo` + `useMemo` + `useCallback` |
+| [ChildrenOptimization.jsx](./Examples/performance/ChildrenOptimization.jsx) | الگوی `children` |
+| [StateColocation.jsx](./Examples/performance/StateColocation.jsx) | colocation جستجو |
+
+---
+
 ## M5 — Escape Hatches و React مدرن (جدید)
 
 | مفهوم | نسخه React | فایل | خلاصه |
@@ -85,9 +104,10 @@
 
 ## چگونه از این فایل استفاده کنید
 
-1. **فقط M5:** بخش اول را بخوانید — ۷ فایل + `use()` + مثال‌ها
-2. **همه چیز جدید:** از بالا به پایین — M5 → M3 → M2 → M4
-3. **مسیر یادگیری:** [Learning-Path.md](./Learning-Path.md) ماژول ۰۵
+1. **فقط M6:** بخش M6 — ماژول Performance + مثال‌ها
+2. **فقط M5:** بخش M5 — ۷ فایل + `use()` + مثال‌ها
+3. **همه چیز جدید:** از بالا به پایین — M6 → M5 → M3 → M2 → M4
+4. **مسیر یادگیری:** [Learning-Path.md](./Learning-Path.md) ماژول ۰۷ (Performance) و ۰۵ (Escape Hatches)
 
 ---
 

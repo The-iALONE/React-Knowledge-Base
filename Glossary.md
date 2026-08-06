@@ -12,6 +12,9 @@
 | `Hook` | `Hook` | تابعی برای استفاده از قابلیت‌های React در کامپوننت تابعی |
 | `Side Effect` | `side effect` | عملیات خارج از `render` (`fetch`، `subscription`، DOM) |
 | `Memoization` | `memoization` | ذخیره نتیجه محاسبه برای جلوگیری از تکرار |
+| `Diffing` | `diff` | الگوریتم مقایسه درخت React در O(n) |
+| `Fiber` | `Fiber` | واحد کار داخلی React برای رندر قابل `interrupt` |
+| `Profiling` | پروفایل | اندازه‌گیری زمان `render`/`commit` با DevTools یا `<Profiler>` |
 | `Lifting State Up` | بالا بردن `state` | انتقال `state` به والد مشترک |
 | `Colocation` | هم‌مکانی | نگه‌داشتن `state` نزدیک جایی که استفاده می‌شود |
 | `Hydration` | هیدراتاسیون | اتصال `event handler`ها به HTML رندرشده سرور |

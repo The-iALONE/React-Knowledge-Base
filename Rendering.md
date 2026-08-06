@@ -139,6 +139,7 @@ const ReservationTable = React.memo(function ReservationTable({ dateRange }) {
 - [Performance/Re-render](./Performance/Re-render.md)
 - [Performance/Render-Cycle](./Performance/Render-Cycle.md)
 - [Performance/Reconciliation](./Performance/Reconciliation.md)
+- [Performance/README.md](./Performance/README.md) — ادامه عمیق M6 (Virtual DOM، Memoization، Profiling و…)
 - [Conditional-Rendering](./Conditional-Rendering.md)
 - [Lists](./Lists.md) — اهمیت `key`
 

@@ -4,6 +4,20 @@
 
 ---
 
+## 📖 مفهوم
+
+بهینه‌سازی عملکرد در React یعنی فهمیدن **چه زمانی** و **چرا** کامپوننت‌ها `re-render` می‌شوند، DOM چگونه به‌روز می‌شود، و کدام تکنیک (colocation، `memo`، code splitting، Profiler) برای هر مشکل مناسب است — نه اعمال کورکورانه `useMemo` روی همه‌چیز.
+
+این ماژول از Virtual DOM و چرخه رندر شروع می‌کند، به الگوریتم `diff` و `key` می‌رسد، و با چک‌لیست عملی و ضدالگوها تمام می‌شود.
+
+---
+
+## چرا
+
+در اپ‌های واقعی، کندی UI اغلب از `state` در جای اشتباه، `key` نادرست، یا بهینه‌سازی بدون اندازه‌گیری ناشی می‌شود — نه از نبود React. بدون فهم `Render Phase` / `Commit Phase` و `reconciliation`، `memo` فقط پیچیدگی اضافه می‌کند.
+
+---
+
 ## مسیر یادگیری پیشنهادی
 
 ```
@@ -39,10 +53,10 @@ Virtual DOM → Render Cycle → Re-render → Reconciliation
 
 ### فاز رندر در برابر فاز کامیت (`Render Phase` vs `Commit Phase`)
 
-| فاز      | کار                            | قابل قطع؟        | Side Effect مجاز؟ |
-| -------- | ------------------------------ | ---------------- | ----------------- |
-| `Render` | اجرای کامپوننت، ساخت JSX، Diff | بله (Concurrent) | خیر               |
-| `Commit` | اعمال به DOM، Effects          | خیر              | بله (در Effects)  |
+| فاز      | کار                            | قابل قطع؟        | `side effect` مجاز؟ |
+| -------- | ------------------------------ | ---------------- | ------------------- |
+| `Render` | اجرای کامپوننت، ساخت JSX، Diff | بله (Concurrent) | خیر                 |
+| `Commit` | اعمال به DOM، Effects          | خیر              | بله (در Effects)    |
 
 جزئیات: [Render-Cycle.md](./Render-Cycle.md)
 
@@ -73,7 +87,7 @@ function App() {
 }
 ```
 
-جزئیات: [Memoization.md](./Memoization.md#children-as-prop-optimization)
+جزئیات: [Memoization.md](./Memoization.md)
 
 ---
 
@@ -101,13 +115,19 @@ function App() {
 - [Lazy Loading](../Escape-Hatches/Lazy-Loading.md) · [Suspense](../Escape-Hatches/Suspense.md)
 - [Concurrent Features](../Escape-Hatches/Concurrent-Features.md)
 - [React Compiler](../Escape-Hatches/React-Compiler.md)
-- [Cheatsheet — Performance](../Cheatsheet.md#performance-سریع)
+- [Examples/performance/](../Examples/performance/) — `MemoizedList`، `ChildrenOptimization`، `StateColocation`
 
 ---
 
 ## اصل طلایی
 
 > **اول اندازه بگیر، بعد بهینه کن.** بدون `Profiler`، بهینه‌سازی زودهنگام معمولاً پیچیدگی اضافه می‌کند بدون سود واقعی.
+
+---
+
+## خلاصه
+
+مسیر: Virtual DOM → چرخه رندر → `re-render` / `reconciliation` / `diff` → `key` → colocation و memoization → splitting و Profiler → چک‌لیست عملی. اصل طلایی: اول اندازه‌گیری.
 
 ---
 

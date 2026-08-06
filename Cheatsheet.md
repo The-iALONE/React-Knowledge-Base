@@ -33,16 +33,21 @@
 
 ## Performance سریع
 
-| تکنیک | چه زمانی |
-|-------|----------|
-| `React.memo` | `props` کامپوننت فرزند تغییر نمی‌کند ولی والد `re-render` می‌شود |
-| `useMemo` | محاسبه گران، `dependency` کم‌تغییر |
-| `useCallback` | تابع به فرزند `memoized` پاس می‌دهید |
-| `state colocation` | `state` را پایین‌تر ببرید |
-| `key` پایدار | لیست‌ها — هرگز `index` به‌عنوان `key` برای `reorder` |
-| `lazy` + `Suspense` | `route`/`component` سنگین |
-| `<Suspense>` + `use(promise)` | داده ناهمگام `declarative` |
-| `<Activity mode="hidden">` | `hide` UI با حفظ `state` |
+| تکنیک | چه زمانی | فایل |
+|-------|----------|------|
+| Profiler | قبل از هر بهینه‌سازی | [Profiling](./Performance/Profiling.md) |
+| `state colocation` | `state` را پایین‌تر ببرید | [State-Colocation](./Performance/State-Colocation.md) |
+| `key` پایدار | لیست‌ها — نه `index` برای reorder | [Keys](./Performance/Keys-And-Performance.md) |
+| `children` pattern | فرزند سنگین جدا از `state` والد | [Memoization](./Performance/Memoization.md) |
+| `React.memo` | فرزند `pure` با `props` کم‌تغییر | [React-Memo](./Patterns/React-Memo.md) |
+| `useMemo` | محاسبه گران، `dependency` کم‌تغییر | [useMemo](./Hooks/useMemo.md) |
+| `useCallback` | تابع به فرزند `memoized` | [useCallback](./Hooks/useCallback.md) |
+| `lazy` + `Suspense` | `route`/`component` سنگین | [Code-Splitting](./Performance/Code-Splitting.md) |
+| React Compiler | جایگزین بسیاری از memo دستی | [React-Compiler](./Escape-Hatches/React-Compiler.md) |
+| `<Suspense>` + `use(promise)` | داده ناهمگام `declarative` | [use](./Hooks/use.md) |
+| `<Activity mode="hidden">` | `hide` UI با حفظ `state` | [Escape-Hatches](./Escape-Hatches/README.md) |
+
+مرجع کامل: [Performance/README](./Performance/README.md) · [Optimization-Techniques](./Performance/Optimization-Techniques.md)
 
 ---
 

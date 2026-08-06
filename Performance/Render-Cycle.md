@@ -117,7 +117,7 @@ function Tooltip({ text }) {
 
 ## دسته‌بندی `state` در چرخه رندر (`State Batching`)
 
-React 18+ `Automatic Batching`: چند `state update` → یک `Render` + `Commit`.
+در React 18+، `Automatic Batching` چند `state update` را در یک `Render` + `Commit` ادغام می‌کند.
 
 ```jsx
 // Event handler — همیشه batch
@@ -136,7 +136,7 @@ async function handleSave() {
 }
 ```
 
-`flushSync`: اگر فوراً به DOM نیاز دارید، `batch` را می‌شکند (استفاده نادر).
+برای شکستن `batch` و اعمال فوری به DOM از `flushSync` استفاده کنید (استفاده نادر).
 
 ```jsx
 import { flushSync } from "react-dom";
@@ -227,6 +227,7 @@ function ConfirmModal({ isOpen, message }) {
 
 - [Re-render.md](./Re-render.md) — `trigger`های چرخه
 - [Reconciliation.md](./Reconciliation.md) — بخش `Render Phase`
+- [Diffing-Algorithm.md](./Diffing-Algorithm.md) — قوانین diff در Render Phase
 - [Hooks/useLayoutEffect](../Hooks/useLayoutEffect.md)
 - [Hooks/useEffect](../Hooks/useEffect.md)
 - [Effects](../Effects.md)

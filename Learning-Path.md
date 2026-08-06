@@ -104,20 +104,20 @@
 
 ## ماژول ۰۷ — Performance
 
-- [ ] `56` [نمای کلی Performance](./Performance/README.md)
-- [ ] `57` [Re-render](./Performance/Re-render.md)
-- [ ] `58` [Render Cycle](./Performance/Render-Cycle.md)
-- [ ] `59` [Reconciliation](./Performance/Reconciliation.md)
-- [ ] `60` [Virtual DOM](./Performance/Virtual-DOM.md)
-- [ ] `61` [Diffing Algorithm](./Performance/Diffing-Algorithm.md)
-- [ ] `62` [Memoization](./Performance/Memoization.md)
-- [ ] `63` [Code Splitting](./Performance/Code-Splitting.md)
-- [ ] `64` [State Colocation](./Performance/State-Colocation.md)
-- [ ] `65` [Keys & Performance](./Performance/Keys-And-Performance.md)
-- [ ] `66` [Profiling](./Performance/Profiling.md)
-- [ ] `67` [Optimization Techniques](./Performance/Optimization-Techniques.md)
-- [ ] `68` [Best Practices](./Performance/Best-Practices.md)
-- [ ] `69` [Common Mistakes](./Performance/Common-Mistakes.md)
+- [x] `56` [نمای کلی Performance](./Performance/README.md)
+- [x] `57` [Re-render](./Performance/Re-render.md)
+- [x] `58` [Render Cycle](./Performance/Render-Cycle.md)
+- [x] `59` [Reconciliation](./Performance/Reconciliation.md)
+- [x] `60` [Virtual DOM](./Performance/Virtual-DOM.md)
+- [x] `61` [Diffing Algorithm](./Performance/Diffing-Algorithm.md)
+- [x] `62` [Memoization](./Performance/Memoization.md)
+- [x] `63` [Code Splitting](./Performance/Code-Splitting.md)
+- [x] `64` [State Colocation](./Performance/State-Colocation.md)
+- [x] `65` [Keys & Performance](./Performance/Keys-And-Performance.md)
+- [x] `66` [Profiling](./Performance/Profiling.md)
+- [x] `67` [Optimization Techniques](./Performance/Optimization-Techniques.md)
+- [x] `68` [Best Practices](./Performance/Best-Practices.md)
+- [x] `69` [Common Mistakes](./Performance/Common-Mistakes.md)
 
 ---
 

@@ -138,7 +138,7 @@
 
 1. فایل جدید با قالب استاندارد (عنوان → مفهوم → ... → منابع) بسازید — **طبق [Project-Structure.md](./Project-Structure.md)**.
 2. نام فایل: `PascalCase-With-Hyphens.md` (انگلیسی).
-3. لینک فایل را در `README.md` اصلی، `Learning-Path.md` و `README.md` پوشه مربوطه اضافه کنید.
+3. لینک فایل را در `README.md` اصلی، `Learning-Path.md`، `WhatsNew.md` (اگر مفهوم جدید غیرجزوه است) و `README.md` پوشه مربوطه اضافه کنید.
 4. وضعیت را در `ROADMAP.md` به‌روز کنید.
 5. اصطلاحات جدید را به `Glossary.md` اضافه کنید.
 
