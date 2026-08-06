@@ -10,7 +10,7 @@
 |------|-------|---------------|
 | [state-management/](./state-management/) | Context, Redux Toolkit, React Query | [State-Management](../State-Management/README.md) |
 | [react-router/](./react-router/) | Nested routes, dynamic routes, URL state | [React-Router](../React-Router/README.md) |
-| [patterns/](./patterns/) | Compound Component, Render Props, HOC | [Patterns](../Patterns/README.md) |
+| [patterns/](./patterns/) | Compound Modal (ساده + named), Render Props, HOC | [Patterns](../Patterns/README.md) |
 | [performance/](./performance/) | memoization, code-splitting | [Performance](../Performance/README.md) |
 | [nextjs/](./nextjs/) | Server Actions, RSC, Route Handlers | [Nextjs](../Nextjs/README.md) |
 

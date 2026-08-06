@@ -1,50 +1,69 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useMemo } from "react";
+import { createPortal } from "react-dom";
 
 const ModalContext = createContext(null);
 
-function Modal({ children }) {
-  const { isOpen, close } = useContext(ModalContext);
-  if (!isOpen) return null;
+function useModalContext() {
+  const context = useContext(ModalContext);
+  if (!context) {
+    throw new Error("Modal subcomponents must be used within <Modal>");
+  }
+  return context;
+}
+
+function Modal({ children, defaultOpen = false }) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  const value = useMemo(
+    () => ({
+      isOpen,
+      open: () => setIsOpen(true),
+      close: () => setIsOpen(false),
+    }),
+    [isOpen]
+  );
+
   return (
+    <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
+  );
+}
+
+function ModalTrigger({ children }) {
+  const { open } = useModalContext();
+  return (
+    <button type="button" onClick={open}>{children}</button>
+  );
+}
+
+function ModalContent({ children }) {
+  const { isOpen, close } = useModalContext();
+  if (!isOpen) return null;
+
+  return createPortal(
     <div className="modal-overlay" onClick={close}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal-panel"
+        onClick={(e) => e.stopPropagation()}
+      >
         {children}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
-function ModalOpen({ children }) {
-  const { open } = useContext(ModalContext);
-  return <button onClick={open}>{children}</button>;
-}
+Modal.Trigger = ModalTrigger;
+Modal.Content = ModalContent;
 
-function ModalClose({ children }) {
-  const { close } = useContext(ModalContext);
-  return <button onClick={close}>{children}</button>;
-}
-
-function ModalProvider({ children }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const open = () => setIsOpen(true);
-  const close = () => setIsOpen(false);
-  return (
-    <ModalContext.Provider value={{ isOpen, open, close }}>
-      {children}
-    </ModalContext.Provider>
-  );
-}
-
-Modal.Open = ModalOpen;
-Modal.Close = ModalClose;
-
-export { Modal, ModalProvider };
+export default Modal;
 
 // Usage:
-// <ModalProvider>
-//   <Modal.Open>Delete cabin</Modal.Open>
-//   <Modal>
+// <Modal>
+//   <Modal.Trigger>Delete cabin</Modal.Trigger>
+//   <Modal.Content>
 //     <h2>Confirm deletion</h2>
-//     <Modal.Close>Cancel</Modal.Close>
-//   </Modal>
-// </ModalProvider>
+//   </Modal.Content>
+// </Modal>
+//
+// Named modal pattern (openName + cloneElement):
+// see CompoundModalNamed.jsx

@@ -12,17 +12,21 @@
 4. قبل از شروع کار روی هر فاز، آخرین نسخه [مستندات رسمی React](https://react.dev) را برای مباحث آن فاز بررسی کند — چون مستندات رسمی، Source of Truth است و جزوه قدیمی به‌تنهایی منبع کاملاً قابل‌اعتمادی نیست.
 5. بعد از هر تغییر (افزودن، ویرایش یا حذف فایل)، `README.md` و `Learning-Path.md` را بررسی و در صورت نیاز به‌روزرسانی کند — لینک جدید، جای‌گذاری در ماژول درست، تیک‌زدن آیتم.
 6. وقتی کاربر گفت **تغییرات را کامیت کن** یا **پوش کن**:
+   - **بازبینی (Review)** روی فایل‌های تغییر یافته انجام دهد (قبل از `git add`):
+     - چک‌لیست RTL: جملهٔ اول فارسی در `## 📖 مفهوم`، بدون شروع جمله با انگلیسی، اصطلاحات فنی backtick‌شده
+     - لینک‌های داخلی شکسته نباشند
+     - `README.md` و `Learning-Path.md` با فایل‌های جدید/ویرایش‌شده هم‌خوان باشند
    - `git status` و `git diff` را بررسی کند
    - فقط فایل‌های مرتبط با پروژه را `git add` کند (نه `.obsidian/workspace.json`)
    - پیام کامیت شفاف بنویسد (شامل نام Milestone فعلی، مثلاً `M3`)
    - `git push origin main` (یا شاخهٔ فعال) به ریپازیتوری GitHub انجام دهد
    - در `ROADMAP.md` changelog ثبت کند
 
-**Milestone فعلی:** `M3` (Hooks — تکمیل شده)  
+**Milestone فعلی:** `M4` (Patterns — تکمیل شده)  
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-06 (Git + Milestoneها + RTL)
+**آخرین به‌روزرسانی:** 2026-08-06 (M4 Patterns)
 
 ---
 
@@ -108,17 +112,20 @@
 | ریپازیتوری | `React-Knowledge-Base` (خصوصی، GitHub) |
 | شاخهٔ اصلی | `main` |
 | مسیر محلی | ریشهٔ همین پوشه (`React-Knowledge-Base/`) |
-| Milestone فعلی | **M3** — Hooks (تکمیل)؛ Milestone بعدی: **M4** — Patterns |
+| Milestone فعلی | **M4** — Patterns (تکمیل)؛ Milestone بعدی: **M5** — Escape Hatches |
 
 ### قانون کامیت و پوش
 
 وقتی کاربر گفت «کامیت کن» / «پوش کن» / «تغییرات را ذخیره کن در گیت»:
 
-1. `git status` + `git diff` — بررسی تغییرات
-2. `git add` فایل‌های مرتبط (رعایت `.gitignore`)
-3. `git commit` با پیام شامل Milestone (مثال: `M3: اصلاح RTL بخش مفهوم در Hooks`)
-4. `git push origin main`
-5. ثبت خلاصه در changelog پایین همین فایل
+1. **بازبینی (Review)** — قبل از استیج کردن:
+   - RTL: `## 📖 مفهوم`، شروع جمله با فارسی، backtick اصطلاحات فنی (بخش «قوانین نگارش فارسی و RTL»)
+   - لینک‌های داخلی و هم‌خوانی `README.md` / `Learning-Path.md`
+2. `git status` + `git diff` — بررسی تغییرات
+3. `git add` فایل‌های مرتبط (رعایت `.gitignore`)
+4. `git commit` با پیام شامل Milestone (مثال: `M3: اصلاح RTL بخش مفهوم در Hooks`)
+5. `git push origin main`
+6. ثبت خلاصه در changelog پایین همین فایل
 
 ### نام‌گذاری Milestoneها (M)
 
@@ -126,9 +133,9 @@
 |-----------|-----|--------|
 | **M1** | Setup | تغییر نام پوشه‌ها، استخراج Word، اسکلت |
 | **M2** | Core React | فایل‌های ریشه (۲۴ فایل) |
-| **M3** | Hooks | README + ۱۹ Hook — **فعلی** |
-| **M4** | Patterns | الگوهای پیشرفته |
-| **M5** | Escape Hatches | Concurrent، Suspense، RSC |
+| **M3** | Hooks | README + ۱۹ Hook |
+| **M4** | Patterns | README + ۵ الگو |
+| **M5** | Escape Hatches | Concurrent، Suspense، RSC — **بعدی** |
 | **M6** | Performance | بهینه‌سازی و چرخه رندر |
 | **M7** | State Management | Context API، Redux، React Query |
 | **M8** | React Router | مسیریابی |
@@ -145,8 +152,8 @@
 | --------- | --- | ----- | ----------- | ------- |
 | **M1** | Setup (تغییر نام پوشه‌ها، استخراج Word، اسکلت) | [x] | 2026-08-06 | 141 فایل Word استخراج شد |
 | **M2** | Core React (فایل‌های ریشه) | [x] | 2026-08-06 | 24 فایل ریشه تکمیل شد |
-| **M3** | Hooks | [x] | 2026-08-06 | ۲۰ فایل Hooks (README + ۱۹ hook) — هم‌تراز با react.dev — **Milestone فعلی** |
-| **M4** | Patterns | [ ] | | |
+| **M3** | Hooks | [x] | 2026-08-06 | ۲۰ فایل Hooks (README + ۱۹ hook) — هم‌تراز با react.dev |
+| **M4** | Patterns | [x] | 2026-08-06 | README + ۵ الگو + Examples — جزوه الگوهای پیشرفته |
 | **M5** | Escape Hatches / Concurrent | [ ] | | بدهی react.dev: `use()`, `<Activity>` (React 19.2), ref as prop, ref cleanup (React 19), Context بدون `.Provider` (React 19) |
 | **M6** | Performance | [ ] | | |
 | **M7** | State Management | [ ] | | |
@@ -164,7 +171,7 @@
 | ------------------------------------------ | ---------------------------------------------------------- | ------------------------ |
 | `ری اکت در پشت صحنه چطور کار می کند؟/*`    | Rendering, Performance/\*, Components                      | [ ]                      |
 | `useEffect-sideEffect-...`                 | Hooks/\*, Performance/Memoization                          | [x] Hooks                |
-| `الگو های پیشرفته ری اکت/*`                | Patterns/\*, Portals                                       | [ ]                      |
+| `الگو های پیشرفته ری اکت/*`                | Patterns/\*, Portals                                       | [x] Patterns (Portals در M2) |
 | `ماژول های CSS`, `روش های استایل دهی`      | Styling/\*                                                 | [ ]                      |
 | `مدیریت state/Context api and Redux/*`     | State-Management/\*, Context.md                            | [ ]                      |
 | `مدیریت state/React Query - remote data/*` | State-Management/React-Query.md                            | [ ]                      |
@@ -173,6 +180,19 @@
 | `Supabase/*`                               | Nextjs/Backend-Integration-Supabase.md                     | [ ]                      |
 | `herlpers for react + rfc +`               | Components.md, Quick-Start.md                              | [x]                      |
 | _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [ ] M5/M10 |
+
+### 2026-08-06 (بازبینی RTL M4 + قانون Review قبل از کامیت)
+
+- بازبینی RTL فایل‌های Patterns: شروع جمله با فارسی، backtick اصطلاحات (`Hooks`، `primitive`، `Compiler`، `UI kit` و غیره)
+- افزودن گام **بازبینی (Review)** به قانون کامیت/پوش در `ROADMAP.md` (قانون ۶ AI + بخش Git)
+
+### 2026-08-06 (M4 — Patterns)
+
+- ایجاد `Patterns/README.md` — نمای کلی، نقشه الگوها، ترتیب مطالعه
+- غنی‌سازی ۵ فایل: `React.memo` (Compiler + `Object.is`), `Compound` (named modal, `cloneElement`, `useOutsideClick`, Table), `Render Props` (`Table.Body`/`CabinTable`), `HOC` (`forwardRef`), `Reusability` (ماتریس به‌روز)
+- اصلاح RTL (`—even` → «حتی اگر») و لینک‌های شکسته به فایل‌های موجود
+- به‌روزرسانی `Examples/patterns/`: `CompoundModal.jsx` + `CompoundModalNamed.jsx`
+- تیک Learning-Path ماژول ۰۶؛ Milestone فعلی: **M4**
 
 ### 2026-08-06 (Git + Milestoneها)
 

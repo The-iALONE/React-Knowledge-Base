@@ -68,6 +68,7 @@
 
 ### Patterns
 
+- [Patterns Overview](./Patterns/README.md)
 - [React.memo](./Patterns/React-Memo.md)
 - [Compound Components](./Patterns/Compound-Components.md)
 - [Render Props](./Patterns/Render-Props.md)

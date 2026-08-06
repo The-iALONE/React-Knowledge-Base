@@ -10,7 +10,7 @@
 ---
 ## چرا این ویژگی وجود دارد؟
 
-قبل از Hooks، `HOC` راه استاندارد برای `cross-cutting concerns` (`auth`، `logging`، `data fetching`) بود.
+قبل از `Hooks`، `HOC` راه استاندارد برای `cross-cutting concerns` (`auth`، `logging`، `data fetching`) بود.
 
 ---
 ## چه مشکلی را حل می‌کند؟
@@ -31,6 +31,7 @@
 - نگهداری کد `legacy` (redux `connect`, react-router `withRouter`)
 - کتابخانه‌هایی که `HOC` export می‌کنند
 - `React.memo` خودش یک `HOC` است
+- `cross-cutting concerns` بدون `coupling` UI (`Error Boundary`، `Logger`)
 
 ---
 ## چه زمانی استفاده نکنیم؟
@@ -64,6 +65,34 @@ function getDisplayName(WrappedComponent) {
 // استفاده
 const ProtectedDashboard = withAuth(Dashboard);
 ```
+
+---
+## `forwardRef` در HOC
+
+اگر کامپوننت `wrap` شده باید `ref` بگیرد، `HOC` باید `ref` را به `WrappedComponent` پاس دهد:
+
+```jsx
+import { forwardRef } from 'react';
+
+function withLogging(WrappedComponent) {
+  function WithLogging(props, ref) {
+    console.log('Rendering:', WrappedComponent.name);
+    return <WrappedComponent {...props} ref={ref} />;
+  }
+
+  WithLogging.displayName = `withLogging(${getDisplayName(WrappedComponent)})`;
+  return forwardRef(WithLogging);
+}
+
+// کامپوننت wrapped باید forwardRef باشد اگر ref می‌گیرد
+const FancyInput = forwardRef(function FancyInput(props, ref) {
+  return <input ref={ref} {...props} />;
+});
+
+const LoggedFancyInput = withLogging(FancyInput);
+```
+
+بدون `forwardRef`، `ref` به `HOC` می‌رسد نه به DOM داخل `WrappedComponent`.
 
 ---
 ## 💡 مثال — withLoading
@@ -108,12 +137,12 @@ function Dashboard() {
 ---
 ## مثال واقعی در پروژه
 
-`connect()` در Redux classic یک `HOC` بود. در Redux Toolkit مدرن از `useSelector` / `useDispatch` استفاده می‌شود. `React.memo` همچنان `HOC` پرکاربرد است.
+`connect()` در Redux classic یک `HOC` بود. در Redux Toolkit مدرن از `useSelector` / `useDispatch` استفاده می‌شود (جزئیات در M7 — [State Management](../State-Management/README.md)). `React.memo` همچنان `HOC` پرکاربرد است.
 
 ---
 ## 🚀 Best Practices
 
-✅ یک `concern` per `HOC`  
+✅ یک `concern` برای هر `HOC`  
 ✅ `spread` بقیه `props`: `{...props}`  
 ✅ `displayName` برای `debug`  
 ✅ `forwardRef` اگر `ref` لازم است  
@@ -126,16 +155,16 @@ function Dashboard() {
 - [React.memo](./React-Memo.md)
 - [Render Props](./Render-Props.md)
 - [Custom Hooks](../Custom-Hooks.md)
-- [Redux](./../State-Management/Redux.md)
+- [State Management Overview](../State-Management/README.md) — Redux و `connect` (M7)
 - [Reusability Patterns](./Reusability-Patterns.md)
 
 ---
 ## خلاصه
 
-`HOC` = `wrap` کردن کامپوننت برای افزودن `behavior`. در کد جدید `Hooks` جایگزین اصلی‌اند؛ `memo` و کتابخانه‌های `legacy` هنوز `HOC` دارند.
+`HOC` = `wrap` کردن کامپوننت برای افزودن `behavior`. در کد جدید `Hooks` جایگزین اصلی‌اند؛ `memo` و کتابخانه‌های `legacy` هنوز `HOC` دارند. برای `ref` همیشه `forwardRef` را در نظر بگیرید.
 
 ---
 ## 📚 منابع
 
-- [Higher-Order Components — react.dev](https://react.dev/reference/react/Component)
+- [forwardRef — react.dev](https://react.dev/reference/react/forwardRef)
 - [Reusing Logic with Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks)
