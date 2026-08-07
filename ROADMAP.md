@@ -32,11 +32,11 @@
    - `git push origin main` (یا شاخهٔ فعال) به ریپازیتوری GitHub انجام دهد
    - در `ROADMAP.md` changelog ثبت کند
 
-**Milestone فعلی:** `M9` (Styling — بعدی)  
+**Milestone فعلی:** `M10` (Next.js — بعدی)  
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-07 (M8 React Router)
+**آخرین به‌روزرسانی:** 2026-08-07 (M9 Styling)
 
 ---
 
@@ -136,7 +136,7 @@
 | ریپازیتوری | `React-Knowledge-Base` (خصوصی، GitHub) |
 | شاخهٔ اصلی | `main` |
 | مسیر محلی | ریشهٔ همین پوشه (`React-Knowledge-Base/`) |
-| Milestone فعلی | **M8** — React Router (تکمیل)؛ Milestone بعدی: **M9** — Styling |
+| Milestone فعلی | **M9** — Styling (تکمیل)؛ Milestone بعدی: **M10** — Next.js |
 
 ### قانون کامیت و پوش
 
@@ -185,7 +185,7 @@
 | **M6** | Performance | [x] | 2026-08-06 | retrofit 2026-08-07: ناوبری، ترتیب react.dev، ساختار M7 — Virtual DOM تا Common Mistakes |
 | **M7** | State Management | [x] | 2026-08-07 | State-Types + ۱۰ ابزار + Examples — Zustand/Jotai/MobX/Recoil/RTK Query |
 | **M8** | React Router | [x] | 2026-08-07 | README + ۵ موضوع + Protected Routes + Examples |
-| **M9** | Styling | [ ] | | |
+| **M9** | Styling | [x] | 2026-08-07 | README + Global/CSS Modules/Tailwind/CSS-in-JS + Examples |
 | **M10** | Next.js | [ ] | | بدهی react.dev: `cacheSignal`, APIهای `prerender`/`resume` در `react-dom/static` (RSC) |
 | **M11** | Reference / FAQ / Interview | [ ] | | |
 | **M12** | QA نهایی | [ ] | | بدهی: retrofit M6 [x]؛ M1 بدون تغییر |
@@ -199,7 +199,7 @@
 | `ری اکت در پشت صحنه چطور کار می کند؟/*`    | Rendering, Performance/\*, Components                      | [x] M6                 |
 | `useEffect-sideEffect-...`                 | Hooks/\*, Performance/Memoization                          | [x] Hooks                |
 | `الگو های پیشرفته ری اکت/*`                | Patterns/\*, Portals                                       | [x] Patterns (Portals در M2) |
-| `ماژول های CSS`, `روش های استایل دهی`      | Styling/\*                                                 | [ ]                      |
+| `ماژول های CSS`, `روش های استایل دهی`      | Styling/\*                                                 | [x] M9                 |
 | `مدیریت state/Context api and Redux/*`     | State-Management/\*, Context.md                            | [x] M7                 |
 | `مدیریت state/React Query - remote data/*` | State-Management/React-Query.md                            | [x] M7                 |
 | `مدیریت state/جزوه React Router/*`         | React-Router/\*                                            | [x] M8                 |
@@ -209,6 +209,18 @@
 | _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [x] M7 State / [ ] M10 |
 | _(غیرجزوه — M7)_                           | Zustand, Jotai, MobX, Recoil, State-Types, RTK Query       | [x] M7                 |
 | _(retrofit — M12)_                         | M2: [x] · M3: [x] · M4: [x] · M5: [x] · M6: [x]           | [x] M12 (M1 بدون تغییر) |
+
+### 2026-08-07 (M9 — Styling)
+
+- ایجاد `Styling/`: README، Global-CSS، CSS-Modules، Tailwind-CSS، CSS-in-JS
+- خط ناوبری `> 🧭 پیش‌نیاز` در هر ۵ فایل (زنجیره State-In-URL → … → Next.js)
+- ساختار M7: `## چه مشکلی`، `## ⚙️ نحوه کار`، Best Practices، اشتباهات، ارتباط، خلاصه، منابع
+- غنی‌سازی از جزوه: Worldwise (`index.css`، variables، Button/City module، `:global`، `NavLink` active، react-icons)
+- Wild Oasis: `styled-components` (Filter، `styled(NavLink)`، LoginLayout)
+- `Examples/styling/`: ButtonModule، NavLinkActive، StyledFilter
+- Learning-Path ماژول ۱۰ (`89`–`93`)؛ شیفت Next.js به `94`–`111`
+- README، Glossary (`CSS Modules`، `:global`، utility-first)، Cheatsheet Styling
+- M1، M7، M8، M10–M12+ بدون تغییر محتوایی
 
 ### 2026-08-07 (M8 — React Router)
 

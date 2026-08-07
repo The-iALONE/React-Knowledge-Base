@@ -87,6 +87,22 @@
 
 ---
 
+## Styling سریع
+
+| روش | یک‌خط یادآوری | فایل |
+|-----|---------------|------|
+| Global CSS | reset، variables، import در `main.jsx` | [Global-CSS](./Styling/Global-CSS.md) |
+| `className` | به‌جای `class` در JSX | [Global-CSS](./Styling/Global-CSS.md) |
+| CSS Modules | `import styles from "./X.module.css"` | [CSS-Modules](./Styling/CSS-Modules.md) |
+| `composes` | mixin کلاس در module (spec رسمی) | [CSS-Modules](./Styling/CSS-Modules.md) |
+| `:global(.active)` | استایل `NavLink` فعال در module | [CSS-Modules](./Styling/CSS-Modules.md) |
+| Tailwind | utility در `className` | [Tailwind-CSS](./Styling/Tailwind-CSS.md) |
+| `styled-components` | `styled.div` + props | [CSS-in-JS](./Styling/CSS-in-JS.md) |
+
+مرجع کامل: [Styling/README](./Styling/README.md)
+
+---
+
 ## Rendering Flow
 
 ```

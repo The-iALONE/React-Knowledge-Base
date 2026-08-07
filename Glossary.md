@@ -50,5 +50,9 @@
 | `SPA` | اپ تک‌صفحه‌ای | یک HTML؛ مسیر با JS عوض می‌شود |
 | `Outlet` | `Outlet` | جای render route فرزند در layout |
 | `Protected Route` | مسیر محافظت‌شده | guard دسترسی قبل از render صفحه خصوصی |
+| `CSS Modules` | ماژول CSS | فایل `*.module.css` با scope محلی و hash کلاس |
+| `composes` | `composes` | ترکیب/ارث‌بری کلاس در CSS Modules (spec رسمی) |
+| `:global` | `:global` | استثنا از scope در CSS Modules |
+| `Utility-first` | utility-first | استایل با کلاس‌های کوچک (Tailwind) |
 
 > این فایل با افزودن مباحث جدید گسترش می‌یابد.

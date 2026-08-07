@@ -2,7 +2,7 @@
 
 > مسیر ترتیبی و پداگوژیک یادگیری. برای فهرست دسته‌بندی‌شده به [README.md](./README.md) مراجعه کنید.
 
-هر آیتم را پس از مطالعه تیک بزنید. شماره‌ها سراسری و پیوسته‌اند (`00` تا `108`).
+هر آیتم را پس از مطالعه تیک بزنید. شماره‌ها سراسری و پیوسته‌اند (`00` تا `111`).
 
 ---
 
@@ -155,31 +155,36 @@
 
 ## ماژول ۱۰ — Styling
 
+> نمای کلی: [Styling/README.md](./Styling/README.md) · ترتیب مطالعه: Global CSS → CSS Modules → Tailwind → CSS-in-JS
+
 - [ ] `89` [نمای کلی Styling](./Styling/README.md)
-- [ ] `90` [CSS Modules](./Styling/CSS-Modules.md)
+- [ ] `90` [Global CSS](./Styling/Global-CSS.md)
+- [ ] `91` [CSS Modules](./Styling/CSS-Modules.md)
+- [ ] `92` [Tailwind CSS](./Styling/Tailwind-CSS.md)
+- [ ] `93` [CSS-in-JS](./Styling/CSS-in-JS.md)
 
 ---
 
 ## ماژول ۱۱ — Next.js
 
-- [ ] `91` [نمای کلی Next.js](./Nextjs/README.md)
-- [ ] `92` [Project Setup](./Nextjs/Project-Setup.md)
-- [ ] `93` [Routing & Pages](./Nextjs/Routing-And-Pages.md)
-- [ ] `94` [Layouts](./Nextjs/Layouts.md)
-- [ ] `95` [Navigation](./Nextjs/Navigation.md)
-- [ ] `96` [Loading & Error States](./Nextjs/Loading-And-Error-States.md)
-- [ ] `97` [Data Fetching & Caching](./Nextjs/Data-Fetching-And-Caching.md)
-- [ ] `98` [Rendering Strategies](./Nextjs/Rendering-Strategies.md)
-- [ ] `99` [Streaming & Suspense](./Nextjs/Streaming-And-Suspense.md)
-- [ ] `100` [Server Components](./Nextjs/Server-Components.md)
-- [ ] `101` [Client-Server Interleaving](./Nextjs/Client-Server-Interleaving.md)
-- [ ] `102` [Server Actions](./Nextjs/Server-Actions.md)
-- [ ] `103` [Route Handlers](./Nextjs/Route-Handlers.md)
-- [ ] `104` [Middleware](./Nextjs/Middleware.md)
-- [ ] `105` [Authentication (NextAuth)](./Nextjs/Authentication-NextAuth.md)
-- [ ] `106` [Metadata & SEO](./Nextjs/Metadata-And-SEO.md)
-- [ ] `107` [Image & Font Optimization](./Nextjs/Image-And-Font-Optimization.md)
-- [ ] `108` [Backend Integration (Supabase)](./Nextjs/Backend-Integration-Supabase.md)
+- [ ] `94` [نمای کلی Next.js](./Nextjs/README.md)
+- [ ] `95` [Project Setup](./Nextjs/Project-Setup.md)
+- [ ] `96` [Routing & Pages](./Nextjs/Routing-And-Pages.md)
+- [ ] `97` [Layouts](./Nextjs/Layouts.md)
+- [ ] `98` [Navigation](./Nextjs/Navigation.md)
+- [ ] `99` [Loading & Error States](./Nextjs/Loading-And-Error-States.md)
+- [ ] `100` [Data Fetching & Caching](./Nextjs/Data-Fetching-And-Caching.md)
+- [ ] `101` [Rendering Strategies](./Nextjs/Rendering-Strategies.md)
+- [ ] `102` [Streaming & Suspense](./Nextjs/Streaming-And-Suspense.md)
+- [ ] `103` [Server Components](./Nextjs/Server-Components.md)
+- [ ] `104` [Client-Server Interleaving](./Nextjs/Client-Server-Interleaving.md)
+- [ ] `105` [Server Actions](./Nextjs/Server-Actions.md)
+- [ ] `106` [Route Handlers](./Nextjs/Route-Handlers.md)
+- [ ] `107` [Middleware](./Nextjs/Middleware.md)
+- [ ] `108` [Authentication (NextAuth)](./Nextjs/Authentication-NextAuth.md)
+- [ ] `109` [Metadata & SEO](./Nextjs/Metadata-And-SEO.md)
+- [ ] `110` [Image & Font Optimization](./Nextjs/Image-And-Font-Optimization.md)
+- [ ] `111` [Backend Integration (Supabase)](./Nextjs/Backend-Integration-Supabase.md)
 
 ---
 

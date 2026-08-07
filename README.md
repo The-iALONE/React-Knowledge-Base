@@ -109,7 +109,9 @@
 
 ### Styling
 
-- [Styling Overview](./Styling/README.md) · [CSS Modules](./Styling/CSS-Modules.md)
+- [Styling Overview](./Styling/README.md)
+- [Global CSS](./Styling/Global-CSS.md) · [CSS Modules](./Styling/CSS-Modules.md)
+- [Tailwind CSS](./Styling/Tailwind-CSS.md) · [CSS-in-JS](./Styling/CSS-in-JS.md)
 
 ### Next.js
 
