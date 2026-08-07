@@ -122,6 +122,31 @@ React-Knowledge-Base/
 - فایل: `PascalCase-With-Hyphens.md` (انگلیسی)
 - پوشه ماژول: `PascalCase` یا `kebab-case` مطابق موجود (`Escape-Hatches`، `State-Management`)
 
+### اشاره به نام فایل در بلوک‌های کد
+
+وقتی بلوک کد مربوط به **یک فایل مشخص** در پروژه است (پیکربندی، entry، route و غیره)، نام فایل را صریح بنویسید:
+
+1. **در متن فارسی** قبل از بلوک — مثلاً «در فایل `next.config.js`…»
+2. **در کامنت اول بلوک** — مثلاً `// next.config.js`
+
+| نوع | نام فایل معمول |
+| --- | -------------- |
+| Next.js config | `next.config.js` · `next.config.mjs` · `next.config.ts` |
+| Babel | `babel.config.js` |
+| Vite | `vite.config.js` · `vite.config.ts` |
+| ESLint (flat) | `eslint.config.js` · `eslint.config.mjs` |
+| App Router page | `app/page.js` · `app/page.tsx` |
+
+**مثال:**
+
+```js
+// next.config.js — ریشهٔ پروژه
+const nextConfig = { reactCompiler: true };
+module.exports = nextConfig;
+```
+
+❌ بلوک پیکربندی بدون نام فایل — خواننده نمی‌داند کجا paste کند.
+
 ### استاندارد مخصوص `State-Management/`
 
 - فایل [State-Types.md](./State-Management/State-Types.md) هاب taxonomy انواع `state` است — هر فایل ابزار باید در بخش «ارتباط» به آن لینک بدهد.
@@ -145,6 +170,7 @@ React-Knowledge-Base/
 ✅ مثال کد فقط در `Examples/{module}/`  
 ✅ قبل از هر تغییر محتوا، [react.dev](https://react.dev) برای همان مبحث بررسی شود  
 ✅ بعد از افزودن فایل: `README.md`، `Learning-Path.md`، `WhatsNew.md` (در صورت مفهوم جدید غیرجزوه)، `Glossary.md` (در صورت نیاز)
+✅ در بلوک‌های پیکربندی و entry، نام فایل مقصد را در متن و کامنت اول بلوک بنویس (`next.config.js`، `babel.config.js` و مشابه)
 
 ---
 
@@ -153,6 +179,7 @@ React-Knowledge-Base/
 ❌ تکرار همان محتوا در ریشه و زیرپوشه  
 ❌ ساخت فایل در ریشه وقتی ماژول پوشهٔ اختصاصی دارد  
 ❌ نادیده گرفتن خط ناوبری `> 🧭 پیش‌نیاز` در فایل‌های موضوعی
+❌ بلوک `next.config.js` / `babel.config.js` / route بدون اشاره به نام فایل در متن یا کامنت
 
 ---
 

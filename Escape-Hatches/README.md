@@ -2,13 +2,15 @@
 
 > مکانیزم‌های React برای کارهایی که نمی‌توان یا نباید فقط با `props` و `state` انجام داد — از `ref` تا `Suspense` و RSC.
 
+> 🧭 پیش‌نیاز: [`useDebugValue`](../Hooks/useDebugValue.md) · [Concurrent Hooks](../Hooks/useTransition.md) · بعدی: [Concurrent Features](./Concurrent-Features.md)
+
 ---
 
 ## 📖 مفهوم
 
-گاهی باید از مدل `declarative` React خارج شوید تا به DOM دسترسی `imperative` داشته باشید، `side effect` همگام کنید، یا داده را از عمق درخت بخوانید. این مسیرها «Escape Hatch» نامیده می‌شوند — راه‌های رسمی برای کارهایی که مدل پیش‌فرض پوشش نمی‌دهد.
+گاهی باید از مدل `declarative` React خارج شوید — مثلاً وقتی باید به DOM `focus` بدهید، `subscription` شبکه را مدیریت کنید، یا داده را از عمق درخت بدون `prop drilling` بخوانید. این مسیرها «Escape Hatch» نامیده می‌شوند — راه‌های رسمی برای کارهایی که مدل پیش‌فرض پوشش نمی‌دهد.
 
-در React مدرن، علاوه بر `ref`/`effect`/`context` کلاسیک، مفاهیم `Concurrent Rendering`، `Suspense`، RSC و APIهای جدید مثل `use()` و `<Activity>` هم به این خانواده تعلق دارند.
+در React مدرن، علاوه بر `ref`/`effect`/`context` کلاسیک (M2/M3)، مفاهیم `Concurrent Rendering`، `Suspense`، RSC و APIهای جدید مثل `use()` و `<Activity>` هم به این خانواده تعلق دارند.
 
 ---
 
@@ -20,6 +22,16 @@
 - `side effect`ها (شبکه، `subscription`، `timer`) باید خارج از `render` مدیریت شوند
 - `prop drilling` عمیق با `Context` حل می‌شود
 - بارگذاری ناهمگام و رندر سنگین با `Suspense` و `Concurrent` قابل مدیریت‌اند
+
+---
+
+## چه مشکلی را حل می‌کند؟
+
+- دسترسی `imperative` به DOM بدون شکستن مدل `declarative`
+- `side effect` و `subscription` خارج از `render`
+- `prop drilling` عمیق و `loading state` پراکنده
+- `bundle` سنگین کلاینت و UX «یخ‌زده» هنگام رندر سنگین
+- `hide`/`show` UI با حفظ `state` داخلی (بدون `unmount`)
 
 ---
 
@@ -86,6 +98,8 @@ import { Activity } from "react";
 - وقتی واقعاً باید کامپوننت `unmount` شود (آزادسازی حافظه)
 - محتوای فقط متنی بدون DOM (محدودیت API)
 
+مثال کد: [Examples/escape-hatches/ActivityDemo.jsx](../Examples/escape-hatches/ActivityDemo.jsx)
+
 ---
 
 ## React 19 — خلاصه تغییرات مرتبط
@@ -115,6 +129,7 @@ import { Activity } from "react";
 - [Error Boundaries](../Error-Boundaries.md) — همراه `Suspense`
 - [Performance/Render-Cycle.md](../Performance/Render-Cycle.md)
 - [Next.js Overview](../Nextjs/README.md) — پیاده‌سازی RSC (M10)
+- [Examples/escape-hatches/](../Examples/escape-hatches/) — `Suspense`، `use(promise)`، `<Activity>`
 
 ---
 

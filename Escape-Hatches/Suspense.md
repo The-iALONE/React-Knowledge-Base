@@ -2,6 +2,8 @@
 
 > نمایش `fallback` تا زمان آماده شدن کامپوننت یا داده — بدون `loading state` دستی پراکنده.
 
+> 🧭 پیش‌نیاز: [Concurrent Features](./Concurrent-Features.md) · بعدی: [Lazy Loading](./Lazy-Loading.md)
+
 ---
 
 ## 📖 مفهوم
@@ -46,6 +48,14 @@
 ```
 
 هر بخش `fallback` مستقل دارد — UX تدریجی بهتر.
+
+### `streaming` و RSC
+
+در معماری RSC و فریم‌ورک‌هایی مثل Next.js، سرور می‌تواند HTML را **تدریجی** (`stream`) بفرستد — هر `<Suspense>` مرز `streaming` است. بخش‌های آماده زودتر نمایش داده می‌شوند و بقیه با `fallback` پر می‌شوند تا داده برسد.
+
+### `pre-warming` (مفهومی)
+
+اگر می‌دانید کاربر به‌زودی به بخشی می‌رود (مثلاً `hover` روی لینک)، می‌توانید `import()` یا `fetch` را زودتر شروع کنید — وقتی کاربر کلیک کند، `promise` قبلاً در حال resolve است و `fallback` کوتاه‌تر می‌ماند.
 
 ---
 
@@ -142,6 +152,12 @@ function Page({ userPromise, postsPromise }) {
 
 ---
 
+## مثال واقعی در پروژه
+
+در Next.js App Router، `loading.js` کنار هر `route` یک `<Suspense>` ضمنی ایجاد می‌کند — صفحه اصلی زود نمایش داده می‌شود و بخش‌های کند با `skeleton` پر می‌شوند. در کلاینت خالص، همان الگو با `Suspense` تو در تو دور `lazy` و `use(promise)` پیاده می‌شود.
+
+---
+
 ## 🚀 Best Practices
 
 - `fallback` سبک و شبیه `layout` نهایی (`skeleton`)
@@ -165,6 +181,7 @@ function Page({ userPromise, postsPromise }) {
 - [Lazy-Loading.md](./Lazy-Loading.md) — `React.lazy` نیازمند `Suspense`
 - [Hooks/use.md](../Hooks/use.md) — `use(promise)`
 - [Concurrent-Features.md](./Concurrent-Features.md)
+- [Performance/Code-Splitting.md](../Performance/Code-Splitting.md) — `lazy` و تقسیم `bundle` (M6)
 - [Error-Boundaries.md](../Error-Boundaries.md)
 - [Examples/escape-hatches/](../Examples/escape-hatches/)
 

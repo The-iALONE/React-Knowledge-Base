@@ -1,8 +1,8 @@
 ﻿# use
 
-> API برای خواندن مقدار `promise` یا `context` در `render` — با پشتیبانی از شرط و حلقه (برخلاف `useContext`).
+> برای خواندن مقدار `promise` یا `context` در `render` — با پشتیبانی از شرط و حلقه (برخلاف `useContext`).
 
-> 🧭 پیش‌نیاز: [React Compiler](../Escape-Hatches/React-Compiler.md) · بعدی: [Patterns — نمای کلی](../Patterns/README.md)
+> 🧭 پیش‌نیاز: [Lazy Loading](../Escape-Hatches/Lazy-Loading.md) · بعدی: [Server Components](../Escape-Hatches/Server-Components.md)
 
 ---
 
@@ -24,9 +24,22 @@
 
 ## چه مشکلی را حل می‌کند؟
 
-- فراخوانی `use` داخل `try/catch` — پشتیبانی نمی‌شود؛ از `Error Boundary` استفاده کنید
-- `promise` جدید در هر `render` — باید `cache` شود
-- `use(context)` در `Server Component` — پشتیبانی نمی‌شود
+- `loading state` پراکنده با الگوی `useEffect` + `fetch` + `isLoading`
+- محدودیت `useContext` در `top-level` — خواندن `context` شرطی بدون نقض Rules of Hooks
+- عدم یکپارچگی بین خواندن `promise` و `context` در `render`
+- نیاز به `declarative loading` با `Suspense` به‌جای `state` دستی
+
+---
+
+## تفاوت با گزینه‌های مشابه
+
+| رویکرد | کی بهتر است | محدودیت |
+| ------ | ----------- | ------- |
+| `useEffect` + `fetch` | ساده، بدون `Suspense` | `loading`/`error` دستی؛ race condition |
+| `use(promise)` + `Suspense` | داده در `render`، `declarative` | نیاز به `cache`؛ `Error Boundary` برای خطا |
+| `useContext` | `context` در `top-level` | شرطی مجاز نیست |
+| `use(context)` | `context` شرطی در Client | در RSC پشتیبانی نمی‌شود |
+| React Query | داده سرور با `cache`/`retry` | کتابخانه خارجی — [React Query](../State-Management/React-Query.md) |
 
 ---
 
@@ -190,13 +203,14 @@ function Page({ userPromise, postsPromise }) {
 - [Hooks/useContext.md](./useContext.md) — خواندن `context` در `top-level`
 - [Context.md](../Context.md) — Provider بدون `.Provider` (M2)
 - [Error-Boundaries.md](../Error-Boundaries.md) — خطای `reject` (M2)
+- [State-Management/React-Query.md](../State-Management/React-Query.md) — جایگزین برای داده سرور با `cache` (M7)
 - [Examples/escape-hatches/UsePromise.jsx](../Examples/escape-hatches/UsePromise.jsx)
 
 ---
 
 ## خلاصه
 
-با `use(promise)` داده ناهمگام در `render` خوانده می‌شود و `Suspense` `fallback` را مدیریت می‌کند. با `use(context)` می‌توان `context` را حتی شرطی خواند. هر دو React 19+.
+با `use(promise)` داده ناهمگام در `render` خوانده می‌شود و `Suspense` `fallback` را مدیریت می‌کند. با `use(context)` می‌توان `context` را حتی شرطی خواند — هر دو از React 19 به بعد.
 
 ---
 

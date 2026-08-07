@@ -1,6 +1,6 @@
 /**
  * ActivityDemo.jsx — Activity mode hidden/visible
- * مستندات: Escape-Hatches.md
+ * مستندات: Escape-Hatches/README.md
  */
 import { Activity, useState } from 'react';
 

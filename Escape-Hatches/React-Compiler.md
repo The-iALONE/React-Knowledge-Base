@@ -2,11 +2,13 @@
 
 > `memoization` خودکار در زمان build — کاهش نیاز به `memo`، `useMemo` و `useCallback` دستی.
 
+> 🧭 پیش‌نیاز: [Client Components](./Client-Components.md) · بعدی: [Patterns — نمای کلی](../Patterns/README.md)
+
 ---
 
 ## 📖 مفهوم
 
-کامپایلر React (React Compiler) کد کامپوننت را در زمان build تحلیل می‌کند و به‌صورت خودکار `memoization` اعمال می‌کند — مشابه کاری که دستی با `React.memo`، `useMemo` و `useCallback` انجام می‌دهید، اما جامع‌تر و بدون خطای انسانی.
+در زمان `build`، کامپایلر React (React Compiler) کد کامپوننت را تحلیل می‌کند و به‌صورت خودکار `memoization` اعمال می‌کند — مشابه کاری که دستی با `React.memo`، `useMemo` و `useCallback` انجام می‌دهید، اما جامع‌تر و بدون خطای انسانی.
 
 ---
 
@@ -40,6 +42,14 @@
 | نیاز به دانش دقیق               | کمتر وابسته به توسعه‌دهنده |
 | ممکن است جا بیفتد               | جامع‌تر                    |
 
+### تفاوت با بهینه‌سازی دستی (خلاصه)
+
+| رویکرد | مزیت | محدودیت |
+| ------ | ---- | ------- |
+| `React.memo` دستی | کنترل نقطه‌ای | فراموشی، `props` ناپایدار |
+| `useMemo`/`useCallback` | بهینه‌سازی مقدار/تابع | `dependency` اشتباه |
+| React Compiler | خودکار روی کل درخت | نیاز به کد خالص؛ skip روی ناخالص |
+
 ---
 
 ## فعال‌سازی
@@ -66,19 +76,23 @@ module.exports = {
 
 ### Next.js
 
-در `next.config.js`:
+در ریشهٔ پروژه Next.js، تنظیم کامپایلر داخل فایل `next.config.js` است — در پروژه‌های جدید ممکن است `next.config.mjs` یا `next.config.ts` باشد:
 
 ```js
+// next.config.js — یا next.config.mjs / next.config.ts در ریشهٔ پروژه
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    reactCompiler: true,
-  },
+  reactCompiler: true,
 };
+
+module.exports = nextConfig;
 ```
+
+در نسخه‌های قدیمی‌تر ممکن است تحت `experimental.reactCompiler` باشد — [مستندات Next.js](https://nextjs.org/docs/app/api-reference/config/next-config-js/reactCompiler) را چک کنید.
 
 ### ESLint
 
-`eslint-plugin-react-compiler` هشدار می‌دهد اگر کدی با قوانین کامپایلر سازگار نباشد.
+در فایل `eslint.config.js` (یا `eslint.config.mjs`) پلاگین `eslint-plugin-react-compiler` را فعال کنید — هشدار می‌دهد اگر کدی با قوانین کامپایلر سازگار نباشد.
 
 ---
 
@@ -87,7 +101,7 @@ const nextConfig = {
 کامپایلر فرض می‌کند کامپوننت‌ها و `Hook`ها **خالص** هستند:
 
 - بدون `mutation` مستقیم `props`/`state`
-- بدون side effect در `render`
+- بدون `side effect` در `render`
 - رعایت Rules of Hooks
 
 اگر کد «ناخالص» باشد، کامپایلر skip می‌کند یا ESLint هشدار می‌دهد.
@@ -139,7 +153,7 @@ const nextConfig = {
 
 ## خلاصه
 
-کامپایلر React، `memoization` را خودکار می‌کند — `memo`/`useMemo`/`useCallback` دستی در بسیاری پروژه‌ها دیگر لازم نیست. کد خالص + کامپایلر = بهینه‌سازی ایمن‌تر.
+کامپایلر React `memoization` را خودکار می‌کند — `memo`/`useMemo`/`useCallback` دستی در بسیاری پروژه‌ها دیگر لازم نیست. کد خالص + کامپایلر = بهینه‌سازی ایمن‌تر.
 
 ---
 

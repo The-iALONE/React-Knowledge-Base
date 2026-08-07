@@ -2,6 +2,8 @@
 
 > کامپوننت‌هایی که در مرورگر اجرا می‌شوند — با `'use client'` برای `state`، `effect` و تعامل کاربر.
 
+> 🧭 پیش‌نیاز: [Server Components](./Server-Components.md) · بعدی: [React Compiler](./React-Compiler.md)
+
 ---
 
 ## 📖 مفهوم
@@ -68,6 +70,21 @@ export default function Counter() {
 | `browser API` (`localStorage`، ...) | بله                   |
 | `Custom Hook` با `state`/`effect`   | بله                   |
 | فقط نمایش داده از `props`           | خیر — Server کافی است |
+
+---
+
+## تفاوت با Server Component
+
+| جنبه | Server Component | Client Component |
+| ---- | ---------------- | ---------------- |
+| اجرا | سرور | مرورگر |
+| `state`/`effect` | غیرمجاز | مجاز |
+| event handler | غیرمجاز | مجاز |
+| در `bundle` کلاینت | خیر | بله |
+| directive | پیش‌فرض (Next.js) | `'use client'` |
+| بهترین برای | `fetch`، DB، نمایش داده | تعامل، فرم، انیمیشن |
+
+قانون عملی: پیش‌فرض کامپوننت سرور — فقط لایه تعاملی را `Client Component` کنید.
 
 ---
 

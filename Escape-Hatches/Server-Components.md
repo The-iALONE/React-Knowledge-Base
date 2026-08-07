@@ -2,6 +2,8 @@
 
 > کامپوننت‌هایی که فقط روی سرور اجرا می‌شوند — بدون `state`، `effect` و `bundle` JavaScript اضافی در مرورگر.
 
+> 🧭 پیش‌نیاز: [`use`](../Hooks/use.md) · بعدی: [Client Components](./Client-Components.md)
+
 ---
 
 ## 📖 مفهوم
@@ -32,9 +34,29 @@
 ## ⚙️ نحوه کار
 
 ```
-Server: render RSC → serialize (Flight) → stream به کلاینت
-Client: hydrate Client Components + نمایش RSC output
+سرور: render RSC → serialize (Flight) → stream به کلاینت
+کلاینت: hydrate Client Components + نمایش خروجی RSC
 ```
+
+پروتکل `Flight` فرمت سریال‌شده React است — درخت کامپوننت سرور، `props` و ارجاع به `Client Component`ها را به کلاینت می‌فرستد بدون اینکه کد سرور در `bundle` کلاینت باشد.
+
+### `'use server'` — Server Actions
+
+برای توابعی که روی سرور اجرا می‌شوند (مثلاً ارسال فرم)، directive `'use server'` در بالای فایل یا تابع استفاده می‌شود — جزئیات در M10 ([Nextjs/Server-Actions.md](../Nextjs/Server-Actions.md)).
+
+### `cache()` — جلوگیری از `fetch` تکراری
+
+```jsx
+import { cache } from "react";
+
+const getUser = cache(async (id) => {
+  return db.user.find(id);
+});
+
+// در چند کامپوننت سرور — فقط یک بار اجرا می‌شود
+```
+
+در یک `request`، همان `cache` key فقط یک‌بار `fetch`/DB call می‌زند — مفید برای درخت RSC عمیق.
 
 ### محدودیت‌های Server Component
 
@@ -80,6 +102,8 @@ async function Page() {
 ---
 
 ## تفاوت RSC با SSR کلاسیک
+
+تصور کنید صفحه پست‌ها: در SSR کلاسیک، کل `JavaScript` کامپوننت‌ها به مرورگر می‌رود و `hydration` کل صفحه انجام می‌شود. در RSC، فقط Client Components در `bundle` هستند و داده از سرور به‌صورت `Flight` stream می‌شود.
 
 |                       | SSR کلاسیک                                | RSC                                 |
 | --------------------- | ----------------------------------------- | ----------------------------------- |
@@ -164,5 +188,6 @@ export default function LikeButton({ postId, likes }) {
 ## 📚 منابع
 
 - [Server Components — react.dev](https://react.dev/reference/rsc/server-components)
+- [use server — react.dev](https://react.dev/reference/rsc/use-server)
 - [Server Components — react.dev learn](https://react.dev/learn/start-a-new-react-project)
 - [use client — react.dev](https://react.dev/reference/rsc/use-client)

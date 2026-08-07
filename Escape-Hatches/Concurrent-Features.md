@@ -2,6 +2,8 @@
 
 > قابلیت‌های React 18+ برای رندر قابل `interrupt`، اولویت‌بندی `update`ها و UI واکنش‌گرا.
 
+> 🧭 پیش‌نیاز: [Escape Hatches — نمای کلی](./README.md) · بعدی: [Suspense](./Suspense.md)
+
 ---
 
 ## 📖 مفهوم
@@ -83,21 +85,36 @@ setTimeout(() => {
 
 ---
 
-## تفاوت‌ها
+## تفاوت با گزینه‌های مشابه
 
-| ابزار                | برای چه                      | `async`/`promise`         |
-| -------------------- | ---------------------------- | ------------------------- |
-| `useTransition`      | `state update` سنگین         | خیر — فقط `sync setState` |
-| `useDeferredValue`   | `defer` مقدار نمایشی         | خیر                       |
-| `Suspense` + `use()` | انتظار `promise` در `render` | بله                       |
-| `useDeferredValue`   | جایگزین `debounce` سبک       | خیر                       |
+| ابزار | برای چه | `async`/`promise` |
+| ----- | ------- | ----------------- |
+| `useTransition` | `state update` سنگین (فیلتر، tab) | خیر — فقط `sync setState` |
+| `useDeferredValue` | `defer` مقدار نمایشی (جایگزین `debounce` سبک) | خیر |
+| `Suspense` + `use()` | انتظار `promise` در `render` | بله |
+| `flushSync` | `update` فوری که باید همین الان `commit` شود | خیر |
+
+### `flushSync` — وقتی `transition` کافی نیست
+
+گاهی باید DOM بلافاصله به‌روز شود — مثلاً قبل از `measure` یا `scroll`. در این موارد `startTransition` مناسب نیست؛ از `flushSync` استفاده کنید:
+
+```jsx
+import { flushSync } from "react-dom";
+
+flushSync(() => {
+  setExpanded(true);
+});
+// DOM الان به‌روز است — measure/scroll امن
+```
+
+`flushSync` را کم استفاده کنید — `transition` برای اکثر موارد UX بهتر است.
 
 ---
 
 ## Syntax
 
 ```jsx
-import { useTransition, useDeferredValue, startTransition } from "react";
+import { useState, useTransition, useDeferredValue, useMemo, startTransition } from "react";
 
 // Hook
 const [isPending, startTransition] = useTransition();
@@ -112,23 +129,24 @@ startTransition(() => setTab("settings"));
 ## 💡 مثال ساده
 
 ```jsx
-import { useState, useTransition, useMemo } from "react";
+import { useState, useTransition, useDeferredValue, useMemo } from "react";
 
 function SearchPage({ items }) {
   const [query, setQuery] = useState("");
   const [isPending, startTransition] = useTransition();
+  const deferredQuery = useDeferredValue(query);
 
   const filtered = useMemo(() => {
     return items.filter((item) =>
-      item.name.toLowerCase().includes(query.toLowerCase()),
+      item.name.toLowerCase().includes(deferredQuery.toLowerCase()),
     );
-  }, [items, query]);
+  }, [items, deferredQuery]);
 
   function handleChange(e) {
     const value = e.target.value;
     setQuery(value); // urgent — input فوراً به‌روز می‌شود
     startTransition(() => {
-      // اگر فیلتر سنگین باشد، اینجا setState دیگری بزنید
+      // اگر علاوه بر deferredQuery، setState سنگین دیگری دارید اینجا بزنید
     });
   }
 
@@ -187,3 +205,4 @@ function SearchPage({ items }) {
 - [Concurrency — react.dev](https://react.dev/learn/concurrency)
 - [useTransition — react.dev](https://react.dev/reference/react/useTransition)
 - [useDeferredValue — react.dev](https://react.dev/reference/react/useDeferredValue)
+- [flushSync — react.dev](https://react.dev/reference/react-dom/flushSync)
