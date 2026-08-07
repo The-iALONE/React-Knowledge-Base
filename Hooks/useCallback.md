@@ -1,6 +1,8 @@
-# useCallback
+﻿# useCallback
 
 > برای `cache` کردن **تابع** بین `render`ها — reference تابع تا زمانی که `deps` تغییر نکنند ثابت می‌ماند.
+
+> 🧭 پیش‌نیاز: [useMemo](./useMemo.md) · بعدی: [useRef](./useRef.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-در JavaScript هر بار که کامپوننت `render` می‌شود، توابع داخلش **جدید** ساخته می‌شوند (`fn1 !== fn2`). وقتی این توابع به childهای `memo` شده یا به `dependency array` یک `useEffect` پاس داده می‌شوند، باعث `re-render` یا re-run غیرضروری می‌شوند.
+در JavaScript هر بار که کامپوننت `render` می‌شود، توابع داخلش **جدید** ساخته می‌شوند (`handleClick !== handleClick`). اگر `DataRow` با `React.memo` بهینه شده باشد، ولی هر بار `onDelete` جدید بگیرد، مثل این است که قفل بهینه‌سازی را باز گذاشته‌اید — `child` باز هم `re-render` می‌شود.
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - `wrap` کردن همه `handler`ها بدون دلیل → پیچیدگی بی‌فایده.
 - `deps` ناقص → `stale closure` (تابع مقادیر قدیمی را می‌بیند).
@@ -24,7 +26,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. React تابع را با `deps` ذخیره می‌کند.
 2. `render` بعدی: اگر `deps` برابر باشند → همان تابع قبلی.
@@ -155,7 +157,7 @@ function ProductCard({ product }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ useCallback با deps ناقص
@@ -175,12 +177,13 @@ return <button onClick={onClick}>Open</button>; // button not memoized
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - فقط وقتی `child` `memo` شده یا تابع در `useEffect` `deps` است.
 - اگر می‌توانید تابع را داخل `useEffect` منتقل کنید، `useCallback` لازم نیست.
-- با `setState(prev => ...)` می‌توانید `deps` را کم کنید.
-- ابتدا بدون `useCallback` بنویسید؛ بعد optimize.
+- با `setState(prev => ...)` می‌توانید `deps` را کم کنید — `useCallback(() => setCount(c => c + 1), [])` اغلب کافی است.
+- `dispatch` از `useReducer` پایدار است — برای آن `useCallback` لازم نیست.
+- ابتدا بدون `useCallback` بنویسید؛ [React Compiler](../Escape-Hatches/React-Compiler.md) در آینده بسیاری را خودکار می‌کند.
 
 ---
 
@@ -194,11 +197,13 @@ return <button onClick={onClick}>Open</button>; // button not memoized
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
 - [useMemo.md](./useMemo.md) — `cache` مقدار
-- [Patterns/React-Memo.md](../Patterns/React-Memo.md) — React.memo
+- [useReducer.md](./useReducer.md) — `dispatch` پایدار، بدون نیاز به `useCallback`
+- [Patterns/React-Memo.md](../Patterns/React-Memo.md) — `React.memo`
 - [useEffect.md](./useEffect.md) — `deps` و `stale closure`
+- [Escape-Hatches/React-Compiler.md](../Escape-Hatches/React-Compiler.md) — memoization خودکار
 
 ---
 
@@ -225,6 +230,6 @@ return <button onClick={onClick}>Open</button>; // button not memoized
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useCallback — react.dev](https://react.dev/reference/react/useCallback)

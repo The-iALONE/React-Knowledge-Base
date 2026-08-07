@@ -1,6 +1,8 @@
-# useMemo
+﻿# useMemo
 
 > برای `cache` کردن نتیجه یک محاسبه بین `render`ها — فقط وقتی وابستگی‌ها تغییر کنند دوباره محاسبه می‌شود.
+
+> 🧭 پیش‌نیاز: [useEffectEvent](./useEffectEvent.md) · بعدی: [useCallback](./useCallback.md)
 
 ---
 
@@ -12,11 +14,13 @@
 
 ## چرا
 
-هر `render`، همه کد داخل کامپوننت دوباره اجرا می‌شود. محاسبات سنگین (فیلتر لیست بزرگ، sort، ساخت object) یا ساخت reference جدید برای `props` می‌تواند باعث `re-render`های زنجیره‌ای شود. `useMemo` این هزینه را کنترل می‌کند.
+هر `render`، همه کد داخل کامپوننت دوباره اجرا می‌شود. فیلتر ۱۰٬۰۰۰ سفارش در هر تایپ کاربر، یا ساخت `{}` جدید برای `props`، می‌تواند `child`های `memo` شده را بی‌دلیل `re-render` کند. `useMemo` فقط وقتی `deps` عوض نشده، محاسبه را تکرار نمی‌کند.
+
+> اگر [React Compiler](../Escape-Hatches/React-Compiler.md) فعال باشد، بسیاری از این `memo`ها خودکار می‌شوند — اول بدون `useMemo` بنویسید و با Profiler اندازه بگیرید.
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - `overuse` → کد پیچیده بدون سود واقعی.
 - `object`/`array` جدید در هر `render` → `memo` `child` بی‌فایده می‌شود.
@@ -25,7 +29,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. در اولین `render`، تابع `calculate` اجرا و نتیجه ذخیره می‌شود.
 2. در `render` بعدی، React `deps` را با `Object.is` مقایسه می‌کند.
@@ -138,7 +142,7 @@ function AdminPanel({ user, permissions }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ useMemo برای محاسبه سبک
@@ -157,12 +161,13 @@ list.push(newItem); // wrong!
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
-- فقط وقتی **مشکل واقعی** دارید: محاسبه سنگین یا reference stability برای `memo`/`useEffect`.
+- فقط وقتی **مشکل واقعی** دارید: محاسبه سنگین یا `reference stability` برای `memo`/`useEffect`.
 - `deps` را کامل بنویسید.
-- ابتدا بدون `useMemo` بنویسید؛ بعد با profiler بهینه کنید.
+- ابتدا بدون `useMemo` بنویسید؛ بعد با [Profiler](../Performance/Profiling.md) بهینه کنید.
 - برای تابع از `useCallback` استفاده کنید، نه `useMemo(() => fn)`.
+- روی `useMemo` برای **صحت** منطق حساب نکنید — React ممکن است `cache` را دور بیندازد.
 
 ---
 
@@ -176,11 +181,13 @@ list.push(newItem); // wrong!
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [useCallback.md](./useCallback.md) — `cache` تابع (معادل `useMemo` برای `function`)
+- [useCallback.md](./useCallback.md) — `cache` تابع (`useCallback(fn, deps)` ≈ `useMemo(() => fn, deps)`)
 - [Performance/Memoization.md](../Performance/Memoization.md) — memoization در عمق
-- [Patterns/React-Memo.md](../Patterns/React-Memo.md) — `React.memo`
+- [Performance/Profiling.md](../Performance/Profiling.md) — قبل از `useMemo` اندازه بگیرید
+- [Patterns/React-Memo.md](../Patterns/React-Memo.md) — `React.memo` + `useMemo`
+- [Escape-Hatches/React-Compiler.md](../Escape-Hatches/React-Compiler.md) — جایگزین خودکار بسیاری از `useMemo`ها
 
 ---
 
@@ -208,6 +215,8 @@ list.push(newItem); // wrong!
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useMemo — react.dev](https://react.dev/reference/react/useMemo)
+- [Keep the Component Pure — react.dev](https://react.dev/learn/keeping-components-pure)
+- [React Compiler — react.dev](https://react.dev/learn/react-compiler)

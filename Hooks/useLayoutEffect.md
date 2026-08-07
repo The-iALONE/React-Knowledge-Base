@@ -1,6 +1,8 @@
-# useLayoutEffect
+﻿# useLayoutEffect
 
 > برای `side effect` همزمان بعد از به‌روزرسانی DOM و قبل از `paint` مرورگر.
+
+> 🧭 پیش‌نیاز: [useEffect](./useEffect.md) · بعدی: [useInsertionEffect](./useInsertionEffect.md)
 
 ---
 
@@ -16,7 +18,7 @@
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - `blocking` است → روی `performance` تأثیر می‌گذارد.
 - `overuse` باعث کندی UI می‌شود.
@@ -24,12 +26,24 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
-1. React `render` + commit DOM.
-2. `useLayoutEffect` اجرا می‌شود (`blocking`).
-3. مرورگر paint.
-4. سپس `useEffect`های عادی.
+```
+`render` → `commit` DOM → `useLayoutEffect` (blocking) → `paint` → `useEffect`
+```
+
+1. React `render` + `commit` DOM.
+2. `useLayoutEffect` اجرا می‌شود — مرورگر هنوز `paint` نکرده (`blocking`).
+3. مرورگر `paint` می‌کند — کاربر UI را می‌بیند.
+4. سپس `useEffect`های عادی (بعد از `paint`).
+
+### مقایسه سه Effect
+
+| | `useInsertionEffect` | `useLayoutEffect` | `useEffect` |
+|---|---------------------|-------------------|-------------|
+| **زمان** | قبل از `layout effect`ها | قبل از `paint` | بعد از `paint` |
+| **کاربرد** | `inject` CSS | `measure`/`sync` DOM | `fetch`، `subscription` |
+| **برای اپ معمولی** | نادر | گاهی | پیش‌فرض |
 
 ---
 
@@ -146,7 +160,7 @@ function CartBadge({ count }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ useLayoutEffect for data fetch
@@ -167,7 +181,7 @@ useLayoutEffect(() => {
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - پیش‌فرض `useEffect` است — فقط وقتی `flicker` یا `measure-before-paint` لازم است از `useLayoutEffect` استفاده کنید.
 - `cleanup` مثل `useEffect`.
@@ -185,12 +199,14 @@ useLayoutEffect(() => {
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [useEffect.md](./useEffect.md) — effect غیرمسدودکننده
-- [useInsertionEffect.md](./useInsertionEffect.md) — قبل از layout effects (CSS-in-JS)
-- [useRef.md](./useRef.md) — دسترسی DOM
-- [Effects.md](../Effects.md)
+- [useEffect.md](./useEffect.md) — effect غیرمسدودکننده (پیش‌فرض)
+- [useInsertionEffect.md](./useInsertionEffect.md) — قبل از `layout effect`ها
+- [useEffectEvent.md](./useEffectEvent.md) — callback بدون `re-run`
+- [useRef.md](./useRef.md) — دسترسی DOM برای `measure`
+- [Effects.md](../Effects.md) — فلسفه `effect` (M2)
+- [Performance/Profiling.md](../Performance/Profiling.md) — اگر `layout effect` کند شد
 
 ---
 
@@ -214,6 +230,8 @@ useLayoutEffect(() => {
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useLayoutEffect — react.dev](https://react.dev/reference/react/useLayoutEffect)
+- [Synchronizing with Effects — react.dev](https://react.dev/learn/synchronizing-with-effects)
+- [useEffect — react.dev](https://react.dev/reference/react/useEffect) — پیش‌فرض

@@ -1,6 +1,8 @@
-# useActionState
+﻿# useActionState
 
 > برای مدیریت `state` فرم همراه با Server Action — `state`، `pending` و نتیجه action در یک API.
+
+> 🧭 پیش‌نیاز: [useOptimistic](./useOptimistic.md) · بعدی: [useFormStatus](./useFormStatus.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-فرم‌های `server-driven` (Next.js Server Actions) نیاز به `state` خطا، پیام موفقیت و `pending` دارند. `useActionState` این را بدون `useState` دستی یکپارچه می‌کند.
+فرم ثبت‌نام با Server Action نیاز به نمایش خطای «ایمیل تکراری»، `pending` روی دکمه، و پیام موفقیت دارد — بدون `useState` + `onSubmit` دستی. `useActionState` همه را در یک API جمع می‌کند و حتی **بدون JavaScript** هم فرم کار می‌کند (`progressive enhancement`).
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - فقط با `form action` یا `dispatch` دستی — نه هر `event`.
 - `Server Action` باید `(prevState, formData) => newState` باشد.
@@ -24,7 +26,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. Server Action با signature `(previousState, formData) => state` تعریف می‌شود.
 2. `useActionState` action را wrap می‌کند.
@@ -153,7 +155,7 @@ async function addToCartAction(prev, formData) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ action بدون prevState در signature server
@@ -168,7 +170,7 @@ async function goodAction(prevState, formData) { /* ... */ }
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - `state` را `typed` کنید: `{ error?: string; success?: boolean }`.
 - `validation` در `server action`.
@@ -187,11 +189,12 @@ async function goodAction(prevState, formData) { /* ... */ }
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [useFormStatus.md](./useFormStatus.md) — `pending` در child
-- [Forms.md](../Forms.md)
-- [Nextjs/README.md](../Nextjs/README.md)
+- [useFormStatus.md](./useFormStatus.md) — `pending` در `child` دکمه
+- [Forms.md](../Forms.md) — Form Actions در React 19 (M2)
+- [useOptimistic.md](./useOptimistic.md) — UI خوش‌بینانه همراه action
+- [useTransition.md](./useTransition.md) — `pending` برای actionهای غیرفرمی
 
 ---
 
@@ -219,6 +222,8 @@ async function goodAction(prevState, formData) { /* ... */ }
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useActionState — react.dev](https://react.dev/reference/react/useActionState)
+- [React 19 — Form Actions](https://react.dev/blog/2024/12/05/react-19#form-actions)
+- [useFormStatus — react.dev](https://react.dev/reference/react-dom/hooks/useFormStatus)

@@ -1,6 +1,8 @@
-# useDeferredValue
+﻿# useDeferredValue
 
 > برای `defer` کردن یک مقدار — React ابتدا UI فوری را نشان می‌دهد و مقدار `deferred` را با اولویت پایین‌تر به‌روز می‌کند.
+
+> 🧭 پیش‌نیاز: [useTransition](./useTransition.md) · بعدی: [useOptimistic](./useOptimistic.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-وقتی کاربر سریع تایپ می‌کند و هر `keystroke` باعث فیلتر لیست ۱۰هزار تایی می‌شود، UI کند می‌شود. با `defer` کردن مقدار فیلتر، `input` فوری به‌روز می‌ماند ولی لیست با تأخیر کوتاه `sync` می‌شود.
+در جستجوی محصول، `input` باید فوری هر حرف را نشان دهد — ولی فیلتر ۱۰٬۰۰۰ آیتم می‌تواند صبر کند. `useDeferredValue` مقدار «قدیمی‌تر» را نگه می‌دارد تا `render` سنگین مسیر فوری را مسدود نکند؛ برخلاف `debounce`، بخشی از [scheduler داخلی React](https://react.dev/reference/react/useDeferredValue) است.
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - جایگزین `useTransition` نیست — `useDeferredValue` `passive` است (فقط `value` را `defer` می‌کند).
 - برای داده سمت `server` کافی نیست — Suspense/React Query لازم است.
@@ -24,7 +26,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. `deferredQuery = useDeferredValue(query)` — وقتی `query` عوض شود.
 2. اگر `render` سنگین در صف باشد، `deferredQuery` مقدار قبلی را نگه می‌دارد.
@@ -33,16 +35,25 @@
 
 ---
 
+### `useTransition` در برابر `useDeferredValue`
+
+| | `useTransition` | `useDeferredValue` |
+|---|----------------|-------------------|
+| **کنترل** | فعال — `startTransition(() => setX)` | غیرفعال — فقط `value` را `defer` می‌کند |
+| **مناسب** | وقتی خودتان `setState` می‌زنید | وقتی `value` از `props`/`state` والد می‌آید |
+| **`isPending`** | بله | خیر — `query !== deferredQuery` دستی |
+
+---
+
 ## Syntax
 
 ```jsx
 const deferredValue = useDeferredValue(value);
-const deferredValue = useDeferredValue(value, initialValue); // React 19
+const deferredValue = useDeferredValue(value, initialValue); // React 19 — مقدار اول mount
 ```
 
 ```jsx
 const deferredQuery = useDeferredValue(query);
-const results = useMemo(() => search(items, deferredQuery), [items, deferredQuery]);
 ```
 
 ---
@@ -128,7 +139,7 @@ function ProductPreview({ config }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ بدون useMemo — هنوز هر render فیلتر می‌شود
@@ -147,7 +158,7 @@ useEffect(() => fetchUser(deferredUserId), [deferredUserId]);
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - همیشه با `useMemo` برای محاسبه سنگین ترکیب کنید.
 - `query !== deferredQuery` برای نشان دادن `stale` `state`.
@@ -166,11 +177,12 @@ useEffect(() => fetchUser(deferredUserId), [deferredUserId]);
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
 - [useTransition.md](./useTransition.md) — کنترل فعال `update`
-- [Performance/README.md](../Performance/README.md)
-- [useMemo.md](./useMemo.md)
+- [useMemo.md](./useMemo.md) — محاسبه سنگین با `deferredValue`
+- [Performance/README.md](../Performance/README.md) — بهینه‌سازی `render` (M6)
+- [Escape-Hatches/Concurrent-Features.md](../Escape-Hatches/Concurrent-Features.md)
 
 ---
 
@@ -195,6 +207,6 @@ useEffect(() => fetchUser(deferredUserId), [deferredUserId]);
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useDeferredValue — react.dev](https://react.dev/reference/react/useDeferredValue)

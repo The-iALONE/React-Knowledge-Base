@@ -1,6 +1,8 @@
-# useTransition
+﻿# useTransition
 
 > برای علامت‌گذاری `state update`ها به‌عنوان غیرفوری (`transition`) — UI واکنش‌گرا می‌ماند در حین `render` سنگین.
+
+> 🧭 پیش‌نیاز: [useReducer](./useReducer.md) · بعدی: [useDeferredValue](./useDeferredValue.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-بعضی `state update`ها (فیلتر لیست بزرگ، تغییر tab، navigation) `render` سنگین ایجاد می‌کنند و UI را `freeze` می‌کنند. `useTransition` اولویت را به تعامل کاربر می‌دهد.
+کاربر روی تب «گزارش‌ها» کلیک می‌کند ولی رندر ۵۰۰۰ ردیف جدول UI را ۲ ثانیه قفل می‌کند — در همین حین تایپ در جستجو هم باید روان باشد. `useTransition` به React می‌گوید: «این `update` عجله ندارد؛ اول کاربر را راضی کن» ([Concurrent Features](../Escape-Hatches/Concurrent-Features.md)).
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - برای هر `async` کار لازم نیست — فقط `state update`های سنگین در React.
 - `startTransition` `async function` را `await` نمی‌کند — فقط `sync` `setState` داخلش.
@@ -24,7 +26,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. `startTransition(() => setState(...))` `update` را `urgent` نیست علامت می‌زند.
 2. React `update` فوری را اول `commit` می‌کند.
@@ -49,7 +51,7 @@ startTransition(() => {
 
 ## پارامترها
 
-بدون پارامتر — Hook بدون آرگومان فراخوانی می‌شود.
+بدون پارامتر — این `Hook` بدون آرگومان فراخوانی می‌شود.
 
 ---
 
@@ -164,7 +166,7 @@ function NavLink({ href, children }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ async inside startTransition expecting await
@@ -180,7 +182,7 @@ startTransition(() => setCount(c + 1)); // unnecessary
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - `input`/`search` فوری بماند؛ فیلتر/لیست در `transition`.
 - `isPending` برای `loading indicator`.
@@ -199,11 +201,12 @@ startTransition(() => setCount(c + 1)); // unnecessary
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [useDeferredValue.md](./useDeferredValue.md) — `defer` مقدار
+- [useDeferredValue.md](./useDeferredValue.md) — `defer` passive مقدار
 - [useOptimistic.md](./useOptimistic.md) — UI خوش‌بینانه
-- [Escape-Hatches/README.md](../Escape-Hatches/README.md) — Concurrent features
+- [Escape-Hatches/Concurrent-Features.md](../Escape-Hatches/Concurrent-Features.md) — پس‌زمینه Concurrent (M5)
+- [Performance/Re-render.md](../Performance/Re-render.md) — اولویت‌بندی `render`
 
 ---
 
@@ -231,6 +234,8 @@ startTransition(() => setCount(c + 1)); // unnecessary
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useTransition — react.dev](https://react.dev/reference/react/useTransition)
+- [The useTransition Hook — react.dev](https://react.dev/reference/react/useTransition#reference)
+- [Concurrent React — react.dev](https://react.dev/blog/2022/03/29/react-v18#new-feature-concurrent-rendering)

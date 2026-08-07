@@ -1,6 +1,8 @@
-# useReducer
+﻿# useReducer
 
 > برای مدیریت `state` پیچیده با الگوی `reducer` — `dispatch(action)` به‌جای setter مستقیم.
+
+> 🧭 پیش‌نیاز: [useContext](./useContext.md) · بعدی: [useTransition](./useTransition.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-وقتی `state` چند فیلد دارد، `update`ها به هم وابسته‌اند، یا منطق `update` پیچیده است، `useState` پراکنده و خطاپذیر می‌شود. `reducer` همه `transition`ها را در یک تابع متمرکز می‌کند.
+وقتی فرم رزرو کابین چند فیلد و چند `action` دارد (`SET_DATE`، `SET_GUESTS`، `RESET`)، `useState` سریع شلوغ می‌شود — هر `setState` پراکنده و وابسته به `state` قبلی است. `useReducer` منطق به‌روزرسانی را در یک تابع `reducer` جمع می‌کند و `transition`ها قابل پیش‌بینی و تست می‌شوند.
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - برای `counter` ساده `overkill` است.
 - `reducer` باید `pure` باشد — بدون `side effect`.
@@ -24,12 +26,21 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
-1. `reducer(state, action) => newState` — `pure function`.
-2. `dispatch({ type: 'inc' })` `action` را می‌فرستد.
-3. React `reducer` را اجرا و `state` را به‌روز می‌کند.
+1. `reducer(state, action) => newState` — تابع **خالص** (`pure`)؛ بدون `side effect`.
+2. `dispatch({ type: 'inc' })` — `action` را می‌فرستد (مثل نامه به دفتر حسابداری).
+3. React `reducer` را اجرا و `state` جدید را محاسبه می‌کند.
 4. مثل `useState`، `re-render` `trigger` می‌شود.
+5. `dispatch` در React 18+ **پایدار** (`stable`) است — همان reference در همه `render`ها.
+
+### `lazy init` (آرگومان سوم)
+
+```jsx
+useReducer(reducer, initialArg, (arg) => expensiveInit(arg));
+```
+
+مثل `useState(() => ...)` — برای `state` اولیه سنگین.
 
 ---
 
@@ -182,7 +193,7 @@ function CartProvider({ children }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ side effect in reducer
@@ -203,7 +214,7 @@ case 'ADD':
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - `action` `type`ها را `constant` کنید (`const ADD = 'ADD'`).
 - `reducer` را در فایل جدا export کنید (قابل تست).
@@ -222,11 +233,12 @@ case 'ADD':
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
 - [useState.md](./useState.md) — `state` ساده
-- [Context.md](../Context.md) — Provider + `useReducer`
-- [State-Management/README.md](../State-Management/README.md)
+- [Context.md](../Context.md) — `Provider` + `useReducer` برای `state` سراسری
+- [State-Management/useReducer-Pattern.md](../State-Management/useReducer-Pattern.md) — الگوی Redux در مقیاس اپ
+- [State-Management/Redux-Toolkit.md](../State-Management/Redux-Toolkit.md) — وقتی `reducer` سراسری و بزرگ می‌شود
 
 ---
 
@@ -254,7 +266,7 @@ case 'ADD':
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useReducer — react.dev](https://react.dev/reference/react/useReducer)
 - [Extracting State Logic into a Reducer — react.dev](https://react.dev/learn/extracting-state-logic-into-a-reducer)

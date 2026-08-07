@@ -1,6 +1,8 @@
-# useId
+﻿# useId
 
-> برای تولید ID یکتا و پایدار بین `server` و `client` — عمدتاً برای دسترسی‌پذیری (`label`/`input`، `aria-*`).
+> برای تولید شناسهٔ یکتا (`ID`) پایدار بین `server` و `client` — عمدتاً برای دسترسی‌پذیری (`label`/`input`، `aria-*`).
+
+> 🧭 پیش‌نیاز: [useImperativeHandle](./useImperativeHandle.md) · بعدی: [useDebugValue](./useDebugValue.md)
 
 ---
 
@@ -12,24 +14,24 @@
 
 ## چرا
 
-استفاده از `id={Math.random()}` یا `id={Date.now()}` در SSR باعث `hydration mismatch` می‌شود. با `useId` ID پایدار و سازگار با `server`/`client` تولید می‌شود.
+در فرم SSR، `id="email"` ثابت برای همه فیلدها `collision` می‌سازد؛ `Math.random()` در `render` باعث `hydration mismatch` می‌شود. با `useId` یک شناسهٔ یکتا و **یکسان** بین سرور و کلاینت تولید می‌شود — مخصوص `label`/`input` و `aria-*`، نه `key` لیست.
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
-- ID تولیدشده برای `CSS selector` مناسب نیست (شامل `:` است).
+- شناسهٔ تولیدشده برای `CSS selector` مناسب نیست (شامل `:` است).
 - در لیست نباید به‌عنوان `key` استفاده شود — هر item یک `useId` جدا ندارد مگر کامپوننت جدا باشد.
 - فقط یک ID به ازای هر `component instance` — برای چند `id` از `suffix` بسازید.
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
-1. اولین `render`: React یک `unique id` تولید می‌کند (مثل `:r1:`).
+1. اولین `render`: React یک `unique id` تولید می‌کند (React 19.2: پیش‌وند `«r»` به‌جای `:r`).
 2. همان `id` در `re-render`ها برمی‌گردد.
 3. SSR و `client` همان `id` را می‌گیرند → بدون `mismatch`.
-4. هر `mount` جدید `id` جدید.
+4. هر `mount` جدید → `id` جدید؛ برای چند `id` از `suffix` استفاده کنید (`${id}-hint`).
 
 ---
 
@@ -161,7 +163,7 @@ function StarRating({ value, onChange }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ random id — hydration mismatch
@@ -186,7 +188,7 @@ const hintId = `${baseId}-hint`;
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - برای `htmlFor` + `id` و `aria-*` استفاده کنید.
 - چند `id`: `const id = useId(); const hintId = id + '-hint';`
@@ -205,11 +207,12 @@ const hintId = `${baseId}-hint`;
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [Forms.md](../Forms.md)
-- [Accessibility patterns in Components](../Components.md)
-- [useRef.md](./useRef.md) — ref ≠ id
+- [Forms.md](../Forms.md) — `label`/`input` در فرم‌ها (M2)
+- [Components.md](../Components.md) — الگوهای دسترسی‌پذیری
+- [useRef.md](./useRef.md) — `ref` برای DOM ≠ `id` برای `aria`
+- [Lists.md](../Lists.md) — `key` لیست از `item.id`، نه `useId`
 
 ---
 
@@ -234,10 +237,11 @@ const hintId = `${baseId}-hint`;
 
 ## خلاصه
 
-با `useId` ID یکتا و سازگار با SSR برای دسترسی‌پذیری تولید می‌شود. برای `label`/`input` و `aria` استفاده کنید؛ برای `key` یا `selector` CSS نه.
+با `useId` شناسهٔ یکتا و سازگار با SSR برای دسترسی‌پذیری تولید می‌شود. برای `label`/`input` و `aria` استفاده کنید؛ برای `key` یا `selector` CSS نه.
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useId — react.dev](https://react.dev/reference/react/useId)
+- [Accessibility — react.dev](https://react.dev/learn/accessibility)

@@ -63,12 +63,13 @@
 
 - [Hooks Overview](./Hooks/README.md)
 - [useState](./Hooks/useState.md) · [useEffect](./Hooks/useEffect.md) · [useLayoutEffect](./Hooks/useLayoutEffect.md)
+- [useInsertionEffect](./Hooks/useInsertionEffect.md) · [useEffectEvent](./Hooks/useEffectEvent.md)
 - [useMemo](./Hooks/useMemo.md) · [useCallback](./Hooks/useCallback.md) · [useRef](./Hooks/useRef.md)
 - [useContext](./Hooks/useContext.md) · [useReducer](./Hooks/useReducer.md)
 - [useTransition](./Hooks/useTransition.md) · [useDeferredValue](./Hooks/useDeferredValue.md)
 - [useOptimistic](./Hooks/useOptimistic.md) · [useActionState](./Hooks/useActionState.md)
 - [useFormStatus](./Hooks/useFormStatus.md) · [useSyncExternalStore](./Hooks/useSyncExternalStore.md)
-- [useImperativeHandle](./Hooks/useImperativeHandle.md) · [useId](./Hooks/useId.md) · [use](./Hooks/use.md)
+- [useImperativeHandle](./Hooks/useImperativeHandle.md) · [useId](./Hooks/useId.md) · [useDebugValue](./Hooks/useDebugValue.md) · [use](./Hooks/use.md)
 
 ### Patterns
 

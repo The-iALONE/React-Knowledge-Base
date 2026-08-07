@@ -1,6 +1,8 @@
-# useInsertionEffect
+﻿# useInsertionEffect
 
 > برای `inject` کردن استایل **قبل از** `layout effect`ها — عمدتاً برای نویسندگان کتابخانه‌های CSS-in-JS.
+
+> 🧭 پیش‌نیاز: [useLayoutEffect](./useLayoutEffect.md) · بعدی: [useEffectEvent](./useEffectEvent.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-اگر استایل در `useEffect` یا حتی `useLayoutEffect` `inject` شود، `effect`های دیگر ممکن است `layout` را با استایل قدیمی بخوانند. `useInsertionEffect` تضمین می‌کند استایل‌ها قبل از `measurement`/`layout` آماده‌اند.
+کتابخانه‌های CSS-in-JS (مثل styled-components قدیمی) باید `<style>` را **قبل از** اینکه `useLayoutEffect` اندازه DOM را بخواند، در صفحه باشد. اگر استایل در `useEffect` تزریق شود، یک فریم `layout` با استایل قدیمی محاسبه می‌شود — برای نویسندگان کتابخانه، نه برای اپ معمولی با Tailwind/CSS Modules.
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - برای اکثر اپلیکیشن‌ها لازم نیست — `useEffect` یا `useLayoutEffect` کافی است.
 - نمی‌توان از داخل آن `state` `set` کرد.
@@ -25,7 +27,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. React DOM را commit می‌کند.
 2. `useInsertionEffect` اجرا می‌شود (قبل از `layout effect`ها).
@@ -104,7 +106,7 @@ function useCSS(rule) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ برای fetch یا analytics
@@ -120,7 +122,7 @@ useInsertionEffect(() => { measure(inputRef.current); }, []);
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - فقط برای `injection` زمان‌اجرا CSS-in-JS.
 - برای استایل معمولی: CSS Modules، Tailwind، یا static CSS.
@@ -138,11 +140,12 @@ useInsertionEffect(() => { measure(inputRef.current); }, []);
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [useLayoutEffect.md](./useLayoutEffect.md) — بعد از insertion effect
-- [useEffect.md](./useEffect.md) — بعد از paint
-- [Styling/README.md](../Styling/README.md) — روش‌های استایل
+- [useLayoutEffect.md](./useLayoutEffect.md) — بعد از `insertion effect` (اندازه‌گیری DOM)
+- [useEffect.md](./useEffect.md) — بعد از `paint`
+- [Styling/README.md](../Styling/README.md) — روش‌های استایل (M9)
+- [Escape-Hatches/React-Compiler.md](../Escape-Hatches/React-Compiler.md) — کاهش نیاز به runtime CSS
 
 ---
 
@@ -167,6 +170,6 @@ useInsertionEffect(() => { measure(inputRef.current); }, []);
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useInsertionEffect — react.dev](https://react.dev/reference/react/useInsertionEffect)

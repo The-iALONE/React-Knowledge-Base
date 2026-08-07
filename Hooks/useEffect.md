@@ -1,6 +1,8 @@
-# useEffect
+﻿# useEffect
 
 > برای اجرای `side effect` بعد از `render` — sync با سیستم‌های خارجی React.
+
+> 🧭 پیش‌نیاز: [useState](./useState.md) · بعدی: [useLayoutEffect](./useLayoutEffect.md)
 
 ---
 
@@ -12,11 +14,13 @@
 
 ## چرا
 
-کامپوننت‌های React باید `pure` در `render` باشند. هر کار `impure` (شبکه، `timer`، `log`) باید در `effect` جدا شود تا `render` قابل پیش‌بینی بماند.
+کامپوننت‌های React باید در `render` **خالص** (`pure`) باشند — یعنی با همان `props`/`state` همیشه همان JSX را برگردانند. هر کار `impure` (شبکه، `timer`، `log`، `subscription`) باید در `effect` جدا شود.
+
+مثال ذهنی: `render` مثل نقاشی روی بوم است؛ `effect` مثل تماس با بیرون از اتاق نقاشی (API، ساعت، بلندگو). اگر همه چیز را داخل `render` بریزید، پیش‌بینی رفتار سخت می‌شود ([You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect)).
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - `dependency array` اشتباه → `stale closure` یا loop بی‌نهایت.
 - فراموش کردن `cleanup` → memory leak.
@@ -25,12 +29,21 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
+
+```
+`render` → `commit` DOM → `paint` (کاربر می‌بیند) → `useEffect` اجرا
+                                              ↓
+                                    `cleanup` قبل از `re-run` / `unmount`
+```
 
 1. React کامپوننت را `render` می‌کند.
-2. DOM را commit می‌کند (به صفحه می‌رود).
-3. `effect` اجرا می‌شود (معمولاً `async` نسبت به `paint`).
-4. قبل از `re-run` یا `unmount`، تابع `cleanup` قبلی اجرا می‌شود.
+2. DOM را `commit` می‌کند (به صفحه می‌رود).
+3. مرورگر `paint` می‌کند — کاربر UI را می‌بیند.
+4. `effect` اجرا می‌شود (معمولاً **بعد از** `paint` — `non-blocking`).
+5. قبل از `re-run` یا `unmount`، تابع `cleanup` قبلی اجرا می‌شود.
+
+> برای اندازه‌گیری DOM **قبل از** `paint` (جلوگیری از `flicker`) → [`useLayoutEffect`](./useLayoutEffect.md).
 
 ---
 
@@ -194,7 +207,7 @@ function ProductPage({ productId }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ missing dependency
@@ -217,12 +230,14 @@ const fullName = firstName + ' ' + lastName;
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - یک `effect` = یک `concern` (`fetch` جدا، `subscription` جدا).
-- همیشه `cleanup` برای async/`subscription`/timer.
+- همیشه `cleanup` برای async/`subscription`/`timer`.
 - از `eslint-plugin-react-hooks` `exhaustive-deps` پیروی کنید.
-- برای `data fetching` در پروژه‌های جدید React Query/SWR را در نظر بگیرید.
+- قبل از `useEffect` برای `fetch` بپرسید: آیا واقعاً `effect` لازم است؟ ([You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect))
+- برای `data fetching` با `cache` و `invalidation` در پروژه‌های جدید [React Query](../State-Management/React-Query.md) را در نظر بگیرید.
+- برای `callback` با آخرین `state` بدون اضافه کردن به `deps`: [`useEffectEvent`](./useEffectEvent.md) (React 19.2).
 
 ---
 
@@ -236,12 +251,13 @@ const fullName = firstName + ' ' + lastName;
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [Effects.md](../Effects.md) — فلسفه effect و جداسازی `concern`
+- [Effects.md](../Effects.md) — فلسفه `effect` و جداسازی `concern` (M2)
 - [useLayoutEffect.md](./useLayoutEffect.md) — قبل از `paint`
 - [useEffectEvent.md](./useEffectEvent.md) — رویداد `non-reactive` داخل `Effect` (React 19.2)
 - [Lifecycle.md](../Lifecycle.md) — معادل `lifecycle` در کلاس
+- [State-Management/React-Query.md](../State-Management/React-Query.md) — جایگزین `useEffect` + `fetch` برای دادهٔ سرور
 
 ---
 
@@ -272,7 +288,9 @@ const fullName = firstName + ' ' + lastName;
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useEffect — react.dev](https://react.dev/reference/react/useEffect)
 - [Synchronizing with Effects — react.dev](https://react.dev/learn/synchronizing-with-effects)
+- [You Might Not Need an Effect — react.dev](https://react.dev/learn/you-might-not-need-an-effect)
+- [Separating Events from Effects — react.dev](https://react.dev/learn/separating-events-from-effects)

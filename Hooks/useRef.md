@@ -1,6 +1,8 @@
-# useRef
+﻿# useRef
 
 > برای نگه‌داری یک مقدار `mutable` بین `render`ها — تغییر آن باعث `re-render` نمی‌شود.
+
+> 🧭 پیش‌نیاز: [useCallback](./useCallback.md) · بعدی: [useContext](./useContext.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-بعضی داده‌ها باید بین `render`ها حفظ شوند اما UI را به‌روز نکنند: timer ID، abort controller، مقدار قبلی، scroll position. همچنین برای دسترسی imperative به DOM (focus، play video، measure) لازم است.
+بعضی داده‌ها باید بین `render`ها حفظ شوند اما UI را به‌روز نکنند: شناسهٔ `timer`، `AbortController`، «مقدار قبلی `props`»، موقعیت `scroll`. همچنین برای دسترسی `imperative` به DOM (`focus`، `play`، `measure`) لازم است — جایی که React ترجیح می‌دهد `declarative` باشید ولی گاهی به DOM مستقیم نیاز دارید.
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - نوشتن `ref.current` برای نمایش در UI → UI به‌روز نمی‌شود.
 - خواندن ref در `render` برای تصمیم‌گیری UI → anti-pattern.
@@ -24,7 +26,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. `useRef(initial)` یک box با `.current = initial` می‌سازد.
 2. همان object در همه `render`ها برمی‌گردد.
@@ -69,6 +71,20 @@ function MyInput({ ref, ...props }) {
 | مقدار | نوع | توضیح |
 |-------|-----|-------|
 | `ref` | `{ current: T }` | object پایدار بین renderها |
+
+### الگوی «مقدار قبلی»
+
+```jsx
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}
+```
+
+`ref.current` در `render` فعلی هنوز مقدار **قبل** از `effect` را نشان می‌دهد.
 
 ---
 
@@ -145,7 +161,7 @@ function TrackClicks({ productId }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ ref برای UI
@@ -164,7 +180,7 @@ ref.current = compute(); // do in effect or event
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - دسترسی DOM: بعد از `mount` در `useEffect` یا `useLayoutEffect`.
 - `callback ref` برای `dynamic elements`: `ref={(el) => { ... }}`.
@@ -183,11 +199,12 @@ ref.current = compute(); // do in effect or event
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [Refs.md](../Refs.md) — مفاهیم ref و forwardRef
+- [Refs.md](../Refs.md) — مفاهیم `ref`، `forwardRef`، ref as prop (M2)
 - [useImperativeHandle.md](./useImperativeHandle.md) — سفارشی‌سازی `ref` API
 - [DOM-Manipulation.md](../DOM-Manipulation.md)
+- [useEffectEvent.md](./useEffectEvent.md) — جایگزین رسمی الگوی `ref` + latest callback (React 19.2)
 
 ---
 
@@ -217,7 +234,8 @@ ref.current = compute(); // do in effect or event
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useRef — react.dev](https://react.dev/reference/react/useRef)
 - [Manipulating the DOM with Refs — react.dev](https://react.dev/learn/manipulating-the-dom-with-refs)
+- [Referencing Values with Refs — react.dev](https://react.dev/learn/referencing-values-with-refs)

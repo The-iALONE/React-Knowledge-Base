@@ -1,6 +1,8 @@
-# useFormStatus
+﻿# useFormStatus
 
 > با `useFormStatus` می‌توان وضعیت `submit` فرم والد را خواند — معمولاً برای `disable` کردن دکمه و نمایش `loading`.
+
+> 🧭 پیش‌نیاز: [useActionState](./useActionState.md) · بعدی: [useSyncExternalStore](./useSyncExternalStore.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-دکمه `submit` اغلب در کامپوننت جدا از `<form>` است (طراحی UI). `useFormStatus` بدون `prop drilling` به `pending` دسترسی می‌دهد — فقط باید **داخل** `<form>` و در `Client Component` باشد.
+دکمه «ذخیره» در کامپوننت جدا از `<form>` طراحی می‌شود — ولی باید بداند فرم در حال ارسال است. `useFormStatus` بدون `prop drilling` وضعیت `pending` را به `descendant` می‌دهد؛ شرط: **داخل** `<form>` و **زیر** کامپوننتی که خود `<form>` را `render` می‌کند.
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - نباید در همان کامپوننتی که `<form>` را `render` می‌کند استفاده شود — فقط در `descendant`.
 - فقط برای form با `action` (Server Action یا function).
@@ -24,12 +26,22 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. فرم با `action={serverAction}` `submit` می‌شود.
 2. React وضعیت `pending` را track می‌کند.
 3. child با `useFormStatus()` → `{ pending: true }`.
 4. بعد از اتمام action → `pending: false`.
+
+---
+
+### تفاوت با `isPending` از `useActionState`
+
+| | `useActionState` | `useFormStatus` |
+|---|-----------------|-----------------|
+| **محل** | کامپوننت والد فرم | `child` داخل `<form>` |
+| **داده** | `state` کامل (خطا، موفقیت) | فقط `pending`، `data`، `method` |
+| **import** | `'react'` | `'react-dom'` |
 
 ---
 
@@ -148,7 +160,7 @@ function PlaceOrderButton() {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ useFormStatus در همان component که form دارد
@@ -175,7 +187,7 @@ function Form() {
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - کامپوننت جدا برای دکمه `submit` (`SubmitButton`).
 - ترکیب با `useActionState` برای `state` خطا در parent.
@@ -194,11 +206,11 @@ function Form() {
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [useActionState.md](./useActionState.md) — `state` نتیجه فرم
-- [Forms.md](../Forms.md)
-- [Nextjs/Loading-And-Error-States.md](../Nextjs/Loading-And-Error-States.md)
+- [useActionState.md](./useActionState.md) — `state` نتیجه فرم در والد
+- [Forms.md](../Forms.md) — Form Actions (M2)
+- [useTransition.md](./useTransition.md) — `pending` برای actionهای غیرفرمی
 
 ---
 
@@ -226,6 +238,6 @@ function Form() {
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useFormStatus — react.dev](https://react.dev/reference/react-dom/hooks/useFormStatus)

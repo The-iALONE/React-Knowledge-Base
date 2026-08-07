@@ -1,6 +1,8 @@
-# useImperativeHandle
+﻿# useImperativeHandle
 
 > برای سفارشی‌سازی `ref` که به `parent` `expose` می‌شود — معمولاً با `forwardRef` روی `child component`.
+
+> 🧭 پیش‌نیاز: [useSyncExternalStore](./useSyncExternalStore.md) · بعدی: [useId](./useId.md)
 
 ---
 
@@ -12,11 +14,13 @@
 
 ## چرا
 
-گاهی `parent` باید `action` `imperative` روی `child` انجام دهد (`focus` روی `input`، `play` ویدیو، `reset` فرم). `expose` کردن کل DOM شکنندگی و `coupling` زیاد ایجاد می‌کند. با `useImperativeHandle` API محدود و کنترل‌شده در دسترس است.
+گاهی والد باید روی فرزند `focus()` بزند یا ویدیو را `play()` کند — ولی نباید به DOM داخلی دسترسی داشته باشد. مثل دکمه بیرونی که فقط «زنگ بزن» می‌گوید، نه اینکه کل سیم‌کشی خانه را ببیند. `useImperativeHandle` API محدود (`{ focus, play }`) را `expose` می‌کند.
+
+> اول `props`/`events` (`open={isOpen}`) را امتحان کنید — `imperative` آخرین راه است ([react.dev](https://react.dev/learn/manipulating-the-dom-with-refs#when-to-use-imperative-handles)).
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - `overuse` → کد `imperative` و سخت برای نگهداری.
 - خلاف مدل `declarative` React — فقط وقتی لازم است.
@@ -24,7 +28,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. `Parent` `ref` را به `child` `pass` می‌دهد (`forwardRef` در React 18، یا `ref` `prop` در React 19).
 2. `Child` `useImperativeHandle(ref, () => ({ method }))` تعریف می‌کند.
@@ -176,7 +180,7 @@ const ProductVideo = forwardRef(function ProductVideo({ src }, ref) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ بدون forwardRef
@@ -196,7 +200,7 @@ useImperativeHandle(ref, () => ({ focus: () => inputRef.current?.focus() }));
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - API کوچک و `stable` `expose` کنید.
 - ترجیحاً `declarative` `props` (`open`، `onClose`) — `imperative` آخرین راه.
@@ -215,11 +219,12 @@ useImperativeHandle(ref, () => ({ focus: () => inputRef.current?.focus() }));
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [useRef.md](./useRef.md) — ref پایه
-- [Refs.md](../Refs.md) — `forwardRef`
-- [DOM-Manipulation.md](../DOM-Manipulation.md)
+- [useRef.md](./useRef.md) — `ref` پایه و ref as prop (React 19)
+- [Refs.md](../Refs.md) — `forwardRef` و ref callback cleanup (M2)
+- [DOM-Manipulation.md](../DOM-Manipulation.md) — دسترسی imperative به DOM
+- [Portals.md](../Portals.md) — مودال با API declarative ترجیح دارد
 
 ---
 
@@ -237,7 +242,7 @@ useImperativeHandle(ref, () => ({ focus: () => inputRef.current?.focus() }));
 **جواب:** برای `expose` کردن API محدود `imperative` به `parent` بدون افشای کل DOM — `encapsulation` بهتر.
 
 **سوال:** چرا کم استفاده می‌شود؟  
-**جواب:** React `declarative` است؛ `props`/`events` ترجیح دارند. فقط `integration` و `focus`/`media` نیاز دارند.
+**جواب:** در React مدل `declarative` غالب است؛ `props`/`events` ترجیح دارند. فقط `integration` و `focus`/`media` نیاز به API `imperative` دارند.
 
 ---
 
@@ -247,7 +252,7 @@ useImperativeHandle(ref, () => ({ focus: () => inputRef.current?.focus() }));
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useImperativeHandle — react.dev](https://react.dev/reference/react/useImperativeHandle)
 - [Manipulating the DOM with Refs — react.dev](https://react.dev/learn/manipulating-the-dom-with-refs)

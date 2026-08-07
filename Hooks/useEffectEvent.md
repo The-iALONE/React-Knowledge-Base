@@ -1,24 +1,24 @@
-# useEffectEvent
+﻿# useEffectEvent
 
 > برای جدا کردن رویدادهای `Effect` از خود `Effect` — منطق `non-reactive` که آخرین `props`/`state` را می‌بیند بدون `re-run` کردن `Effect`.
+
+> 🧭 پیش‌نیاز: [useInsertionEffect](./useInsertionEffect.md) · بعدی: [useMemo](./useMemo.md)
 
 ---
 
 ## 📖 مفهوم
 
-برای ساخت `Effect Event` — تابعی که فقط داخل `useEffect`، `useLayoutEffect` یا `useInsertionEffect` (یا `Effect Event` دیگر) فراخوانی می‌شود — از `useEffectEvent` استفاده می‌شود. همیشه آخرین مقادیر `render` را می‌بیند، اما در `dependency array` `Effect` قرار نمی‌گیرد.
-
-React 19.2 این `Hook` را `stable` کرد.
+برای ساخت `Effect Event` — تابعی که فقط داخل `useEffect`، `useLayoutEffect` یا `useInsertionEffect` (یا `Effect Event` دیگر) فراخوانی می‌شود — از `useEffectEvent` استفاده می‌شود. همیشه آخرین مقادیر `render` را می‌بیند، اما در `dependency array` `Effect` قرار نمی‌گیرد. از نسخه ۱۹.۲ React این `Hook` پایدار (`stable`) است.
 
 ---
 
 ## چرا
 
-گاهی `Effect` باید به یک «رویداد» واکنش نشان دهد (مثل `on('connected')`) ولی `callback` به `props`/`state` وابسته است که نباید باعث `reconnect` شود — مثلاً `muted` در `chat room`. قبلاً از `useRef` برای نگه‌داری `latest callback` استفاده می‌شد؛ `useEffectEvent` راه رسمی و `type-safe` است.
+در اتاق چت، وقتی به `roomId` وصل می‌شوید نباید هر بار که `muted` عوض شد دوباره `disconnect`/`connect` شوید — ولی وقتی `connected` شدید باید آخرین مقدار `muted` را ببینید. قبلاً الگوی `ref.current = callback` در هر `render` رایج بود؛ `useEffectEvent` جایگزین رسمی و قابل فهم‌تر است ([Separating Events from Effects](https://react.dev/learn/separating-events-from-effects)).
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - **نباید** برای پنهان کردن `dependency`های واقعی Effect استفاده شود.
 - فقط داخل Effect یا Effect Event دیگر قابل فراخوانی است — نه در `render`، `event handler`، یا child.
@@ -26,7 +26,7 @@ React 19.2 این `Hook` را `stable` کرد.
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. `const onEvent = useEffectEvent(() => { ... })` در `top-level` کامپوننت.
 2. داخل Effect، `onEvent` را صدا بزنید.
@@ -101,7 +101,7 @@ function useInterval(callback, delay) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ پنهان کردن dependency واقعی
@@ -117,7 +117,7 @@ useEffect(() => { onConnected(); }, [onConnected]); // هر render re-run
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - فقط برای منطقی که واقعاً رویداد `Effect` است، نه هر `dependency`.
 - `eslint-plugin-react-hooks@latest` را نصب کنید — `linter` `Effect Event` را از `deps` حذف می‌کند.
@@ -135,11 +135,12 @@ useEffect(() => { onConnected(); }, [onConnected]); // هر render re-run
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
 - [useEffect.md](./useEffect.md) — `Effect` پایه
-- [Effects.md](../Effects.md) — فلسفه effect
-- [Custom-Hooks.md](../Custom-Hooks.md) — الگوی `useInterval`
+- [Effects.md](../Effects.md) — فلسفه `effect` و جداسازی رویداد (M2)
+- [useRef.md](./useRef.md) — الگوی قدیمی `ref` + latest callback
+- [Custom-Hooks.md](../Custom-Hooks.md) — الگوی `useInterval` / `useEventListener`
 
 ---
 
@@ -167,7 +168,7 @@ useEffect(() => { onConnected(); }, [onConnected]); // هر render re-run
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useEffectEvent — react.dev](https://react.dev/reference/react/useEffectEvent)
 - [Separating Events from Effects — react.dev](https://react.dev/learn/separating-events-from-effects)

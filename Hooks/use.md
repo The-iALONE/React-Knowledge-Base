@@ -1,6 +1,8 @@
-# use
+﻿# use
 
 > API برای خواندن مقدار `promise` یا `context` در `render` — با پشتیبانی از شرط و حلقه (برخلاف `useContext`).
+
+> 🧭 پیش‌نیاز: [React Compiler](../Escape-Hatches/React-Compiler.md) · بعدی: [Patterns — نمای کلی](../Patterns/README.md)
 
 ---
 
@@ -12,9 +14,11 @@
 
 ## چرا
 
-- برای خواندن `context` شرطی، `use(context)` مجاز است — برخلاف `useContext` که فقط در top level است
-- الگوی `useEffect` + `fetch` + `loading state` پراکنده — با `use(promise)` + `Suspense` `declarative` می‌شود
-- الگوی یکپارچه برای داده ناهمگام در `render`
+- برای خواندن `context` شرطی، `use(context)` مجاز است — برخلاف `useContext` که فقط در `top-level` است.
+- الگوی `useEffect` + `fetch` + `loading state` پراکنده است — با `use(promise)` + `Suspense` اعلانی (`declarative`) می‌شود.
+- یک API واحد برای داده ناهمگام در `render` — بخشی از [Escape Hatches](../Escape-Hatches/README.md) در React 19.
+
+> با وجود پیشوند `use`، این API **Hook نیست** — می‌تواند داخل `if`/`for` باشد و قوانین Hooks را نقض نمی‌کند.
 
 ---
 
@@ -26,13 +30,23 @@
 
 ---
 
-## `use(promise)`
+## ⚙️ نحوه کار
 
-### نحوه کار
+### `use(promise)`
 
-1. `use(promise)` مقدار resolve‌شده را برمی‌گرداند
-2. اگر `pending` → کامپوننت `suspend` → نزدیک‌ترین `<Suspense>` `fallback` را نشان می‌دهد
-3. اگر `reject` → نزدیک‌ترین `Error Boundary`
+1. `use(promise)` مقدار `resolve`‌شده را برمی‌گرداند.
+2. اگر `pending` → کامپوننت `suspend` → نزدیک‌ترین `<Suspense>` `fallback` را نشان می‌دهد.
+3. اگر `reject` → نزدیک‌ترین `Error Boundary` (نه `try/catch` دور `use`).
+
+### `use(context)`
+
+1. مقدار نزدیک‌ترین `Provider` را برمی‌گرداند — مثل `useContext`.
+2. می‌تواند داخل `if`/`for` باشد — برای UI شرطی مثل «فقط اگر `show`، تم را بخوان».
+3. در `Server Component` پشتیبانی نمی‌شود — آنجا `useContext` یا `props` استفاده کنید.
+
+---
+
+## `use(promise)` — جزئیات
 
 ### Syntax
 
@@ -74,13 +88,13 @@ function UserProfile({ userId }) {
 
 ---
 
-## `use(context)`
+## `use(context)` — جزئیات
 
 ### تفاوت با `useContext`
 
 | | `useContext` | `use(context)` |
 |---|-------------|----------------|
-| محل فراخوانی | فقط top level | داخل `if`/`for` |
+| محل فراخوانی | فقط `top-level` | داخل `if`/`for` |
 | `Server Component` | بله | خیر |
 | مقدار بازگشتی | همان `context` | همان `context` |
 
@@ -172,11 +186,10 @@ function Page({ userPromise, postsPromise }) {
 
 ## ارتباط با مفاهیم دیگر
 
-- [Suspense.md](../Escape-Hatches/Suspense.md)
-- [Hooks/useContext.md](./useContext.md)
-- [Context.md](../Context.md)
-- [Server-Components.md](../Escape-Hatches/Server-Components.md)
-- [Error-Boundaries.md](../Error-Boundaries.md)
+- [Escape-Hatches/Suspense.md](../Escape-Hatches/Suspense.md) — `fallback` برای `use(promise)` (M5)
+- [Hooks/useContext.md](./useContext.md) — خواندن `context` در `top-level`
+- [Context.md](../Context.md) — Provider بدون `.Provider` (M2)
+- [Error-Boundaries.md](../Error-Boundaries.md) — خطای `reject` (M2)
 - [Examples/escape-hatches/UsePromise.jsx](../Examples/escape-hatches/UsePromise.jsx)
 
 ---
@@ -192,3 +205,4 @@ function Page({ userPromise, postsPromise }) {
 - [use — react.dev](https://react.dev/reference/react/use)
 - [Suspense — react.dev](https://react.dev/reference/react/Suspense)
 - [Passing data with context — react.dev](https://react.dev/learn/passing-data-deeply-with-context)
+- [React 19 — use API](https://react.dev/blog/2024/12/05/react-19)

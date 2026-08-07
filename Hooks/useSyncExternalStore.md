@@ -1,6 +1,8 @@
-# useSyncExternalStore
+﻿# useSyncExternalStore
 
 > برای `subscribe` به store خارجی React (Redux، Zustand، browser API) با پشتیبانی از Concurrent Rendering و SSR.
+
+> 🧭 پیش‌نیاز: [useFormStatus](./useFormStatus.md) · بعدی: [useImperativeHandle](./useImperativeHandle.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-کتابخانه‌های `state management` و browser APIها (مثل `matchMedia`) خارج از React هستند. این `hook` پل رسمی React برای `sync` بدون باگ `concurrent` است. Zustand و Redux از آن داخلی استفاده می‌کنند.
+کتابخانه‌هایی مثل Zustand و Redux خارج از چرخه `render` React زندگی می‌کنند — ولی کامپوننت باید با تغییر `store` به‌روز شود. در `Concurrent Rendering` بدون این `hook` ممکن است دو بخش UI `snapshot` متفاوت از یک `store` نشان دهند (`tearing`). `useSyncExternalStore` پل رسمی React است ([Subscribing to External Stores](https://react.dev/reference/react/useSyncExternalStore)).
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - برای `state` محلی کامپوننت `overkill` — `useState` کافی است.
 - `getSnapshot` باید `immutable snapshot` برگرداند.
@@ -24,7 +26,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. `subscribe(callback)` — وقتی store عوض شد `callback` صدا زده شود.
 2. `getSnapshot()` — مقدار فعلی `store` (باید `stable` اگر تغییر نکرده).
@@ -172,7 +174,7 @@ function useStorageItem(key, defaultValue) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ getSnapshot object جدید هر بار
@@ -194,7 +196,7 @@ useSyncExternalStore(
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - `getSnapshot` باید `pure` و سریع باشد.
 - اگر مقدار تغییر نکرده، همان reference/primitive قبلی را برگردانید.
@@ -213,11 +215,13 @@ useSyncExternalStore(
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [State-Management/README.md](../State-Management/README.md)
-- [useContext.md](./useContext.md)
-- [Escape-Hatches/README.md](../Escape-Hatches/README.md)
+- [State-Management/State-Types.md](../State-Management/State-Types.md) — Global / External `state`
+- [State-Management/Zustand.md](../State-Management/Zustand.md) — استفاده داخلی از این `hook`
+- [State-Management/Redux-Toolkit.md](../State-Management/Redux-Toolkit.md) — Redux + RTK
+- [useContext.md](./useContext.md) — جایگزین سبک‌تر برای داده کم‌تغییر
+- [useDebugValue.md](./useDebugValue.md) — `label` در DevTools برای `custom hook`های store
 
 ---
 
@@ -245,6 +249,8 @@ useSyncExternalStore(
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useSyncExternalStore — react.dev](https://react.dev/reference/react/useSyncExternalStore)
+- [Subscribing to External Stores — react.dev](https://react.dev/reference/react/useSyncExternalStore#subscribing-to-external-stores)
+- [useSyncExternalStore with Selectors — react.dev](https://react.dev/reference/react/useSyncExternalStore#my-subscribe-function-gets-called-after-every-re-render)

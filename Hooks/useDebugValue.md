@@ -1,6 +1,8 @@
-# useDebugValue
+﻿# useDebugValue
 
 > برای نمایش `label` خوانا در React DevTools برای `Custom Hook` — مخصوص نویسندگان کتابخانه.
+
+> 🧭 پیش‌نیاز: [useId](./useId.md) · بعدی: [Escape Hatches — نمای کلی](../Escape-Hatches/README.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-در `Custom Hook`های پیچیده `state` داخلی زیادی وجود دارد که در DevTools سخت `inspect` می‌شود. با `useDebugValue` نمایش برای توسعه‌دهنده ساده‌تر می‌شود.
+وقتی `useOnlineStatus` را در DevTools باز می‌کنید، دیدن `true`/`false` کمک کمی می‌کند — «Online»/«Offline» خواناتر است. این `hook` فقط برای **تجربه دیباگ** است؛ روی رفتار اپ در `production` اثری ندارد.
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - فقط در DevTools دیده می‌شود — روی `runtime` اپ تأثیری ندارد.
 - نباید به هر `Custom Hook` اضافه شود — فقط `hook`های `shared` با ساختار پیچیده.
@@ -24,7 +26,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. در `top-level` Custom Hook، `useDebugValue(value)` صدا بزنید.
 2. وقتی کامپوننتی که `hook` را صدا می‌زند `inspect` شود، `label` در DevTools نمایش داده می‌شود.
@@ -74,7 +76,7 @@ export function useOnlineStatus() {
 }
 ```
 
-DevTools نشان می‌دهد: `OnlineStatus: "Online"` به‌جای `true`.
+در DevTools نمایش داده می‌شود: `OnlineStatus: "Online"` به‌جای `true`.
 
 ### `format` با تأخیر
 
@@ -86,7 +88,7 @@ useDebugValue(date, (d) => d.toDateString());
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ در کامپوننت معمولی (نه custom hook)
@@ -103,7 +105,7 @@ function useCounter() {
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - برای `hook`های `shared` کتابخانه با `state` داخلی پیچیده.
 - `format` برای مقادیر سنگین (`Date`، `object` بزرگ).
@@ -121,10 +123,11 @@ function useCounter() {
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [Custom-Hooks.md](../Custom-Hooks.md) — ساخت `custom hook`
-- [useSyncExternalStore.md](./useSyncExternalStore.md) — مثال رایج
+- [Custom-Hooks.md](../Custom-Hooks.md) — ساخت `custom hook` (M2)
+- [useSyncExternalStore.md](./useSyncExternalStore.md) — مثال `useOnlineStatus`
+- [Hooks/README.md](./README.md) — دسته «Other» در جدول `Hook`ها
 
 ---
 
@@ -145,10 +148,10 @@ function useCounter() {
 
 ## خلاصه
 
-با `useDebugValue` فقط برای `debug experience` در DevTools استفاده می‌شود. روی `custom hook`های پیچیده `shared` — نه هر `hook`.
+با `useDebugValue` فقط برای تجربهٔ دیباگ در DevTools استفاده می‌شود. روی `custom hook`های پیچیده `shared` — نه هر `hook`.
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useDebugValue — react.dev](https://react.dev/reference/react/useDebugValue)

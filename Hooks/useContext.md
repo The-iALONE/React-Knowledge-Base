@@ -1,6 +1,8 @@
-# useContext
+﻿# useContext
 
 > برای خواندن مقدار نزدیک‌ترین `context provider` در درخت کامپوننت — بدون `prop drilling`.
+
+> 🧭 پیش‌نیاز: [useRef](./useRef.md) · بعدی: [useReducer](./useReducer.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-داده‌های سراسری (تم، زبان، کاربر، سبد خرید) نباید از ۵–۱۰ سطح `prop` عبور کنند. Context API راه رسمی React برای `share` کردن این داده‌هاست.
+تم تاریک، زبان UI، کاربر لاگین‌شده — این داده‌ها از ۵–۱۰ سطح `prop` عبور نکنند (`prop drilling`). `useContext` راه رسمی React برای اشتراک داده در **درخت کامپوننت** است؛ برای `state` سراسری کم‌تغییر عالی است ([Global State در State-Types](../State-Management/State-Types.md)).
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - `Context` برای **هر** `state` → `re-render` کل `subtree`.
 - `value={{ user, login }}` بدون `memo` → `object` جدید هر `render` → `re-render` همه `consumer`ها.
@@ -24,12 +26,16 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
-1. `createContext(defaultValue)` یک `Context` `object` می‌سازد.
-2. `Provider` در بالای درخت `value` را `set` می‌کند.
-3. `useContext` نزدیک‌ترین `Provider` را پیدا و `value` را برمی‌گرداند.
-4. اگر `Provider` نباشد → `defaultValue` از `createContext`.
+1. `createContext(defaultValue)` یک `Context` می‌سازد.
+2. `Provider` در بالای درخت `value` را می‌دهد — React 19: `<ThemeContext value="dark">` بدون `.Provider`.
+3. `useContext(Context)` نزدیک‌ترین `value` را برمی‌گرداند.
+4. با تغییر `value`، **همه** `consumer`های آن `context` `re-render` می‌شوند — حتی اگر فقط یک فیلد را بخوانند.
+
+### الگوی split context
+
+برای کاهش `re-render`: `ThemeContext` و `CartContext` جدا — نه یک `AppContext` غول‌پیکر.
 
 ---
 
@@ -146,7 +152,7 @@ function CartBadge() {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ value جدید هر render
@@ -163,7 +169,7 @@ const value = useMemo(() => ({ user, login }), [user, login]);
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - `Custom hook` (`useAuth`) با `guard` برای `Provider`.
 - `value` را با `useMemo` `stabilize` کنید.
@@ -182,11 +188,13 @@ const value = useMemo(() => ({ user, login }), [user, login]);
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [Context.md](../Context.md) — Context API کامل
-- [useReducer.md](./useReducer.md) — ترکیب با `reducer` در Provider
-- [State-Management/README.md](../State-Management/README.md)
+- [Context.md](../Context.md) — Context API کامل + Provider در React 19 (M2)
+- [useReducer.md](./useReducer.md) — `Provider` + `useReducer` برای `state` پیچیده
+- [State-Management/Context-API.md](../State-Management/Context-API.md) — الگوها و محدودیت‌ها (M7)
+- [State-Management/Zustand.md](../State-Management/Zustand.md) — وقتی `Context` `re-render` زیاد می‌دهد
+- [Hooks/use.md](./use.md) — `use(context)` شرطی (React 19)
 
 ---
 
@@ -215,7 +223,8 @@ const value = useMemo(() => ({ user, login }), [user, login]);
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useContext — react.dev](https://react.dev/reference/react/useContext)
 - [Passing Data Deeply with Context — react.dev](https://react.dev/learn/passing-data-deeply-with-context)
+- [Scaling Up with Reducer and Context — react.dev](https://react.dev/learn/scaling-up-with-reducer-and-context)

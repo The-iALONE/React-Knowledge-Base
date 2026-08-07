@@ -1,6 +1,8 @@
-# useOptimistic
+﻿# useOptimistic
 
 > برای نمایش UI خوش‌بینانه — قبل از اتمام `async operation`، `state` موقت نشان می‌دهد و بعد با نتیجه واقعی `sync` می‌شود.
+
+> 🧭 پیش‌نیاز: [useDeferredValue](./useDeferredValue.md) · بعدی: [useActionState](./useActionState.md)
 
 ---
 
@@ -12,11 +14,11 @@
 
 ## چرا
 
-کاربر نباید منتظر پاسخ `server` برای دیدن نتیجه عمل (حذف، لایک، افزودن) بماند. UI خوش‌بینانه (`Optimistic UI`) احساس سرعت می‌دهد؛ اگر `server` خطا داد، `rollback` به `actualState` انجام می‌شود.
+کاربر روی «حذف رزرو» کلیک می‌کند — منتظر ۳۰۰ms پاسخ سرور نماند؛ کارت فوراً از لیست برود. اگر سرور خطا داد، با `revalidate` به `actualState` برمی‌گردد. این همان احساس سرعت اپ‌های مدرن است ([Optimistic Updates](https://react.dev/reference/react/useOptimistic)).
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - بدون `handle` خطا → UI با `server` ناهماهنگ می‌ماند.
 - برای عملیات غیرقابل برگشت بدون `confirm` خطرناک است.
@@ -24,7 +26,7 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
 1. `optimisticState` از `actualState` مشتق می‌شود.
 2. `addOptimistic(input)` فوری `updateFn(currentOptimistic, input)` را اجرا می‌کند.
@@ -153,7 +155,7 @@ function LikeButton({ post, onLike }) {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ بدون await / بدون sync با server state
@@ -169,7 +171,7 @@ chargeCard(); // dangerous
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
 - با Server Actions و `revalidatePath` در Next.js.
 - خطا را catch کنید و toast نشان دهید.
@@ -188,11 +190,12 @@ chargeCard(); // dangerous
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [useTransition.md](./useTransition.md) — `pending` `state`
-- [useActionState.md](./useActionState.md) — `form actions`
-- [Nextjs/Data-Fetching-And-Caching.md](../Nextjs/Data-Fetching-And-Caching.md)
+- [useTransition.md](./useTransition.md) — `isPending` روی دکمه
+- [useActionState.md](./useActionState.md) — `form actions` + `state` نتیجه
+- [State-Management/React-Query.md](../State-Management/React-Query.md) — optimistic در TanStack Query
+- [Forms.md](../Forms.md) — Server Actions (M2)
 
 ---
 
@@ -220,6 +223,6 @@ chargeCard(); // dangerous
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useOptimistic — react.dev](https://react.dev/reference/react/useOptimistic)

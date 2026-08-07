@@ -2,21 +2,27 @@
 
 > برای نگه‌داری `state` محلی در کامپوننت‌های تابعی React — `Hook` اصلی.
 
+> 🧭 پیش‌نیاز: [Hooks — نمای کلی](./README.md) · بعدی: [`useEffect`](./useEffect.md)
+
 ---
 
 ## 📖 مفهوم
 
 در کامپوننت‌های تابعی، از `useState` برای نگه‌داری `state` محلی استفاده می‌شود. یک متغیر `state` و تابع به‌روزرسانی برمی‌گرداند. هر بار `setState` فراخوانی شود، React کامپوننت را دوباره `render` می‌کند.
 
+نکتهٔ مهم: مقدار `state` در هر `render` یک **عکس لحظه‌ای** (`snapshot`) است — بعد از `setCount(count + 1)` هنوز در همان `render` مقدار قدیمی `count` را می‌بینید تا `render` بعدی ([State as a Snapshot](https://react.dev/learn/state-as-a-snapshot)).
+
 ---
 
 ## چرا
 
-کامپوننت‌های React باید با تعامل کاربر (کلیک، تایپ، toggle) واکنش نشان دهند. بدون `state`، UI فقط `props` ثابت را نشان می‌دهد. `useState` ساده‌ترین راه نگه‌داری داده‌ای است که با زمان تغییر می‌کند.
+کامپوننت‌های React باید با تعامل کاربر (کلیک، تایپ، `toggle`) واکنش نشان دهند. بدون `state`، UI فقط `props` ثابت را نشان می‌دهد — مثل یک تابلو تبلیغاتی که عوض نمی‌شود.
+
+وقتی کاربر روی «افزودن به سبد» کلیک می‌کند، باید جایی تعداد را نگه دارید؛ `useState` ساده‌ترین راه برای داده‌ای است که **فقط این کامپوننت** به آن نیاز دارد ([Local State در State-Types](../State-Management/State-Types.md)).
 
 ---
 
-## مشکل
+## چه مشکلی را حل می‌کند؟
 
 - `state` را مستقیم `mutate` نکنید (`state.count++` کار نمی‌کند).
 - به‌روزرسانی‌های پشت‌سرهم ممکن است `batch` شوند؛ از `functional update` استفاده کنید.
@@ -24,12 +30,29 @@
 
 ---
 
-## نحوه کار
+## ⚙️ نحوه کار
 
-1. در اولین `render`، React مقدار اولیه را ذخیره می‌کند.
-2. `setState(newValue)` یا `setState(prev => newValue)`، `state` را `schedule` می‌کند.
+1. در اولین `render`، React مقدار اولیه را ذخیره می‌کند (یا تابع `lazy initializer` را **یک بار** اجرا می‌کند).
+2. `setState(newValue)` یا `setState(prev => newValue)`، به‌روزرسانی را `schedule` می‌کند — فوری در همان خط اعمال نمی‌شود.
 3. React `re-render` می‌کند و مقدار جدید برمی‌گردد.
-4. `state` بین `render`ها حفظ می‌شود (مثل instance variable در کلاس).
+4. `state` بین `render`ها حفظ می‌شود (مثل `instance variable` در کلاس).
+
+### `lazy initializer`
+
+اگر مقدار اولیه از `localStorage` یا محاسبه سنگین می‌آید:
+
+```jsx
+const [todos, setTodos] = useState(() => {
+  const saved = localStorage.getItem('todos');
+  return saved ? JSON.parse(saved) : [];
+});
+```
+
+تابع فقط در **اولین** `render` اجرا می‌شود — نه در هر `re-render`.
+
+### `batching` (React 18+)
+
+چند `setState` پشت‌سرهم (حتی داخل `setTimeout` یا `fetch`) در یک `re-render` ادغام می‌شوند.
 
 ---
 
@@ -160,7 +183,7 @@ function Cart() {
 
 ---
 
-## اشتباهات
+## ⚠️ اشتباهات رایج
 
 ```jsx
 // ❌ mutate state
@@ -181,12 +204,13 @@ setCount((c) => c + 1); // +2 total
 
 ---
 
-## Best Practices
+## 🚀 Best Practices
 
-- `state` را کوچک و `focused` نگه دارید؛ `state` نامرتبط را جدا کنید.
+- `state` را کوچک و `focused` نگه دارید؛ `state` نامرتبط را جدا کنید ([State Colocation](../Performance/State-Colocation.md)).
 - برای `object`/`array` همیشه `immutable update` کنید.
 - `initializer` سنگین: `useState(() => expensiveCalc())`.
 - `state` مشتق‌شده را در `state` ذخیره نکنید؛ در `render` محاسبه کنید.
+- اگر چند `setState` به `state` قبلی وابسته‌اند، از `functional update` استفاده کنید.
 
 ---
 
@@ -200,11 +224,13 @@ setCount((c) => c + 1); // +2 total
 
 ---
 
-## ارتباط با مفاهیم
+## ارتباط با مفاهیم دیگر
 
-- [State.md](../State.md) — اصول `state` در React
-- [useReducer.md](./useReducer.md) — `state` پیچیده‌تر
+- [State.md](../State.md) — اصول `state` و `snapshot`
+- [State-Management/State-Types.md](../State-Management/State-Types.md) — Local vs Global `state`
+- [useReducer.md](./useReducer.md) — وقتی `update`ها پیچیده می‌شوند
 - [Lifting-State-Up.md](../Lifting-State-Up.md) — اشتراک `state` بین siblings
+- [Forms.md](../Forms.md) — کنترل `input` با `state`
 
 ---
 
@@ -231,6 +257,8 @@ setCount((c) => c + 1); // +2 total
 
 ---
 
-## منابع
+## 📚 منابع
 
 - [useState — react.dev](https://react.dev/reference/react/useState)
+- [State: A Snapshot of Time — react.dev](https://react.dev/learn/state-as-a-snapshot)
+- [Queueing a Series of State Updates — react.dev](https://react.dev/learn/queueing-a-series-of-state-updates)
