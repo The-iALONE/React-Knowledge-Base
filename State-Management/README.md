@@ -1,99 +1,124 @@
 # State Management — نمای کلی
 
-راهنمای انتخاب و ترکیب ابزارهای مدیریت `state` در React.
+> 🧭 پیش‌نیاز: [State](../State.md) · [Context](../Context.md) · [انواع State](./State-Types.md) · بعدی: [Context API](./Context-API.md)
 
 ---
+
 ## 📖 مفهوم
 
-مدیریت `state` (`State Management`) یعنی نگه‌داری، به‌روزرسانی و همگام‌سازی داده با UI. در React از `useState` محلی تا Redux و React Query طیف وسیعی وجود دارد.
+راهنمای انتخاب و ترکیب ابزارهای مدیریت `state` در React — از `useState` محلی تا Redux و React Query.
+
+مدیریت `state` (`State Management`) یعنی نگه‌داری، به‌روزرسانی و همگام‌سازی داده با UI. در اپ واقعی چند لایه داریم: `UI` موقت، `client state` سراسری، `server state` از API، و `form state`. هر کدام ابزار مخصوص خودش را دارد.
 
 ---
+
 ## چرا این ویژگی وجود دارد؟
 
-اپلیکیشن‌های واقعی `state` در سطوح مختلف دارند: فرم، UI موقت، `session` کاربر، داده سرور.
+وقتی اپ بزرگ می‌شود، `prop drilling`، `inconsistency` بین تب‌ها، و `race condition` در `fetch` دستی ظاهر می‌شود. بدون معماری روشن، هر توسعه‌دهنده یک روش متفاوت انتخاب می‌کند.
 
 ---
+
 ## چه مشکلی را حل می‌کند؟
 
-`prop drilling`، `inconsistency`، `race condition` در `fetch`، و پیچیدگی به‌روزرسانی `state` تو در تو.
+- اشتراک داده بین کامپوننت‌های دور از هم
+- `cache` و `refetch` دادهٔ API
+- `debug` و پیش‌بینی‌پذیری به‌روزرسانی‌های پیچیده
+- مدیریت فرم با `validation`
 
 ---
-## ⚙️ نحوه کار — طیف ابزارها
+
+## ⚙️ نحوه کار — Taxonomy و ابزارها
+
+### انواع `state` (خلاصه)
+
+| نوع | ابزار معمول | فایل |
+|-----|-------------|------|
+| Local / UI | `useState`، `useReducer` | [State-Types](./State-Types.md) |
+| Global / Client | Redux، Zustand، Context | زیر |
+| Remote / Server / Cache | React Query، RTK Query | [React-Query](./React-Query.md) |
+| Form | React Hook Form | [React-Hook-Form](./React-Hook-Form.md) |
+| URL | React Router / Next.js | M8 / M10 |
+
+جزئیات کامل: [State-Types.md](./State-Types.md)
+
+### طیف ابزارها
 
 ```
-محلی (کامپوننت)     → useState, useReducer
-اشتراک در درخت      → Context API
-سراسری predictable → Redux / Redux Toolkit
-داده سرور (remote)  → React Query / TanStack Query
-فرم‌ها              → React Hook Form (+ Zod)
+محلی (یک کامپوننت)     → useState, useReducer
+اشتراک در subtree       → Context API + useReducer
+سراسری predictable     → Redux Toolkit, Zustand, Jotai, MobX, Recoil
+داده سرور (remote)      → TanStack Query, RTK Query, SWR
+فرم‌ها                  → React Hook Form (+ Zod)
 ```
 
 ---
-## مقایسه: Context vs useReducer vs Redux
 
-| معیار | useState | useReducer + Context | Redux Toolkit |
-|-------|----------|----------------------|---------------|
-| **پیچیدگی setup** | کم | متوسط | بیشتر (store, slice) |
-| **بهترین برای** | `state` محلی ساده | `state` مشترک متوسط در `subtree` | `state` سراسری پیچیده |
-| **پیش‌بینی‌پذیری** | متوسط | متوسط | بالا (`actions`, `reducers`) |
-| `DevTools` | محدود | محدود | Redux DevTools |
-| `Performance` | عالی (محلی) | `re-render` همه `consumer`ها | `selector` + `memoization` |
-| **Async / side effects** | useEffect | useEffect | createAsyncThunk, RTK Query |
-| **یادگیری** | آسان | متوسط | بیشتر |
-
-### قانون عملی انتخاب
-
-1. **فقط یک کامپوننت** → `useState`
-2. **چند کامپوننت نزدیک، `logic` ساده** → `lift state` یا `Context` سبک
-3. **`logic` پیچیده با چند `action`** → `useReducer` (محلی یا + `Context`)
-4. `state` سراسری، چند `feature`، تاریخچه `debug` → `Redux Toolkit`
-5. داده از API (`cache`, `stale`, `refetch`) → `React Query` (جدا از `client state`)
-6. فرم با `validation` → `React Hook Form`
-
-> `Context` جایگزین Redux نیست برای `state` بزرگ؛ برای `theme`، `auth user`، `locale` مناسب است.
-
----
-## چه زمانی از کدام استفاده کنیم؟
-
-| نیاز | ابزار |
-|------|-------|
-| `toggle`، `input` محلی | useState |
-| `wizard` چندمرحله‌ای در یک `feature` | useReducer |
-| `theme` / `language` | Context |
-| سبد خرید سراسری | Redux Toolkit |
-| لیست کابین از API | React Query |
-| فرم رزرو با `validation` | React Hook Form |
-
----
 ## فهرست مستندات
 
-| موضوع | فایل |
-|-------|------|
-| Context API | [Context-API.md](./Context-API.md) |
-| useReducer Pattern | [useReducer-Pattern.md](./useReducer-Pattern.md) |
-| Redux (کلاسیک) | [Redux.md](./Redux.md) |
-| Redux Toolkit | [Redux-Toolkit.md](./Redux-Toolkit.md) |
-| React Query | [React-Query.md](./React-Query.md) |
-| React Hook Form | [React-Hook-Form.md](./React-Hook-Form.md) |
+| موضوع | فایل | بهترین برای |
+|-------|------|-------------|
+| انواع `state` | [State-Types](./State-Types.md) | تصمیم‌گیری قبل از ابزار |
+| Context API | [Context-API](./Context-API.md) | `theme`، `auth`، دادهٔ کم‌تغییر |
+| useReducer Pattern | [useReducer-Pattern](./useReducer-Pattern.md) | منطق پیچیده + اشتراک محلی |
+| Redux (کلاسیک) | [Redux](./Redux.md) | درک تاریخچه و مفاهیم پایه |
+| Redux Toolkit | [Redux-Toolkit](./Redux-Toolkit.md) | `global state` + RTK Query |
+| Zustand | [Zustand](./Zustand.md) | store سبک بدون boilerplate |
+| Jotai | [Jotai](./Jotai.md) | `atomic state`، وابستگی دقیق |
+| MobX | [MobX](./MobX.md) | مدل واکنش‌گرا (`observable`) |
+| Recoil | [Recoil](./Recoil.md) | atoms/selectors (Meta) |
+| React Query | [React-Query](./React-Query.md) | `server state`، CRUD کابین |
+| React Hook Form | [React-Hook-Form](./React-Hook-Form.md) | فرم با `validation` |
 
 ---
-## 💡 معماری پیشنهادی (پروژه متوسط)
 
-```text
-Client state (UI, cart)     → Redux Toolkit
-Server state (API data)     → TanStack Query
-Forms                       → React Hook Form
-Theme / Auth context        → Context (سبک)
+## مقایسه سریع ابزارهای Global
+
+| معیار | Context | useReducer+Context | Redux Toolkit | Zustand | Jotai |
+|-------|---------|-------------------|---------------|---------|-------|
+| Setup | کم | متوسط | بیشتر | کم | کم |
+| DevTools | محدود | محدود | عالی | خوب | محدود |
+| Performance | ضعیف برای داده پرتغییر | متوسط | selector + memo | selector | atom دقیق |
+| Async | useEffect | useEffect | thunk / RTK Query | middleware | atom async |
+| یادگیری | آسان | متوسط | بیشتر | آسان | متوسط |
+
+---
+
+## درخت تصمیم‌گیری
+
+```
+فقط یک کامپوننت؟           → useState
+چند کامپوننت نزدیک؟        → lift state یا Context سبک
+logic چند action؟          → useReducer (+ Context اگر لازم)
+global + debug + history؟  → Redux Toolkit
+global سبک؟                → Zustand
+داده API + cache؟          → TanStack Query (جدا از client state)
+فرم؟                       → React Hook Form
 ```
 
 ---
-## مثال واقعی در پروژه
 
-- **fast-react-pizza**: Redux Toolkit برای cart + React Query برای menu (در نسخه‌های مدرن)
-- **worldwise**: React Query برای cities + URL `state` برای فیلتر
-- **use-cabins**: React Query CRUD کامل با `optimistic updates`
+## معماری پیشنهادی (پروژه متوسط — مثلاً Wild Oasis / use-cabins)
+
+```text
+Client state (cart, UI)       → Redux Toolkit یا Zustand
+Server state (API data)       → TanStack Query
+Forms                         → React Hook Form
+Theme / locale                → Context (سبک)
+Filters در URL                → searchParams
+```
 
 ---
+
+## مثال واقعی در پروژه
+
+- **redux-intro / fast-react-pizza**: Redux Toolkit — `accountSlice`، `customerSlice`، thunk برای تبدیل ارز
+- **use-cabins / Wild Oasis**: React Query — `useCabins`، `useCreateCabin`، `invalidateQueries`
+- **atomic-blog**: Context API — `PostContext` برای اشتراک پست‌ها
+
+مثال‌های کد: [Examples/state-management/](../Examples/state-management/)
+
+---
+
 ## 🚀 Best Practices
 
 ✅ `server state` و `client state` را جدا نگه دارید  
@@ -104,21 +129,32 @@ Theme / Auth context        → Context (سبک)
 ❌ `fetch` دستی + `useEffect` برای هر `endpoint`
 
 ---
+
+## ⚠️ اشتباهات رایج
+
+❌ Redux برای دادهٔ API که React Query بهتر handle می‌کند  
+❌ Context با `value={{ user, cart, theme }}` — هر تغییر همه را `re-render` می‌کند  
+❌ انتخاب ابزار قبل از تشخیص نوع `state`
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
-- [State](../State.md) · [Context](../Context.md)
-- [useReducer](../Hooks/useReducer.md) · [useContext](../Hooks/useContext.md)
-- [Sharing State](../Sharing-State.md) · [Lifting State Up](../Lifting-State-Up.md)
+- [State](../State.md) · [Context](../Context.md) · [Sharing State](../Sharing-State.md)
+- [Hooks/useReducer](../Hooks/useReducer.md) · [Hooks/useContext](../Hooks/useContext.md)
+- [Performance/State-Colocation](../Performance/State-Colocation.md)
 - [Patterns/Reusability Patterns](../Patterns/Reusability-Patterns.md)
 
 ---
+
 ## خلاصه
 
-`state` محلی → Hooks؛ اشتراک سبک → `Context`؛ سراسری پیچیده → RTK؛ داده سرور → React Query؛ فرم → RHF.
+اول [نوع `state`](./State-Types.md) را تشخیص بده؛ محلی → Hooks؛ اشتراک سبک → Context؛ سراسری → RTK/Zustand؛ API → React Query؛ فرم → RHF.
 
 ---
+
 ## 📚 منابع
 
+- [Managing State — react.dev](https://react.dev/learn/managing-state)
 - [Choosing the State Structure — react.dev](https://react.dev/learn/choosing-the-state-structure)
-- [Redux Toolkit](https://redux-toolkit.js.org)
-- [TanStack Query](https://tanstack.com/query)
+- [Redux Toolkit](https://redux-toolkit.js.org) · [TanStack Query](https://tanstack.com/query)

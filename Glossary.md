@@ -39,5 +39,13 @@
 | `HOC` | کامپوننت مرتبه‌بالاتر | تابعی که کامپوننت را `wrap` می‌کند |
 | `Render Props` | `Render Props` | الگوی پاس دادن تابع `render` به‌عنوان `prop` |
 | `Compound Component` | کامپوننت مرکب | چند کامپوننت مرتبط که `state` مشترک دارند |
+| `Store` | `store` | مخزن مرکزی `global state` (Redux، Zustand) |
+| `Slice` | `slice` | بخشی از store با reducer و actions خودش (RTK) |
+| `Atom` | `atom` | واحد مستقل `state` در Jotai/Recoil |
+| `Selector` | `selector` | تابع خواندن/مشتق‌سازی از store یا atom |
+| `Middleware` | `middleware` | لایه بین `dispatch` و reducer (مثلاً thunk) |
+| `Thunk` | `thunk` | تابع async که dispatch می‌کند |
+| `Stale-While-Revalidate` | `stale-while-revalidate` | نمایش cache قدیمی تا رسیدن داده تازه |
+| `Optimistic Update` | `optimistic update` | به‌روزرسانی UI قبل از تأیید سرور |
 
 > این فایل با افزودن مباحث جدید گسترش می‌یابد.

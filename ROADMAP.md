@@ -12,10 +12,17 @@
 4. **قبل از هر تغییر** (افزودن، ویرایش یا حذف فایل — نه فقط شروع فاز)، آخرین نسخه [مستندات رسمی React](https://react.dev) را برای **همان مبحث** بررسی کند — API، رفتار، و نسخه. مستندات رسمی Source of Truth است؛ جزوه قدیمی به‌تنهایی کافی نیست. در صورت تناقض → react.dev مرجع نهایی.
 5. بعد از هر تغییر (افزودن، ویرایش یا حذف فایل)، `README.md`، `Learning-Path.md` و `WhatsNew.md` را بررسی و در صورت نیاز به‌روزرسانی کند — لینک جدید، جای‌گذاری در ماژول درست، تیک‌زدن آیتم، ثبت مفاهیم جدید غیرجزوه در `WhatsNew.md`.
 6. **ساختار فایل‌ها و پوشه‌ها حتماً طبق [Project-Structure.md](./Project-Structure.md) باشد** — محل قرارگیری در درخت مخزن، نام `PascalCase-With-Hyphens.md`، قالب بخش‌های اجباری markdown، و ممنوعیت تکرار فایل در ریشه و زیرپوشه. قبل از ساخت فایل جدید این سند را بخواند.
-7. وقتی کاربر گفت **تغییرات را کامیت کن** یا **پوش کن**:
+7. **خط ناوبری اجباری:** هر فایل موضوعی بلافاصله بعد از عنوان (و blockquote اختیاری) باید یک خط ناوبری داشته باشد: `> 🧭 پیش‌نیاز: [...] · بعدی: [...]`. این خط مکمل بخش «ارتباط با مفاهیم دیگر» است، نه جایگزین آن.
+8. **پوشش کامل:** فقدان یک زیرمبحث در جزوه یا عکس‌ها دلیلی برای حذف آن نیست. هر زیرشاخه مهم برای فهم کامل موضوع باید اضافه شود — حتی اگر منبعش فقط مستندات رسمی یا دانش عمومی باشد.
+9. **منبع دوم Next.js:** برای هر فایل داخل `Nextjs/`، علاوه بر [react.dev](https://react.dev) (برای مفاهیم React مثل RSC)، باید [nextjs.org/docs](https://nextjs.org/docs) به‌طور مستقل به‌عنوان Source of Truth مخصوص Next.js بررسی شود (`routing`، `caching`، `rendering strategies`، `Server Actions`، `middleware` و غیره). React و Next.js را قاطی نکن.
+10. **لحن آموزشی:** متن باید شبیه یادداشت زندهٔ یک مدرس خوب باشد — با مثال ذهنی، لحن مکالمه‌ای در حد لازم، و توضیح «چرا» و «کی» — نه فقط فهرست خشک.  
+    **مثال بد:** «`useReducer` برای `state` پیچیده استفاده می‌شود.»  
+    **مثال خوب:** «وقتی فرم رزرو کابین چند فیلد و چند `action` دارد، `useState` سریع شلوغ می‌شود؛ اینجا `useReducer` منطق به‌روزرسانی را در یک جا جمع می‌کند.»
+11. وقتی کاربر گفت **تغییرات را کامیت کن** یا **پوش کن**:
    - **بازبینی (Review)** روی فایل‌های تغییر یافته انجام دهد (قبل از `git add`):
      - چک‌لیست react.dev: محتوا با مستندات رسمی همان مبحث هم‌خوان باشد (قانون ۴)
      - چک‌لیست RTL: جملهٔ اول فارسی در `## 📖 مفهوم`، بدون شروع جمله با انگلیسی، اصطلاحات فنی backtick‌شده
+     - چک‌لیست ناوبری: خط `> 🧭 پیش‌نیاز` در فایل‌های موضوعی (قانون ۷)
      - چک‌لیست ساختار: [Project-Structure.md](./Project-Structure.md) — محل پوشه، قالب بخش‌ها، بدون تکرار ریشه/زیرپوشه
      - لینک‌های داخلی شکسته نباشند
      - `README.md`، `Learning-Path.md` و `WhatsNew.md` با فایل‌های جدید/ویرایش‌شده هم‌خوان باشند
@@ -25,11 +32,11 @@
    - `git push origin main` (یا شاخهٔ فعال) به ریپازیتوری GitHub انجام دهد
    - در `ROADMAP.md` changelog ثبت کند
 
-**Milestone فعلی:** `M7` (State Management — بعدی)  
+**Milestone فعلی:** `M8` (React Router — بعدی)  
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-06 (M6 Performance)
+**آخرین به‌روزرسانی:** 2026-08-07 (M7 State Management + استانداردهای جدید)
 
 ---
 
@@ -38,7 +45,8 @@
 ### منابع پروژه
 
 1. **جزوه‌های Word من** (`آرشیو جزوه قدیمی/`, `_extracted-notes/`) — منبع اصلی
-2. **React Official Documentation** ([react.dev](https://react.dev)) — Source of Truth
+2. **React Official Documentation** ([react.dev](https://react.dev)) — Source of Truth برای React
+3. **Next.js Documentation** ([nextjs.org/docs](https://nextjs.org/docs)) — Source of Truth دوم برای Next.js (جدا از React)
 
 ### قوانین ترکیب
 
@@ -106,6 +114,7 @@
 - [ ] هیچ جمله‌ای در کل فایل با انگلیسی شروع نشده (به‌جز عناوین `#` فایل)
 - [ ] اصطلاحات فنی backtick دارند
 - [ ] محل فایل و قالب بخش‌ها مطابق [Project-Structure.md](./Project-Structure.md) است
+- [ ] خط ناوبری `> 🧭 پیش‌نیاز: ... · بعدی: ...` وجود دارد (قانون ۷)
 - [ ] `README.md`، `Learning-Path.md` و `WhatsNew.md` در صورت افزودن/حذف/تغییر مفهوم به‌روز شده‌اند
 
 #### قالب ساختار — مرجع اجباری
@@ -126,7 +135,7 @@
 | ریپازیتوری | `React-Knowledge-Base` (خصوصی، GitHub) |
 | شاخهٔ اصلی | `main` |
 | مسیر محلی | ریشهٔ همین پوشه (`React-Knowledge-Base/`) |
-| Milestone فعلی | **M6** — Performance (تکمیل)؛ Milestone بعدی: **M7** — State Management |
+| Milestone فعلی | **M7** — State Management (تکمیل)؛ Milestone بعدی: **M8** — React Router |
 
 ### قانون کامیت و پوش
 
@@ -135,6 +144,7 @@
 1. **بازبینی (Review)** — قبل از استیج کردن:
    - react.dev: هم‌خوانی با مستندات رسمی مبحث (قانون ۴)
    - RTL: `## 📖 مفهوم`، شروع جمله با فارسی، backtick اصطلاحات فنی (بخش «قوانین نگارش فارسی و RTL»)
+   - خط ناوبری `> 🧭 پیش‌نیاز` در فایل‌های موضوعی (قانون ۷)
    - ساختار: [Project-Structure.md](./Project-Structure.md) — پوشه، قالب بخش‌ها، عدم تکرار
    - لینک‌های داخلی و هم‌خوانی `README.md` / `Learning-Path.md` / `WhatsNew.md`
 2. `git status` + `git diff` — بررسی تغییرات
@@ -153,12 +163,12 @@
 | **M4** | Patterns | README + ۵ الگو |
 | **M5** | Escape Hatches | Concurrent، Suspense، RSC — **بعدی** |
 | **M6** | Performance | بهینه‌سازی و چرخه رندر |
-| **M7** | State Management | Context API، Redux، React Query |
+| **M7** | State Management | Context API، Redux، React Query، Zustand، Jotai |
 | **M8** | React Router | مسیریابی |
 | **M9** | Styling | CSS Modules و استایل |
 | **M10** | Next.js | فریم‌ورک Next.js |
 | **M11** | Reference | FAQ، Interview، APIها |
-| **M12** | QA | بازبینی نهایی |
+| **M12** | QA | بازبینی نهایی + retrofit M1–M6 با استاندارد ناوبری/لحن جدید |
 
 ---
 
@@ -172,12 +182,12 @@
 | **M4** | Patterns | [x] | 2026-08-06 | README + ۵ الگو + Examples — جزوه الگوهای پیشرفته |
 | **M5** | Escape Hatches / Concurrent | [x] | 2026-08-06 | ۷ فایل + `Hooks/use.md` + `WhatsNew.md` + Examples — `use()`, `<Activity>`, RSC |
 | **M6** | Performance | [x] | 2026-08-06 | README + ۱۳ فایل موضوع + Examples — Virtual DOM، diff، memoization، profiling |
-| **M7** | State Management | [ ] | | |
+| **M7** | State Management | [x] | 2026-08-07 | State-Types + ۱۰ ابزار + Examples — Zustand/Jotai/MobX/Recoil/RTK Query |
 | **M8** | React Router | [ ] | | |
 | **M9** | Styling | [ ] | | |
 | **M10** | Next.js | [ ] | | بدهی react.dev: `cacheSignal`, APIهای `prerender`/`resume` در `react-dom/static` (RSC) |
 | **M11** | Reference / FAQ / Interview | [ ] | | |
-| **M12** | QA نهایی | [ ] | | |
+| **M12** | QA نهایی | [ ] | | بدهی: retrofit M1–M6 (ناوبری + لحن آموزشی) |
 
 ---
 
@@ -189,13 +199,34 @@
 | `useEffect-sideEffect-...`                 | Hooks/\*, Performance/Memoization                          | [x] Hooks                |
 | `الگو های پیشرفته ری اکت/*`                | Patterns/\*, Portals                                       | [x] Patterns (Portals در M2) |
 | `ماژول های CSS`, `روش های استایل دهی`      | Styling/\*                                                 | [ ]                      |
-| `مدیریت state/Context api and Redux/*`     | State-Management/\*, Context.md                            | [ ]                      |
-| `مدیریت state/React Query - remote data/*` | State-Management/React-Query.md                            | [ ]                      |
+| `مدیریت state/Context api and Redux/*`     | State-Management/\*, Context.md                            | [x] M7                 |
+| `مدیریت state/React Query - remote data/*` | State-Management/React-Query.md                            | [x] M7                 |
 | `مدیریت state/جزوه React Router/*`         | React-Router/\*                                            | [ ]                      |
 | `Next.js/*`                                | Nextjs/\*, Server-Components, Client-Components            | [ ]                      |
 | `Supabase/*`                               | Nextjs/Backend-Integration-Supabase.md                     | [ ]                      |
 | `herlpers for react + rfc +`               | Components.md, Quick-Start.md                              | [x]                      |
-| _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [ ] M10 |
+| _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [x] M7 State / [ ] M10 |
+| _(غیرجزوه — M7)_                           | Zustand, Jotai, MobX, Recoil, State-Types, RTK Query       | [x] M7                 |
+| _(retrofit — M12)_                         | M1–M6: ناوبری + لحن آموزشی جدید                            | [ ] M12                |
+
+### 2026-08-07 (بازبینی RTL M7)
+
+- اصلاح شروع جمله با انگلیسی در `## 📖 مفهوم` و `## خلاصه` فایل‌های State-Management
+- اصلاح لینک شکسته به `React-Router/` (هنوز M8) → `Learning-Path` ماژول ۰۹
+- افزودن `State-Types` به خط ناوبری `useReducer-Pattern` و `Redux-Toolkit`
+- به‌روزرسانی چک‌لیست Review کامیت: قانون ۷ (ناوبری)
+
+### 2026-08-07 (استاندارد جدید + M7 — State Management)
+
+- قوانین AI ۷–۱۰: خط ناوبری، پوشش کامل، منبع دوم Next.js، لحن آموزشی
+- منبع سوم: [nextjs.org/docs](https://nextjs.org/docs) برای فایل‌های `Nextjs/`
+- [Project-Structure.md](./Project-Structure.md): ردیف خط ناوبری + استاندارد State-Management
+- M7 تکمیل: `State-Types.md` (۱۱ نوع state) + ۱۰ فایل ابزار (Context تا RHF)
+- ابزارهای غیرجزوه: Zustand، Jotai، MobX، Recoil، RTK Query
+- `Examples/state-management/`: ۵ فایل نمونه
+- به‌روزرسانی README، Learning-Path (ماژول ۰۸، شماره ۷۰–۸۱)، WhatsNew M7، Glossary، Cheatsheet
+- بدهی M12: retrofit M1–M6 با استاندارد ناوبری/لحن
+- Milestone فعلی: **M7** → بعدی **M8**
 
 ### 2026-08-06 (بازبینی RTL M6 + WhatsNew)
 

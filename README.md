@@ -93,8 +93,11 @@
 ### State Management
 
 - [State Management Overview](./State-Management/README.md)
+- [State Types (Taxonomy)](./State-Management/State-Types.md)
 - [Context API](./State-Management/Context-API.md) · [useReducer Pattern](./State-Management/useReducer-Pattern.md)
 - [Redux](./State-Management/Redux.md) · [Redux Toolkit](./State-Management/Redux-Toolkit.md)
+- [Zustand](./State-Management/Zustand.md) · [Jotai](./State-Management/Jotai.md)
+- [MobX](./State-Management/MobX.md) · [Recoil](./State-Management/Recoil.md)
 - [React Query](./State-Management/React-Query.md) · [React Hook Form](./State-Management/React-Hook-Form.md)
 
 ### React Router

@@ -51,6 +51,25 @@
 
 ---
 
+## State Management سریع
+
+| نیاز | ابزار | فایل |
+|------|-------|------|
+| تشخیص نوع `state` | Taxonomy | [State-Types](./State-Management/State-Types.md) |
+| محلی ساده | `useState` | [State](./State.md) |
+| اشتراک سبک | Context | [Context-API](./State-Management/Context-API.md) |
+| logic چند action | `useReducer` | [useReducer-Pattern](./State-Management/useReducer-Pattern.md) |
+| global + DevTools | Redux Toolkit | [Redux-Toolkit](./State-Management/Redux-Toolkit.md) |
+| global سبک | Zustand | [Zustand](./State-Management/Zustand.md) |
+| atomic | Jotai | [Jotai](./State-Management/Jotai.md) |
+| reactive OOP | MobX | [MobX](./State-Management/MobX.md) |
+| API + cache | TanStack Query | [React-Query](./State-Management/React-Query.md) |
+| فرم | React Hook Form | [React-Hook-Form](./State-Management/React-Hook-Form.md) |
+
+مرجع کامل: [State-Management/README](./State-Management/README.md)
+
+---
+
 ## Rendering Flow
 
 ```

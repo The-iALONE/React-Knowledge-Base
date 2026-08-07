@@ -10,6 +10,30 @@
 
 ---
 
+## M7 — State Management (جدید + غنی‌سازی غیرجزوه)
+
+| مفهوم | نسخه | فایل | خلاصه |
+|-------|------|------|--------|
+| Taxonomy ۱۱ نوع `state` | — | [State-Types.md](./State-Management/State-Types.md) | Local تا Cache — پایه انتخاب ابزار |
+| Zustand | — | [Zustand.md](./State-Management/Zustand.md) | global store سبک بدون Provider |
+| Jotai | — | [Jotai.md](./State-Management/Jotai.md) | atomic state + derived atom |
+| MobX | — | [MobX.md](./State-Management/MobX.md) | observable + observer |
+| Recoil | — | [Recoil.md](./State-Management/Recoil.md) | atoms/selectors (Meta) |
+| RTK Query | RTK 2+ | [Redux-Toolkit.md](./State-Management/Redux-Toolkit.md) | `server state` در اکوسیستم Redux |
+| نمای کلی M7 | — | [State-Management/README.md](./State-Management/README.md) | هاب ماژول ۰۸ |
+
+### مثال‌های کد M7
+
+| فایل | موضوع |
+|------|--------|
+| [ContextReducerCombo.jsx](./Examples/state-management/ContextReducerCombo.jsx) | Context + useReducer |
+| [ZustandStore.jsx](./Examples/state-management/ZustandStore.jsx) | Zustand cart |
+| [ReduxSlice.js](./Examples/state-management/ReduxSlice.js) | RTK accountSlice |
+| [useCabinsQuery.jsx](./Examples/state-management/useCabinsQuery.jsx) | React Query custom hook |
+| [CabinForm.jsx](./Examples/state-management/CabinForm.jsx) | React Hook Form |
+
+---
+
 ## M6 — Performance (ماژول جدید + react.dev)
 
 | مفهوم | نسخه React | فایل | خلاصه |
@@ -104,10 +128,11 @@
 
 ## چگونه از این فایل استفاده کنید
 
-1. **فقط M6:** بخش M6 — ماژول Performance + مثال‌ها
-2. **فقط M5:** بخش M5 — ۷ فایل + `use()` + مثال‌ها
-3. **همه چیز جدید:** از بالا به پایین — M6 → M5 → M3 → M2 → M4
-4. **مسیر یادگیری:** [Learning-Path.md](./Learning-Path.md) ماژول ۰۷ (Performance) و ۰۵ (Escape Hatches)
+1. **فقط M7:** بخش M7 — State Management + مثال‌ها
+2. **فقط M6:** بخش M6 — ماژول Performance + مثال‌ها
+3. **فقط M5:** بخش M5 — ۷ فایل + `use()` + مثال‌ها
+4. **همه چیز جدید:** از بالا به پایین — M7 → M6 → M5 → M3 → M2 → M4
+5. **مسیر یادگیری:** [Learning-Path.md](./Learning-Path.md) ماژول ۰۸ (State Management) و ۰۷ (Performance)
 
 ---
 
