@@ -70,6 +70,23 @@
 
 ---
 
+## React Router سریع
+
+| API | یک‌خط یادآوری | فایل |
+|-----|---------------|------|
+| `BrowserRouter` | context مسیریابی در root | [Routing-Basics](./React-Router/Routing-Basics.md) |
+| `Routes` / `Route` | نگاشت path → `element` | [Routing-Basics](./React-Router/Routing-Basics.md) |
+| `Outlet` | render فرزند در layout | [Nested-Routes](./React-Router/Nested-Routes.md) |
+| `useParams` | خواندن `:param` از URL | [Dynamic-Routes](./React-Router/Dynamic-Routes.md) |
+| `Link` / `NavLink` | ناوبری بدون reload | [Navigation](./React-Router/Navigation.md) |
+| `useNavigate` | ناوبری programmatic | [Navigation](./React-Router/Navigation.md) |
+| `useSearchParams` | query string (`?sort=`) | [State-In-URL](./React-Router/State-In-URL.md) |
+| `ProtectedRoute` | guard مسیر خصوصی SPA | [Navigation](./React-Router/Navigation.md) |
+
+مرجع کامل: [React-Router/README](./React-Router/README.md)
+
+---
+
 ## Rendering Flow
 
 ```

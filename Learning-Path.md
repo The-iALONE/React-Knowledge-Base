@@ -142,12 +142,14 @@
 
 ## ماژول ۰۹ — React Router
 
-- [ ] `83` [نمای کلی React Router](./React-Router/README.md)
-- [ ] `84` [Routing Basics](./React-Router/Routing-Basics.md)
-- [ ] `85` [Nested Routes](./React-Router/Nested-Routes.md)
-- [ ] `86` [Dynamic Routes](./React-Router/Dynamic-Routes.md)
-- [ ] `87` [Navigation](./React-Router/Navigation.md)
-- [ ] `88` [State in URL](./React-Router/State-In-URL.md)
+> نمای کلی: [React-Router/README.md](./React-Router/README.md) · ترتیب مطالعه: Routing Basics → Nested → Dynamic → Navigation → State in URL
+
+- [x] `83` [نمای کلی React Router](./React-Router/README.md)
+- [x] `84` [Routing Basics](./React-Router/Routing-Basics.md)
+- [x] `85` [Nested Routes](./React-Router/Nested-Routes.md)
+- [x] `86` [Dynamic Routes](./React-Router/Dynamic-Routes.md)
+- [x] `87` [Navigation](./React-Router/Navigation.md)
+- [x] `88` [State in URL](./React-Router/State-In-URL.md)
 
 ---
 

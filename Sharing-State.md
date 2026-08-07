@@ -70,14 +70,14 @@ function App() {
 | `prop drilling` ۳+ سطح | Context |
 | `state` پیچیده + `logic` زیاد | `useReducer` یا Redux |
 | داده از API | React Query |
-| فیلتر/صفحه‌بندی قابل اشتراک | `URL state` ([Learning-Path — ماژول ۰۹](./Learning-Path.md#ماژول-۰۹--react-router)) |
+| فیلتر/صفحه‌بندی قابل اشتراک | `URL state` ([State in URL](./React-Router/State-In-URL.md)) |
 ## ارتباط با مفاهیم دیگر
 
 - [Lifting State Up](./Lifting-State-Up.md)
 - [Context](./Context.md)
 - [State-Management/Context-API](./State-Management/Context-API.md)
 - [State-Management/React-Query](./State-Management/React-Query.md)
-- [Learning-Path — ماژول ۰۹ React Router](./Learning-Path.md#ماژول-۰۹--react-router) — `URL state` (M8)
+- [React-Router/State-In-URL](./React-Router/State-In-URL.md) — `URL state`
 
 ## 💡 نکات مهم
 

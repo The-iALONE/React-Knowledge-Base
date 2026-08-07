@@ -32,11 +32,11 @@
    - `git push origin main` (یا شاخهٔ فعال) به ریپازیتوری GitHub انجام دهد
    - در `ROADMAP.md` changelog ثبت کند
 
-**Milestone فعلی:** `M8` (React Router — بعدی)  
+**Milestone فعلی:** `M9` (Styling — بعدی)  
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-07 (M6 retrofit Performance)
+**آخرین به‌روزرسانی:** 2026-08-07 (M8 React Router)
 
 ---
 
@@ -136,7 +136,7 @@
 | ریپازیتوری | `React-Knowledge-Base` (خصوصی، GitHub) |
 | شاخهٔ اصلی | `main` |
 | مسیر محلی | ریشهٔ همین پوشه (`React-Knowledge-Base/`) |
-| Milestone فعلی | **M7** — State Management (تکمیل)؛ Milestone بعدی: **M8** — React Router |
+| Milestone فعلی | **M8** — React Router (تکمیل)؛ Milestone بعدی: **M9** — Styling |
 
 ### قانون کامیت و پوش
 
@@ -184,7 +184,7 @@
 | **M5** | Escape Hatches / Concurrent | [x] | 2026-08-06 | ۷ فایل + `Hooks/use.md` + `WhatsNew.md` + Examples — `use()`, `<Activity>`, RSC |
 | **M6** | Performance | [x] | 2026-08-06 | retrofit 2026-08-07: ناوبری، ترتیب react.dev، ساختار M7 — Virtual DOM تا Common Mistakes |
 | **M7** | State Management | [x] | 2026-08-07 | State-Types + ۱۰ ابزار + Examples — Zustand/Jotai/MobX/Recoil/RTK Query |
-| **M8** | React Router | [ ] | | |
+| **M8** | React Router | [x] | 2026-08-07 | README + ۵ موضوع + Protected Routes + Examples |
 | **M9** | Styling | [ ] | | |
 | **M10** | Next.js | [ ] | | بدهی react.dev: `cacheSignal`, APIهای `prerender`/`resume` در `react-dom/static` (RSC) |
 | **M11** | Reference / FAQ / Interview | [ ] | | |
@@ -202,13 +202,24 @@
 | `ماژول های CSS`, `روش های استایل دهی`      | Styling/\*                                                 | [ ]                      |
 | `مدیریت state/Context api and Redux/*`     | State-Management/\*, Context.md                            | [x] M7                 |
 | `مدیریت state/React Query - remote data/*` | State-Management/React-Query.md                            | [x] M7                 |
-| `مدیریت state/جزوه React Router/*`         | React-Router/\*                                            | [ ]                      |
+| `مدیریت state/جزوه React Router/*`         | React-Router/\*                                            | [x] M8                 |
 | `Next.js/*`                                | Nextjs/\*, Server-Components, Client-Components            | [ ]                      |
 | `Supabase/*`                               | Nextjs/Backend-Integration-Supabase.md                     | [ ]                      |
 | `herlpers for react + rfc +`               | Components.md, Quick-Start.md                              | [x]                      |
 | _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [x] M7 State / [ ] M10 |
 | _(غیرجزوه — M7)_                           | Zustand, Jotai, MobX, Recoil, State-Types, RTK Query       | [x] M7                 |
 | _(retrofit — M12)_                         | M2: [x] · M3: [x] · M4: [x] · M5: [x] · M6: [x]           | [x] M12 (M1 بدون تغییر) |
+
+### 2026-08-07 (M8 — React Router)
+
+- ایجاد `React-Router/`: README، Routing-Basics، Nested-Routes، Dynamic-Routes، Navigation (+ Protected Routes)، State-In-URL
+- خط ناوبری `> 🧭 پیش‌نیاز` در هر ۶ فایل (زنجیره README → … → Styling)
+- ساختار M7: `## چه مشکلی`، `## ⚙️ نحوه کار`، Best Practices، اشتباهات، ارتباط، خلاصه، منابع
+- غنی‌سازی از جزوه: Worldwise (nested، `useParams` نسبی)، Wild Oasis (`ProtectedRoute`، `useSearchParams` فیلتر/مرتب‌سازی)
+- `createBrowserRouter` vs `BrowserRouter` در README؛ تفکیک محافظت مسیر SPA از Next.js middleware (M10)
+- `Examples/react-router/`: NestedRoutes، DynamicRoutes، UrlSearchParams، ProtectedRoute
+- Learning-Path ماژول ۰۹ (`83`–`88`)؛ لینک `State-Types`، `React-Hook-Form` → React-Router
+- M1، M7، M9–M12+ بدون تغییر محتوایی
 
 ### 2026-08-07 (retrofit M6 — Performance)
 

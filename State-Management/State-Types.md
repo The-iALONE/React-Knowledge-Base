@@ -225,7 +225,7 @@ const sortBy = searchParams.get("sortBy") ?? "price";
 - [State](../State.md) — مفهوم پایه
 - [State Management — نمای کلی](./README.md) — انتخاب ابزار
 - [Performance/State-Colocation](../Performance/State-Colocation.md) — نگه‌داشتن `state` پایین
-- [React-Router/State-In-URL](../Learning-Path.md#ماژول-۰۹--react-router) — URL state (M8 — در حال تکمیل)
+- [React-Router/State-In-URL](../React-Router/State-In-URL.md) — URL state
 
 ---
 

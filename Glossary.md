@@ -47,5 +47,8 @@
 | `Thunk` | `thunk` | تابع async که dispatch می‌کند |
 | `Stale-While-Revalidate` | `stale-while-revalidate` | نمایش cache قدیمی تا رسیدن داده تازه |
 | `Optimistic Update` | `optimistic update` | به‌روزرسانی UI قبل از تأیید سرور |
+| `SPA` | اپ تک‌صفحه‌ای | یک HTML؛ مسیر با JS عوض می‌شود |
+| `Outlet` | `Outlet` | جای render route فرزند در layout |
+| `Protected Route` | مسیر محافظت‌شده | guard دسترسی قبل از render صفحه خصوصی |
 
 > این فایل با افزودن مباحث جدید گسترش می‌یابد.

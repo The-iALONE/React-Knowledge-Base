@@ -10,6 +10,25 @@
 
 ---
 
+## M8 — React Router (ماژول جدید)
+
+| مفهوم | فایل | خلاصه |
+|-------|------|--------|
+| نمای کلی M8 | [React-Router/README.md](./React-Router/README.md) | هاب ماژول ۰۹ — `BrowserRouter` vs data router |
+| Protected Routes | [Navigation.md](./React-Router/Navigation.md) | `ProtectedRoute` + `useUser` — SPA (جدا از Next middleware) |
+| `createBrowserRouter` | [README.md](./React-Router/README.md) | data router 6.4+ — `loader`/`action` |
+
+### مثال‌های کد M8
+
+| فایل | موضوع |
+|------|--------|
+| [NestedRoutes.jsx](./Examples/react-router/NestedRoutes.jsx) | layout + `Outlet` |
+| [DynamicRoutes.jsx](./Examples/react-router/DynamicRoutes.jsx) | `:cityId` + `useParams` |
+| [UrlSearchParams.jsx](./Examples/react-router/UrlSearchParams.jsx) | فیلتر/مرتب‌سازی Wild Oasis |
+| [ProtectedRoute.jsx](./Examples/react-router/ProtectedRoute.jsx) | guard مسیر خصوصی |
+
+---
+
 ## M7 — State Management (جدید + غنی‌سازی غیرجزوه)
 
 | مفهوم | نسخه | فایل | خلاصه |

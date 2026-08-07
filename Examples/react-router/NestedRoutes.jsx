@@ -1,3 +1,5 @@
+// Examples/react-router/NestedRoutes.jsx
+// مستندات: React-Router/Nested-Routes.md
 import { BrowserRouter, Routes, Route, Link, Outlet, useParams } from "react-router-dom";
 
 function AppLayout() {

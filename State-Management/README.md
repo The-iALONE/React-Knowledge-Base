@@ -37,7 +37,7 @@
 | Global / Client | Redux، Zustand، Context | زیر |
 | Remote / Server / Cache | React Query، RTK Query | [React-Query](./React-Query.md) |
 | Form | React Hook Form | [React-Hook-Form](./React-Hook-Form.md) |
-| URL | React Router / Next.js | M8 / M10 |
+| URL | [React Router](../React-Router/State-In-URL.md) / Next.js | M8 / M10 |
 
 جزئیات کامل: [State-Types.md](./State-Types.md)
 
