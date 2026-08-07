@@ -1,23 +1,31 @@
 # Render Props
 
-الگوی اشتراک‌گذاری منطق بین کامپوننت‌ها با `prop` تابعی که JSX برمی‌گرداند.
+> الگوی اشتراک‌گذاری منطق بین کامپوننت‌ها با `prop` تابعی که JSX برمی‌گرداند.
+
+> 🧭 پیش‌نیاز: [Compound Components](./Compound-Components.md) · بعدی: [Higher-Order Components](./Higher-Order-Components.md)
 
 ---
+
 ## 📖 مفهوم
 
 الگوی `Render Props` یعنی یک کامپوننت `prop` می‌گیرد که تابع است (معمولاً `render` یا `children`) و `state`/`logic` را به آن می‌دهد تا UI را خود `consumer` بسازد.
 
+قبل از `Hooks`، اگر می‌خواستید منطق «ردیابی موقعیت ماوس» را در دو صفحه با UI متفاوت `reuse` کنید، `render prop` راه اصلی بود — امروز همان منطق را در `useMousePosition` می‌گذارید.
+
 ---
-## چرا این ویژگی وجود دارد؟
+
+## چرا
 
 قبل از `Hooks`، راه اصلی `reuse` کردن `stateful logic` بین کامپوننت‌های با UI متفاوت بود.
 
 ---
+
 ## چه مشکلی را حل می‌کند؟
 
 اشتراک رفتار (`fetch`، `toggle`، `form state`) بدون کپی منطق یا `inheritance`.
 
 ---
+
 ## تفاوت با `children` JSX مستقیم
 
 وقتی می‌توانید JSX مستقیم به `children` بدهید، `render prop` لازم نیست. وقتی باید به کامپوننت **بگویید چه چیزی و چگونه** رندر کند (مثلاً هر ردیف جدول)، `prop` تابعی `render` مناسب است:
@@ -25,6 +33,7 @@
 > پراپ `render` تابعی است که کامپوننت از آن استفاده می‌کند تا بفهمد چه چیزی را رندر کند — نه فقط محتوای ثابت.
 
 ---
+
 ## ⚙️ نحوه کار
 
 1. کامپوننت والد `state` و `handlers` را مدیریت می‌کند.
@@ -32,6 +41,7 @@
 3. `consumer` UI دلخواه را برمی‌گرداند.
 
 ---
+
 ## چه زمانی استفاده کنیم؟
 
 - کتابخانه‌های قدیمی (react-router v5، react-motion)
@@ -40,12 +50,14 @@
 - در کد `legacy`
 
 ---
+
 ## چه زمانی استفاده نکنیم؟
 
 - پروژه جدید → ترجیحاً `Custom Hook` (همان `logic`، `syntax` ساده‌تر)
 - `nesting` عمیق `render props` (`callback hell`)
 
 ---
+
 ## Syntax
 
 ```jsx
@@ -85,6 +97,7 @@ function DataFetcher({ url, render }) {
 ```
 
 ---
+
 ## 💡 مثال ساده
 
 ```jsx
@@ -118,6 +131,7 @@ function UserList() {
 ```
 
 ---
+
 ## مثال دوره — `Table.Body` + `CabinTable`
 
 ترکیب `Compound Components` با `render prop` در `Table.Body`:
@@ -169,6 +183,7 @@ function CabinTable() {
 با `Table.Body`، منطق «اگر داده خالی» و `map` داخل compound قرار می‌گیرد — `consumer` فقط نحوه رندر هر ردیف را تعریف می‌کند.
 
 ---
+
 ## معادل مدرن با هوک سفارشی
 
 ```jsx
@@ -194,7 +209,10 @@ function App() {
 }
 ```
 
+> react.dev در [Reusing Logic with Custom Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks) توصیه می‌کند منطق مشترک را در `Hook` استخراج کنید — نه `render prop` یا `HOC`.
+
 ---
+
 ## مثال واقعی در پروژه
 
 - the-wild-oasis: `Table.Body` با `render` برای ردیف کابین
@@ -202,30 +220,43 @@ function App() {
 - کد جدید: همان منطق به `useMediaQuery`، `useLocalStorage` و مشابه منتقل شده
 
 ---
+
 ## 🚀 Best Practices
 
 ✅ در کد جدید: `logic` → `Custom Hook`  
 ✅ نام `prop` واضح (`render`, `children`)  
 ✅ TypeScript برای `signature` تابع  
-✅ `render prop` در compound وقتی `consumer` شکل ردیف را کنترل می‌کند  
-❌ تو در تو کردن بیش از حد  
-❌ `render props` وقتی `Hook` کافی است
+✅ `render prop` در compound وقتی `consumer` شکل ردیف را کنترل می‌کند
 
 ---
+
+## ⚠️ اشتباهات رایج
+
+❌ تو در تو کردن بیش از حد — `callback hell`  
+❌ `render props` وقتی `Hook` کافی است  
+❌ `render prop` برای `fetch` در کد جدید — از React Query یا `Custom Hook` استفاده کنید  
+❌ نام مبهم (`children` تابعی بدون type در TypeScript)
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [Custom Hooks](../Custom-Hooks.md)
 - [Compound Components](./Compound-Components.md)
 - [Higher-Order Components](./Higher-Order-Components.md)
 - [Reusability Patterns](./Reusability-Patterns.md)
+- [State-Management/React-Query.md](../State-Management/React-Query.md) — جایگزین `DataFetcher` render prop
 
 ---
+
 ## خلاصه
 
-`Render Props` = `logic` در والد، UI در تابع `consumer`. در `Table.Body` هنوز مفید است. منطق عمومی امروز بیشتر با `Custom Hooks` جایگزین می‌شود.
+در این الگو، `logic` در والد و UI در تابع `consumer` قرار می‌گیرد. در `Table.Body` هنوز مفید است؛ منطق عمومی امروز بیشتر با `Custom Hooks` جایگزین می‌شود.
 
 ---
+
 ## 📚 منابع
 
 - [Reusing Logic with Hooks — react.dev](https://react.dev/learn/reusing-logic-with-custom-hooks)
+- [You Might Not Need an Effect — react.dev](https://react.dev/learn/you-might-not-need-an-effect)
 - [Compound Components](./Compound-Components.md)

@@ -1,23 +1,31 @@
 # Compound Components
 
-الگویی برای API انعطاف‌پذیر کامپوننت‌ها با اشتراک `state` ضمنی بین والد و فرزند.
+> الگویی برای API انعطاف‌پذیر کامپوننت‌ها با اشتراک `state` ضمنی بین والد و فرزند.
+
+> 🧭 پیش‌نیاز: [Reusability Patterns](./Reusability-Patterns.md) · [Context](../Context.md) · [Portals](../Portals.md) · بعدی: [Render Props](./Render-Props.md)
 
 ---
+
 ## 📖 مفهوم
 
 الگوی `Compound Components` مجموعه‌ای از کامپوننت‌های مرتبط است که با هم یک واحد UI می‌سازند (مثل `<select>` و `<option>` در HTML). کاربر ترکیب و چیدمان را کنترل می‌کند؛ `state` داخلی مشترک است.
 
----
-## چرا این ویژگی وجود دارد؟
-
-به‌جای `prop drilling` و ده‌ها `prop` اختیاری، API خوانا و قابل ترکیب ارائه می‌دهد.
+به‌جای `<Modal title="..." body="..." footer="..." showClose onClose={...} />` با ده‌ها `prop`، می‌نویسید `<Modal><Modal.Header>...</Modal.Header></Modal>` — خواناتر و انعطاف‌پذیرتر.
 
 ---
+
+## چرا
+
+به‌جای `prop drilling` و ده‌ها `prop` اختیاری، API خوانا و قابل ترکیب ارائه می‌دهد. مصرف‌کننده کامپوننت مثل HTML native عمل می‌کند — ساختار را خودش می‌چیند.
+
+---
+
 ## چه مشکلی را حل می‌کند؟
 
 کامپوننت‌های پیچیده (`Modal`، `Tabs`، `Accordion`، `Table`، منوی کانتکست) که نیاز به `customization` ساختاری دارند.
 
 ---
+
 ## ⚙️ نحوه کار
 
 1. `Context` داخلی `state` و `handlers` را نگه می‌دارد.
@@ -25,7 +33,10 @@
 3. زیرکامپوننت‌ها (`Modal.Header`, `Table.Row`) از `Context` مصرف می‌کنند.
 4. `children` یا `cloneElement` برای `composition` استفاده می‌شود.
 
+> در React 19 می‌توان مستقیماً `<ModalContext value={value}>` نوشت (بدون `.Provider`). در نسخه‌های قدیمی‌تر: `<ModalContext.Provider value={value}>`.
+
 ---
+
 ## چه زمانی استفاده کنیم؟
 
 - `UI kit` (`Modal`، `Dropdown`، `Tabs`، `Table`)
@@ -33,12 +44,14 @@
 - وقتی API `declarative` می‌خواهید
 
 ---
+
 ## چه زمانی استفاده نکنیم؟
 
 - کامپوننت ساده با چند `prop`
 - وقتی `overhead` بی‌جهت `Context` است
 
 ---
+
 ## Syntax — الگوی Modal ساده
 
 ```jsx
@@ -113,6 +126,7 @@ export default Modal;
 ```
 
 ---
+
 ## الگوی Named Modal — `openName` + `cloneElement`
 
 در دوره (the-wild-oasis) مودال با نام (`openName`) و `Modal.Open` / `Modal.Window` پیاده می‌شود — چند مودال در یک `Modal` والد بدون `state` جداگانه.
@@ -221,6 +235,7 @@ function CabinRow({ cabin }) {
 ```
 
 ---
+
 ## `useOutsideClick` — کلیک خارج از مودال
 
 ```jsx
@@ -248,6 +263,7 @@ export function useOutsideClick(handler, listenCapturing = true) {
 `listenCapturing = true` یعنی listener در فاز `capture` ثبت می‌شود (قبل از `bubble`) — برای بستن مودال وقتی کلیک روی overlay یا خارج از پنل است مفید است.
 
 ---
+
 ## الگوی Table — compound با `columns` در Context
 
 ```jsx
@@ -292,11 +308,13 @@ export default Table;
 `Table.Body` با `render` — ترکیب `Compound` + `Render Props` (جزوه دوره). جزئیات در [Render Props](./Render-Props.md).
 
 ---
+
 ## منوی کانتکست
 
 منوی کانتکست (کلیک راست) هم با همان ایده compound پیاده می‌شود: `Menu` والد + `Menu.Item` فرزند + `Context` برای موقعیت و باز/بسته. ساختار مشابه `Modal`/`Tabs` است.
 
 ---
+
 ## 💡 مثال استفاده — Modal ساده
 
 ```jsx
@@ -321,6 +339,7 @@ function DeleteAccountPage() {
 ```
 
 ---
+
 ## مثال واقعی در پروژه
 
 - مودال compound در the-wild-oasis: `openName`، `Portal`، `useOutsideClick`
@@ -328,18 +347,27 @@ function DeleteAccountPage() {
 - مودال ساده در fast-react-pizza: `Trigger` / `Content` / `Header` / `Body`
 
 ---
+
 ## 🚀 Best Practices
 
 ✅ `Context` را فقط برای `sub-tree` همان compound نگه دارید  
 ✅ `hook` اختصاصی (`useModalContext`) با guard خطا  
 ✅ export زیرکامپوننت‌ها به‌صورت `Parent.Child`  
 ✅ `Portal` برای Modal/Tooltip — [Portals](../Portals.md)  
-✅ `useMemo` برای `value` در `Provider` اگر `object` جدید هر بار  
-❌ `expose` کردن `state` خام بدون نیاز  
-❌ `cloneElement` در کد جدید بدون دلیل — ترجیح `composition`  
-❌ وابستگی به ترتیب ثابت `children` بدون `documentation`
+✅ `useMemo` برای `value` در `Provider` اگر `object` جدید هر بار
 
 ---
+
+## ⚠️ اشتباهات رایج
+
+❌ `expose` کردن `state` خام بدون نیاز  
+❌ `cloneElement` در کد جدید بدون دلیل — ترجیح `composition`  
+❌ وابستگی به ترتیب ثابت `children` بدون `documentation`  
+❌ `Context` سراسری برای `state` داخلی یک compound — `re-render` غیرضروری  
+❌ `value` ناپایدار در `Provider` (object جدید هر `render` بدون `useMemo`)
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [Context](../Context.md)
@@ -347,13 +375,16 @@ function DeleteAccountPage() {
 - [Custom Hooks](../Custom-Hooks.md)
 - [Render Props](./Render-Props.md)
 - [Reusability Patterns](./Reusability-Patterns.md)
+- [State-Management/Context-API.md](../State-Management/Context-API.md)
 
 ---
+
 ## خلاصه
 
-`Compound Components` = API ترکیبی + `state` مشترک ضمنی. برای `Modal`، `Table`، `Tabs` و `UI kit` ایده‌آل است. الگوی دوره: `openName` + `cloneElement` برای چند مودال در یک والد.
+در الگوی compound، API ترکیبی با `state` مشترک ضمنی ساخته می‌شود — برای `Modal`، `Table`، `Tabs` و `UI kit` ایده‌آل است. الگوی دوره: `openName` + `cloneElement` برای چند مودال در یک والد.
 
 ---
+
 ## 📚 منابع
 
 - [Compound Components — Kent C. Dodds](https://kentcdodds.com/blog/compound-components-with-react-hooks)

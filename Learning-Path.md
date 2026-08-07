@@ -92,13 +92,13 @@
 
 ## ماژول ۰۶ — الگوها (Patterns)
 
-> نمای کلی: [Patterns/README.md](./Patterns/README.md)
+> نمای کلی: [Patterns/README.md](./Patterns/README.md) · ترتیب مطالعه: Reusability → Compound → Render Props → HOC → React.memo
 
-- [x] `51` [React.memo](./Patterns/React-Memo.md)
+- [x] `51` [Reusability Patterns](./Patterns/Reusability-Patterns.md)
 - [x] `52` [Compound Components](./Patterns/Compound-Components.md)
 - [x] `53` [Render Props](./Patterns/Render-Props.md)
 - [x] `54` [Higher-Order Components](./Patterns/Higher-Order-Components.md)
-- [x] `55` [Reusability Patterns](./Patterns/Reusability-Patterns.md)
+- [x] `55` [React.memo](./Patterns/React-Memo.md)
 
 ---
 

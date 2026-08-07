@@ -28,7 +28,7 @@
      - `README.md`، `Learning-Path.md` و `WhatsNew.md` با فایل‌های جدید/ویرایش‌شده هم‌خوان باشند
    - `git status` و `git diff` را بررسی کند
    - فقط فایل‌های مرتبط با پروژه را `git add` کند (نه `.obsidian/workspace.json`)
-   - پیام کامیت شفاف بنویسد (شامل نام Milestone فعلی، مثلاً `M3`)
+   - پیام کامیت شفاف بنویسد (شامل نام Milestone فعلی، مثلاً `M3`) — **همیشه به انگلیسی** (مثال: `Retrofit M4: align Patterns with M7 standard`)
    - `git push origin main` (یا شاخهٔ فعال) به ریپازیتوری GitHub انجام دهد
    - در `ROADMAP.md` changelog ثبت کند
 
@@ -36,7 +36,7 @@
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-07 (M3 retrofit Hooks)
+**آخرین به‌روزرسانی:** 2026-08-07 (M4 retrofit Patterns)
 
 ---
 
@@ -149,7 +149,7 @@
    - لینک‌های داخلی و هم‌خوانی `README.md` / `Learning-Path.md` / `WhatsNew.md`
 2. `git status` + `git diff` — بررسی تغییرات
 3. `git add` فایل‌های مرتبط (رعایت `.gitignore`)
-4. `git commit` با پیام شامل Milestone (مثال: `M3: اصلاح RTL بخش مفهوم در Hooks`)
+4. `git commit` با پیام **انگلیسی** شامل Milestone (مثال: `Retrofit M4: align Patterns with M7 standard (nav, structure, RTL)`) — متن کامیت فارسی نباشد
 5. `git push origin main`
 6. ثبت خلاصه در changelog پایین همین فایل
 
@@ -187,7 +187,7 @@
 | **M9** | Styling | [ ] | | |
 | **M10** | Next.js | [ ] | | بدهی react.dev: `cacheSignal`, APIهای `prerender`/`resume` در `react-dom/static` (RSC) |
 | **M11** | Reference / FAQ / Interview | [ ] | | |
-| **M12** | QA نهایی | [ ] | | بدهی: retrofit M4–M6 (M2، M3 انجام شد؛ M1 بدون تغییر) |
+| **M12** | QA نهایی | [ ] | | بدهی: retrofit M5–M6 (M2، M3، M4 انجام شد؛ M1 بدون تغییر) |
 
 ---
 
@@ -207,7 +207,21 @@
 | `herlpers for react + rfc +`               | Components.md, Quick-Start.md                              | [x]                      |
 | _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [x] M7 State / [ ] M10 |
 | _(غیرجزوه — M7)_                           | Zustand, Jotai, MobX, Recoil, State-Types, RTK Query       | [x] M7                 |
-| _(retrofit — M12)_                         | M2: [x] · M3: [x] · M4–M6: باقی‌مانده              | [ ] M12 (M2 [x], M3 [x])       |
+| _(retrofit — M12)_                         | M2: [x] · M3: [x] · M4: [x] · M5–M6: باقی‌مانده    | [ ] M12 (M2 [x], M3 [x], M4 [x]) |
+
+### 2026-08-07 (retrofit M4 — Patterns)
+
+- خط ناوبری `> 🧭 پیش‌نیاز` در هر ۶ فایل Patterns (زنجیره README: Reusability → Compound → Render Props → HOC → React.memo → Performance)
+- یکدست‌سازی ساختار M7: `## چه مشکلی`، `## ⚙️ نحوه کار`، `## 🚀 Best Practices`، `## ⚠️ اشتباهات رایج`، `## 📚 منابع`
+- غنی‌سازی HIGH: README، Reusability-Patterns، Compound-Components، React-Memo
+- غنی‌سازی MEDIUM: Render-Props، Higher-Order-Components
+- لینک‌های M6/M7: Memoization، Profiler، Context-API، Redux، React-Query
+- درخت تصمیم و جدول «تفاوت با گزینه‌های مشابه» در Reusability و React-Memo
+- React 19 Context syntax در Compound-Components
+- بازبینی RTL: خلاصه‌ها، جمله‌های شروع با انگلیسی
+- Learning-Path ماژول ۰۶: ترتیب مطالعه هم‌تراز README
+- محتوای جزوه (Modal named، Table، useOutsideClick، CabinTable) حفظ شد
+- M1، M5–M8+ بدون تغییر
 
 ### 2026-08-07 (retrofit M3 — Hooks)
 
@@ -220,7 +234,7 @@
 - منابع react.dev: State as Snapshot، You Might Not Need an Effect، useEffectEvent، React 19 Forms
 - بازبینی RTL: نمودارهای Effect، جمله‌های شروع با انگلیسی، `ID`/`DevTools`/`Hook`
 - محتوای جزوه (مثال‌ها، Interview، When to Use) حفظ شد
-- M1، M4–M8+ بدون تغییر
+- M1، M4–M8+ بدون تغییر (M4 بعداً retrofit شد)
 
 ### 2026-08-07 (retrofit M2 — Core React)
 
@@ -248,7 +262,7 @@
 - ابزارهای غیرجزوه: Zustand، Jotai، MobX، Recoil، RTK Query
 - `Examples/state-management/`: ۵ فایل نمونه
 - به‌روزرسانی README، Learning-Path (ماژول ۰۸، شماره ۷۰–۸۱)، WhatsNew M7، Glossary، Cheatsheet
-- بدهی M12: retrofit M4–M6 (M2، M3 انجام شد)؛ بازبینی RTL M3 در changelog
+- بدهی M12: retrofit M5–M6 (M2، M3، M4 انجام شد)؛ بازبینی RTL M3 در changelog
 - Milestone فعلی: **M7** → بعدی **M8**
 
 ### 2026-08-06 (بازبینی RTL M6 + WhatsNew)

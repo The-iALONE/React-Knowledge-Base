@@ -1,23 +1,31 @@
 # Higher-Order Components (HOC)
 
-الگوی `wrap` کردن کامپوننت برای افزودن رفتار یا داده بدون تغییر خود کامپوننت.
+> الگوی `wrap` کردن کامپوننت برای افزودن رفتار یا داده بدون تغییر خود کامپوننت.
+
+> 🧭 پیش‌نیاز: [Render Props](./Render-Props.md) · بعدی: [React.memo](./React-Memo.md)
 
 ---
+
 ## 📖 مفهوم
 
 کامپوننت مرتبه‌بالاتر (`HOC`) تابعی است که یک کامپوننت می‌گیرد و کامپوننت جدید با قابلیت اضافه برمی‌گرداند: `(WrappedComponent) => EnhancedComponent`.
 
+مثال ذهنی: می‌خواهید هر صفحهٔ محافظت‌شده قبل از رندر، کاربر را چک کند — به‌جای تکرار `if (!user)` در هر صفحه، یک `withAuth(Dashboard)` می‌سازید که همان منطق را `wrap` می‌کند.
+
 ---
-## چرا این ویژگی وجود دارد؟
+
+## چرا
 
 قبل از `Hooks`، `HOC` راه استاندارد برای `cross-cutting concerns` (`auth`، `logging`، `data fetching`) بود.
 
 ---
+
 ## چه مشکلی را حل می‌کند؟
 
 `reuse` منطق در چند کامپوننت بدون `duplicate code` یا `mixin`.
 
 ---
+
 ## ⚙️ نحوه کار
 
 1. `HOC` کامپوننت را `wrap` می‌کند.
@@ -26,6 +34,7 @@
 4. `ref` با `forwardRef` `forward` می‌شود (در صورت نیاز).
 
 ---
+
 ## چه زمانی استفاده کنیم؟
 
 - نگهداری کد `legacy` (redux `connect`, react-router `withRouter`)
@@ -34,12 +43,14 @@
 - `cross-cutting concerns` بدون `coupling` UI (`Error Boundary`، `Logger`)
 
 ---
+
 ## چه زمانی استفاده نکنیم؟
 
 - پروژه جدید → `Custom Hooks`
 - وقتی `prop collision` یا `wrapper hell` ایجاد می‌شود
 
 ---
+
 ## Syntax
 
 ```jsx
@@ -67,6 +78,7 @@ const ProtectedDashboard = withAuth(Dashboard);
 ```
 
 ---
+
 ## `forwardRef` در HOC
 
 اگر کامپوننت `wrap` شده باید `ref` بگیرد، `HOC` باید `ref` را به `WrappedComponent` پاس دهد:
@@ -95,6 +107,7 @@ const LoggedFancyInput = withLogging(FancyInput);
 بدون `forwardRef`، `ref` به `HOC` می‌رسد نه به DOM داخل `WrappedComponent`.
 
 ---
+
 ## 💡 مثال — withLoading
 
 ```jsx
@@ -119,6 +132,7 @@ const UserProfileWithLoading = withLoading(UserProfile);
 ```
 
 ---
+
 ## معادل Hook
 
 ```jsx
@@ -135,36 +149,60 @@ function Dashboard() {
 ```
 
 ---
-## مثال واقعی در پروژه
 
-`connect()` در Redux classic یک `HOC` بود. در Redux Toolkit مدرن از `useSelector` / `useDispatch` استفاده می‌شود (جزئیات در M7 — [State Management](../State-Management/README.md)). `React.memo` همچنان `HOC` پرکاربرد است.
+## تفاوت با گزینه‌های مشابه
+
+| | HOC | Render Props | Custom Hook |
+|---|-----|--------------|-------------|
+| شکل | `withX(Component)` | `<X render={...} />` | `useX()` |
+| `ref` | نیاز به `forwardRef` | مستقیم | N/A |
+| DevTools | `displayName` مهم | ساده‌تر | ساده‌تر |
+| وضعیت ۲۰۲۶ | `legacy` / libs | `legacy` / compound | **پیش‌فرض** |
 
 ---
+
+## مثال واقعی در پروژه
+
+`connect()` در Redux classic یک `HOC` بود. در Redux Toolkit مدرن از `useSelector` / `useDispatch` استفاده می‌شود — جزئیات در [Redux](../State-Management/Redux.md). `React.memo` همچنان `HOC` پرکاربرد است.
+
+---
+
 ## 🚀 Best Practices
 
 ✅ یک `concern` برای هر `HOC`  
 ✅ `spread` بقیه `props`: `{...props}`  
 ✅ `displayName` برای `debug`  
-✅ `forwardRef` اگر `ref` لازم است  
-❌ `HOC` داخل `render` (کامپوننت جدید هر بار)  
-❌ `mutate` کردن `WrappedComponent`
+✅ `forwardRef` اگر `ref` لازم است
 
 ---
+
+## ⚠️ اشتباهات رایج
+
+❌ `HOC` داخل `render` — کامپوننت جدید هر بار ساخته می‌شود و `state` از بین می‌رود  
+❌ `mutate` کردن `WrappedComponent`  
+❌ `prop collision` — `HOC` و `WrappedComponent` هر دو `user` inject کنند  
+❌ `wrapper hell` — `withAuth(withLoading(withTheme(...)))`  
+❌ فراموش کردن `hoist statics` در کتابخانه‌های قدیمی (متدهای static روی `WrappedComponent`)
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [React.memo](./React-Memo.md)
 - [Render Props](./Render-Props.md)
 - [Custom Hooks](../Custom-Hooks.md)
-- [State Management Overview](../State-Management/README.md) — Redux و `connect` (M7)
+- [State-Management/Redux.md](../State-Management/Redux.md) — `connect` و مهاجرت به hooks
 - [Reusability Patterns](./Reusability-Patterns.md)
 
 ---
+
 ## خلاصه
 
-`HOC` = `wrap` کردن کامپوننت برای افزودن `behavior`. در کد جدید `Hooks` جایگزین اصلی‌اند؛ `memo` و کتابخانه‌های `legacy` هنوز `HOC` دارند. برای `ref` همیشه `forwardRef` را در نظر بگیرید.
+در این الگو، کامپوننت برای افزودن `behavior` `wrap` می‌شود. در کد جدید `Hooks` جایگزین اصلی‌اند؛ `memo` و کتابخانه‌های `legacy` هنوز `HOC` دارند. برای `ref` همیشه `forwardRef` را در نظر بگیرید.
 
 ---
+
 ## 📚 منابع
 
 - [forwardRef — react.dev](https://react.dev/reference/react/forwardRef)
-- [Reusing Logic with Hooks](https://react.dev/learn/reusing-logic-with-custom-hooks)
+- [Reusing Logic with Hooks — react.dev](https://react.dev/learn/reusing-logic-with-custom-hooks)

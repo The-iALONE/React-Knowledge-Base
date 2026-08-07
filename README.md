@@ -74,11 +74,11 @@
 ### Patterns
 
 - [Patterns Overview](./Patterns/README.md)
-- [React.memo](./Patterns/React-Memo.md)
+- [Reusability Patterns](./Patterns/Reusability-Patterns.md)
 - [Compound Components](./Patterns/Compound-Components.md)
 - [Render Props](./Patterns/Render-Props.md)
 - [Higher-Order Components](./Patterns/Higher-Order-Components.md)
-- [Reusability Patterns](./Patterns/Reusability-Patterns.md)
+- [React.memo](./Patterns/React-Memo.md)
 
 ### Performance
 

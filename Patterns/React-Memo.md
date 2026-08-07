@@ -1,6 +1,8 @@
 # React.memo
 
-بهینه‌سازی رندر با جلوگیری از `re-render` غیرضروری کامپوننت‌های تابعی.
+> بهینه‌سازی رندر با جلوگیری از `re-render` غیرضروری کامپوننت‌های تابعی.
+
+> 🧭 پیش‌نیاز: [Higher-Order Components](./Higher-Order-Components.md) · [useMemo](../Hooks/useMemo.md) · [useCallback](../Hooks/useCallback.md) · بعدی: [Performance/README](../Performance/README.md)
 
 ---
 
@@ -8,9 +10,11 @@
 
 برای جلوگیری از `re-render` غیرضروری کامپوننت‌های تابعی، از `React.memo` استفاده می‌شود — یک کامپوننت مرتبه‌بالاتر (`Higher-Order Component`) داخلی که کامپوننت تابعی را `wrap` می‌کند و فقط وقتی `props` تغییر کرده باشند، دوباره رندر می‌کند (مقایسه سطحی/`shallow`).
 
+فرض کنید والد هر بار `re-render` می‌شود ولی `props` فرزند ثابت است — بدون `memo`، React فرزند را هم دوباره رندر می‌کند؛ با `memo`، اگر `props` از نظر `shallow` برابر باشند، رندر رد می‌شود.
+
 ---
 
-## چرا این ویژگی وجود دارد؟
+## چرا
 
 در درخت کامپوننت، تغییر `state` والد باعث `re-render` همه فرزندان می‌شود — حتی اگر `props` آن‌ها عوض نشده باشد. `memo` این هزینه را کاهش می‌دهد.
 
@@ -46,6 +50,18 @@ const UserCard = memo(
   (prev, next) => prev.user.id === next.user.id,
 );
 ```
+
+---
+
+## تفاوت با گزینه‌های مشابه
+
+| ابزار | هدف | سطح |
+|-------|-----|-----|
+| `React.memo` | رد `re-render` کامپوننت | کامپوننت |
+| `useMemo` | `cache` نتیجه محاسبه | مقدار داخل کامپوننت |
+| `useCallback` | `cache` تابع | تابع داخل کامپوننت |
+| React Compiler | `memoization` خودکار | کل پروژه |
+| `key` در لیست | هویت آیتم در reconciliation | لیست |
 
 ---
 
@@ -140,20 +156,30 @@ function Parent() {
 
 ## 🚀 Best Practices
 
-✅ ابتدا پروفایل کنید، بعد `memo` بزنید  
+✅ ابتدا پروفایل کنید، بعد `memo` بزنید — [Profiler](../Performance/Profiling.md)  
 ✅ `props` پایدار با `useCallback` / `useMemo`  
 ✅ `key` درست در لیست‌ها  
-✅ کامپایلر React را در پروژه‌های جدید بررسی کنید  
+✅ کامپایلر React را در پروژه‌های جدید بررسی کنید
+
+---
+
+## ⚠️ اشتباهات رایج
+
 ❌ `memo` روی همه کامپوننت‌ها بدون دلیل  
-❌ فراموش کردن `memoization` والد برای `function props`
+❌ فراموش کردن `memoization` والد برای `function props`  
+❌ `memo` روی کامپوننتی که `props` هر بار `reference` جدید می‌گیرد  
+❌ بهینه‌سازی قبل از پروفایل (`premature optimization`)  
+❌ انتظار معجزه از `memo` بدون [State Colocation](../Performance/State-Colocation.md)
 
 ---
 
 ## ارتباط با مفاهیم دیگر
 
 - [useMemo](../Hooks/useMemo.md) · [useCallback](../Hooks/useCallback.md)
-- [Render Cycle](../Performance/Render-Cycle.md)
-- [React Compiler](../Escape-Hatches/React-Compiler.md)
+- [Performance/Memoization.md](../Performance/Memoization.md)
+- [Performance/Render-Cycle.md](../Performance/Render-Cycle.md)
+- [Performance/Re-render.md](../Performance/Re-render.md)
+- [Escape-Hatches/React-Compiler.md](../Escape-Hatches/React-Compiler.md)
 - [Higher-Order Components](./Higher-Order-Components.md)
 - [Reusability Patterns](./Reusability-Patterns.md)
 
@@ -161,7 +187,7 @@ function Parent() {
 
 ## خلاصه
 
-`React.memo` = رد کردن `re-render` وقتی `props` از نظر `shallow` برابرند. همراه با `props` پایدار مؤثر است. با کامپایلر React اغلب `memo` دستی لازم نیست.
+با `React.memo` می‌توان `re-render` را رد کرد وقتی `props` از نظر `shallow` برابرند. همراه با `props` پایدار مؤثر است؛ با کامپایلر React اغلب `memo` دستی لازم نیست.
 
 ---
 
@@ -169,4 +195,4 @@ function Parent() {
 
 - [React.memo — react.dev](https://react.dev/reference/react/memo)
 - [React Compiler — react.dev](https://react.dev/learn/react-compiler)
-- [Performance — react.dev](https://react.dev/learn/render-and-commit)
+- [Render and Commit — react.dev](https://react.dev/learn/render-and-commit)
