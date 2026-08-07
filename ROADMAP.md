@@ -32,11 +32,11 @@
    - `git push origin main` (یا شاخهٔ فعال) به ریپازیتوری GitHub انجام دهد
    - در `ROADMAP.md` changelog ثبت کند
 
-**Milestone فعلی:** `M11` (Reference — بعدی)  
+**Milestone فعلی:** `M12` (QA — بعدی)  
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-07 (M10 Next.js)
+**آخرین به‌روزرسانی:** 2026-08-07 (M11 Reference)
 
 ---
 
@@ -136,7 +136,7 @@
 | ریپازیتوری | `React-Knowledge-Base` (خصوصی، GitHub) |
 | شاخهٔ اصلی | `main` |
 | مسیر محلی | ریشهٔ همین پوشه (`React-Knowledge-Base/`) |
-| Milestone فعلی | **M10** — Next.js (تکمیل)؛ Milestone بعدی: **M11** — Reference |
+| Milestone فعلی | **M11** — Reference (تکمیل)؛ Milestone بعدی: **M12** — QA |
 
 ### قانون کامیت و پوش
 
@@ -187,7 +187,7 @@
 | **M8** | React Router | [x] | 2026-08-07 | README + ۵ موضوع + Protected Routes + Examples |
 | **M9** | Styling | [x] | 2026-08-07 | README + Global/CSS Modules/Tailwind/CSS-in-JS + Examples |
 | **M10** | Next.js | [x] | 2026-08-07 | README + ۱۷ موضوع + Examples — nav M7، Wild Oasis، nextjs.org |
-| **M11** | Reference / FAQ / Interview | [ ] | | |
+| **M11** | Reference / FAQ / Interview | [x] | 2026-08-07 | ۷ فایل ریشه — API، FAQ، Interview، Migration — nav M7 |
 | **M12** | QA نهایی | [ ] | | بدهی: retrofit M6 [x]؛ M1 بدون تغییر |
 
 ---
@@ -209,6 +209,17 @@
 | _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [x] M7 State / [x] M10 |
 | _(غیرجزوه — M7)_                           | Zustand, Jotai, MobX, Recoil, State-Types, RTK Query       | [x] M7                 |
 | _(retrofit — M12)_                         | M2: [x] · M3: [x] · M4: [x] · M5: [x] · M6: [x]           | [x] M12 (M1 بدون تغییر) |
+
+### 2026-08-07 (M11 — Reference)
+
+- ایجاد ۷ فایل ریشه: `React-APIs`، `React-DOM-APIs`، `Best-Practices`، `Common-Pitfalls`، `FAQ`، `Interview-Questions`، `Migration-Notes`
+- خط ناوبری `> 🧭 پیش‌نیاز` در هر ۷ فایل (زنجیره Supabase → … → Cheatsheet)
+- ساختار M7: مفهوم، چرا، چه مشکلی، نحوه کار، Best Practices، اشتباهات، ارتباط، خلاصه، منابع
+- تفکیک `Best-Practices`/`Common-Pitfalls` عمومی از `Performance/*` + لینک متقابل
+- `Interview-Questions` هاب curated + لینک به `## Interview` در Hooks
+- Learning-Path ضمیمه M11 با ترتیب پیشنهادی؛ Project-Structure درخت Reference
+- ناوبری `Backend-Integration-Supabase` → `React-APIs`
+- M1، M2–M10 (به‌جز nav Supabase) بدون تغییر محتوایی
 
 ### 2026-08-07 (M10 — Next.js)
 

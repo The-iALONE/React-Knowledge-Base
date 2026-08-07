@@ -10,6 +10,20 @@
 
 ---
 
+## M11 — Reference (ضمیمه)
+
+| مفهوم | فایل | خلاصه |
+|-------|------|--------|
+| نقشه API `react` | [React-APIs.md](./React-APIs.md) | memo، lazy، `use`، Context — لینک به Hooks/Patterns |
+| نقشه API `react-dom` | [React-DOM-APIs.md](./React-DOM-APIs.md) | createRoot، Portal، flushSync، server |
+| عادت‌های عمومی | [Best-Practices.md](./Best-Practices.md) | جدا از Performance/Best-Practices |
+| اشتباهات عمومی | [Common-Pitfalls.md](./Common-Pitfalls.md) | mutate، deps، key — جدا از Performance |
+| پرسش پرتکرار | [FAQ.md](./FAQ.md) | ۲۱ سؤال با لینک عمیق |
+| مصاحبه | [Interview-Questions.md](./Interview-Questions.md) | هاب + لینک Interview در Hooks |
+| مهاجرت | [Migration-Notes.md](./Migration-Notes.md) | Class→Hooks، 17→18→19، App Router |
+
+---
+
 ## M8 — React Router (ماژول جدید)
 
 | مفهوم | فایل | خلاصه |

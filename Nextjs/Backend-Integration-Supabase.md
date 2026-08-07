@@ -1,6 +1,6 @@
 # Backend Integration (Supabase)
 
-> 🧭 پیش‌نیاز: [Image & Font Optimization](./Image-And-Font-Optimization.md) · بعدی: [Learning-Path — ضمیمه M11](../Learning-Path.md)
+> 🧭 پیش‌نیاز: [Image & Font Optimization](./Image-And-Font-Optimization.md) · بعدی: [React APIs](../React-APIs.md)
 
 اتصال Next.js به Supabase — client/server، query و Row Level Security.
 

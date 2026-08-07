@@ -107,6 +107,7 @@
 
 ## ارتباط با مفاهیم دیگر
 
+- [Best-Practices.md](../Best-Practices.md) — عادت‌های عمومی React (لایه قبل از performance)
 - [Optimization-Techniques.md](./Optimization-Techniques.md)
 - [Common-Mistakes.md](./Common-Mistakes.md)
 - [Performance/README.md](./README.md)

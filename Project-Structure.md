@@ -63,6 +63,10 @@ React-Knowledge-Base/
 ├── Styling/                 # M9
 ├── Nextjs/                  # M10
 │
+├── React-APIs.md …          # M11 Reference (ریشه — ضمیمه Learning-Path)
+│   React-APIs · React-DOM-APIs · Best-Practices · Common-Pitfalls
+│   FAQ · Interview-Questions · Migration-Notes
+│
 └── Examples/
     ├── patterns/
     ├── escape-hatches/
@@ -79,6 +83,7 @@ React-Knowledge-Base/
 | الگو (M4) | `Patterns/` | `Topic.md` + `Patterns/README.md` |
 | Escape Hatches (M5) | `Escape-Hatches/` | `Topic.md` + `Escape-Hatches/README.md` |
 | ماژول تخصصی | پوشهٔ همان ماژول | `README.md` + فایل‌های موضوع |
+| Reference (M11) | ریشه | `React-APIs.md`، `FAQ.md`، … — ضمیمه غیرخطی |
 | مثال کد | `Examples/{module}/` | `.jsx` / `.js` |
 | **ممنوع** | ریشه | تکرار فایلی که در پوشهٔ ماژول هست (مثلاً `./Suspense.md` و `Escape-Hatches/Suspense.md`) |
 

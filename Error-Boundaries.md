@@ -107,7 +107,7 @@ import { ErrorBoundary } from "react-error-boundary";
 ## ارتباط با مفاهیم دیگر
 
 - [Nextjs/Loading-And-Error-States](./Nextjs/Loading-And-Error-States.md)
-- [Learning-Path — ضمیمه](./Learning-Path.md#ضمیمه--مراجع-غیرخطی) — FAQ و مراجع (M11)
+- [FAQ](./FAQ.md) · [Interview Questions](./Interview-Questions.md) — مراجع M11
 
 ## 💡 نکات مهم
 

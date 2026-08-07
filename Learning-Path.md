@@ -188,17 +188,17 @@
 
 ---
 
-## ضمیمه — مراجع غیرخطی
+## ضمیمه — مراجع غیرخطی (M11)
 
-این بخش‌ها را هر زمان که نیاز داشتید مطالعه کنید؛ ترتیب خاصی ندارند.
+این بخش‌ها را هر زمان که نیاز داشتید مطالعه کنید؛ ترتیب اجباری ندارند. **ترتیب پیشنهادی:** React APIs → React DOM APIs → Best Practices → Common Pitfalls → FAQ → Interview → Migration → [Cheatsheet](./Cheatsheet.md).
 
-- [React APIs](./React-APIs.md)
-- [React DOM APIs](./React-DOM-APIs.md)
-- [Best Practices](./Best-Practices.md)
-- [Common Pitfalls](./Common-Pitfalls.md)
-- [FAQ](./FAQ.md)
-- [Interview Questions](./Interview-Questions.md)
-- [Migration Notes](./Migration-Notes.md)
+- [ ] [React APIs](./React-APIs.md)
+- [ ] [React DOM APIs](./React-DOM-APIs.md)
+- [ ] [Best Practices](./Best-Practices.md) — عمومی (جدا از [Performance/Best-Practices](./Performance/Best-Practices.md))
+- [ ] [Common Pitfalls](./Common-Pitfalls.md) — عمومی (جدا از [Performance/Common-Mistakes](./Performance/Common-Mistakes.md))
+- [ ] [FAQ](./FAQ.md)
+- [ ] [Interview Questions](./Interview-Questions.md)
+- [ ] [Migration Notes](./Migration-Notes.md)
 
 ---
 

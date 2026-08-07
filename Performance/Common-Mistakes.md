@@ -170,7 +170,8 @@ function Bad() {
 
 ## ارتباط با مفاهیم دیگر
 
-- [Best-Practices.md](./Best-Practices.md)
+- [Best-Practices.md](./Best-Practices.md) — performance
+- [Common-Pitfalls.md](../Common-Pitfalls.md) — اشتباهات عمومی React
 - [Optimization-Techniques.md](./Optimization-Techniques.md)
 - [Re-render.md](./Re-render.md)
 - [State-Management/README.md](../State-Management/README.md) — بعد از Performance
