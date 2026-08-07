@@ -4,6 +4,8 @@
 
 هر آیتم را پس از مطالعه تیک بزنید. شماره‌ها سراسری و پیوسته‌اند (`00` تا `111`).
 
+**تفکیک پیشرفت:** چک‌باکس‌های این فایل فقط پیشرفت **مطالعهٔ شخصی** شماست. وضعیت «محتوا آماده / `milestone` تکمیل» در [ROADMAP.md](./ROADMAP.md) ثبت می‌شود.
+
 ---
 
 ## ماژول ۰۰ — شروع
@@ -79,14 +81,14 @@
 
 > نمای کلی: [Escape-Hatches/README.md](./Escape-Hatches/README.md) · ترتیب مطالعه: Concurrent → Suspense → Lazy → `use` → RSC → Compiler · مفاهیم جدید: [WhatsNew.md](./WhatsNew.md)
 
-- [x] `44` [Escape Hatches](./Escape-Hatches/README.md)
-- [x] `45` [Concurrent Features](./Escape-Hatches/Concurrent-Features.md)
-- [x] `46` [Suspense](./Escape-Hatches/Suspense.md)
-- [x] `47` [Lazy Loading](./Escape-Hatches/Lazy-Loading.md)
-- [x] `48` [`use`](./Hooks/use.md) — خواندن `promise`/`context` (React 19)
-- [x] `49` [Server Components](./Escape-Hatches/Server-Components.md)
-- [x] `50` [Client Components](./Escape-Hatches/Client-Components.md)
-- [x] `51` [React Compiler](./Escape-Hatches/React-Compiler.md)
+- [ ] `44` [Escape Hatches](./Escape-Hatches/README.md)
+- [ ] `45` [Concurrent Features](./Escape-Hatches/Concurrent-Features.md)
+- [ ] `46` [Suspense](./Escape-Hatches/Suspense.md)
+- [ ] `47` [Lazy Loading](./Escape-Hatches/Lazy-Loading.md)
+- [ ] `48` [`use`](./Hooks/use.md) — خواندن `promise`/`context` (React 19)
+- [ ] `49` [Server Components](./Escape-Hatches/Server-Components.md)
+- [ ] `50` [Client Components](./Escape-Hatches/Client-Components.md)
+- [ ] `51` [React Compiler](./Escape-Hatches/React-Compiler.md)
 
 ---
 
@@ -94,11 +96,11 @@
 
 > نمای کلی: [Patterns/README.md](./Patterns/README.md) · ترتیب مطالعه: Reusability → Compound → Render Props → HOC → React.memo
 
-- [x] `52` [Reusability Patterns](./Patterns/Reusability-Patterns.md)
-- [x] `53` [Compound Components](./Patterns/Compound-Components.md)
-- [x] `54` [Render Props](./Patterns/Render-Props.md)
-- [x] `55` [Higher-Order Components](./Patterns/Higher-Order-Components.md)
-- [x] `56` [React.memo](./Patterns/React-Memo.md)
+- [ ] `52` [Reusability Patterns](./Patterns/Reusability-Patterns.md)
+- [ ] `53` [Compound Components](./Patterns/Compound-Components.md)
+- [ ] `54` [Render Props](./Patterns/Render-Props.md)
+- [ ] `55` [Higher-Order Components](./Patterns/Higher-Order-Components.md)
+- [ ] `56` [React.memo](./Patterns/React-Memo.md)
 
 ---
 
@@ -106,37 +108,37 @@
 
 > نمای کلی: [Performance/README.md](./Performance/README.md) · ترتیب مطالعه: Virtual DOM → Render Cycle → Re-render → Reconciliation → Diffing → Keys → State Colocation → Memoization → Code Splitting → Profiling → Optimization → Best/Common
 
-- [x] `57` [نمای کلی Performance](./Performance/README.md)
-- [x] `58` [Virtual DOM](./Performance/Virtual-DOM.md)
-- [x] `59` [Render Cycle](./Performance/Render-Cycle.md)
-- [x] `60` [Re-render](./Performance/Re-render.md)
-- [x] `61` [Reconciliation](./Performance/Reconciliation.md)
-- [x] `62` [Diffing Algorithm](./Performance/Diffing-Algorithm.md)
-- [x] `63` [Keys & Performance](./Performance/Keys-And-Performance.md)
-- [x] `64` [State Colocation](./Performance/State-Colocation.md)
-- [x] `65` [Memoization](./Performance/Memoization.md)
-- [x] `66` [Code Splitting](./Performance/Code-Splitting.md)
-- [x] `67` [Profiling](./Performance/Profiling.md)
-- [x] `68` [Optimization Techniques](./Performance/Optimization-Techniques.md)
-- [x] `69` [Best Practices](./Performance/Best-Practices.md)
-- [x] `70` [Common Mistakes](./Performance/Common-Mistakes.md)
+- [ ] `57` [نمای کلی Performance](./Performance/README.md)
+- [ ] `58` [Virtual DOM](./Performance/Virtual-DOM.md)
+- [ ] `59` [Render Cycle](./Performance/Render-Cycle.md)
+- [ ] `60` [Re-render](./Performance/Re-render.md)
+- [ ] `61` [Reconciliation](./Performance/Reconciliation.md)
+- [ ] `62` [Diffing Algorithm](./Performance/Diffing-Algorithm.md)
+- [ ] `63` [Keys & Performance](./Performance/Keys-And-Performance.md)
+- [ ] `64` [State Colocation](./Performance/State-Colocation.md)
+- [ ] `65` [Memoization](./Performance/Memoization.md)
+- [ ] `66` [Code Splitting](./Performance/Code-Splitting.md)
+- [ ] `67` [Profiling](./Performance/Profiling.md)
+- [ ] `68` [Optimization Techniques](./Performance/Optimization-Techniques.md)
+- [ ] `69` [Best Practices](./Performance/Best-Practices.md)
+- [ ] `70` [Common Mistakes](./Performance/Common-Mistakes.md)
 
 ---
 
 ## ماژول ۰۸ — مدیریت `state`
 
-- [x] `71` [نمای کلی State Management](./State-Management/README.md)
-- [x] `72` [انواع State (Taxonomy)](./State-Management/State-Types.md)
-- [x] `73` [Context API](./State-Management/Context-API.md)
-- [x] `74` [useReducer Pattern](./State-Management/useReducer-Pattern.md)
-- [x] `75` [Redux](./State-Management/Redux.md)
-- [x] `76` [Redux Toolkit](./State-Management/Redux-Toolkit.md)
-- [x] `77` [Zustand](./State-Management/Zustand.md)
-- [x] `78` [Jotai](./State-Management/Jotai.md)
-- [x] `79` [MobX](./State-Management/MobX.md)
-- [x] `80` [Recoil](./State-Management/Recoil.md)
-- [x] `81` [React Query](./State-Management/React-Query.md)
-- [x] `82` [React Hook Form](./State-Management/React-Hook-Form.md)
+- [ ] `71` [نمای کلی State Management](./State-Management/README.md)
+- [ ] `72` [انواع State (Taxonomy)](./State-Management/State-Types.md)
+- [ ] `73` [Context API](./State-Management/Context-API.md)
+- [ ] `74` [useReducer Pattern](./State-Management/useReducer-Pattern.md)
+- [ ] `75` [Redux](./State-Management/Redux.md)
+- [ ] `76` [Redux Toolkit](./State-Management/Redux-Toolkit.md)
+- [ ] `77` [Zustand](./State-Management/Zustand.md)
+- [ ] `78` [Jotai](./State-Management/Jotai.md)
+- [ ] `79` [MobX](./State-Management/MobX.md)
+- [ ] `80` [Recoil](./State-Management/Recoil.md)
+- [ ] `81` [React Query](./State-Management/React-Query.md)
+- [ ] `82` [React Hook Form](./State-Management/React-Hook-Form.md)
 
 ---
 
@@ -144,12 +146,12 @@
 
 > نمای کلی: [React-Router/README.md](./React-Router/README.md) · ترتیب مطالعه: Routing Basics → Nested → Dynamic → Navigation → State in URL
 
-- [x] `83` [نمای کلی React Router](./React-Router/README.md)
-- [x] `84` [Routing Basics](./React-Router/Routing-Basics.md)
-- [x] `85` [Nested Routes](./React-Router/Nested-Routes.md)
-- [x] `86` [Dynamic Routes](./React-Router/Dynamic-Routes.md)
-- [x] `87` [Navigation](./React-Router/Navigation.md)
-- [x] `88` [State in URL](./React-Router/State-In-URL.md)
+- [ ] `83` [نمای کلی React Router](./React-Router/README.md)
+- [ ] `84` [Routing Basics](./React-Router/Routing-Basics.md)
+- [ ] `85` [Nested Routes](./React-Router/Nested-Routes.md)
+- [ ] `86` [Dynamic Routes](./React-Router/Dynamic-Routes.md)
+- [ ] `87` [Navigation](./React-Router/Navigation.md)
+- [ ] `88` [State in URL](./React-Router/State-In-URL.md)
 
 ---
 
@@ -167,24 +169,24 @@
 
 ## ماژول ۱۱ — Next.js
 
-- [x] `94` [نمای کلی Next.js](./Nextjs/README.md)
-- [x] `95` [Project Setup](./Nextjs/Project-Setup.md)
-- [x] `96` [Routing & Pages](./Nextjs/Routing-And-Pages.md)
-- [x] `97` [Layouts](./Nextjs/Layouts.md)
-- [x] `98` [Navigation](./Nextjs/Navigation.md)
-- [x] `99` [Loading & Error States](./Nextjs/Loading-And-Error-States.md)
-- [x] `100` [Data Fetching & Caching](./Nextjs/Data-Fetching-And-Caching.md)
-- [x] `101` [Rendering Strategies](./Nextjs/Rendering-Strategies.md)
-- [x] `102` [Streaming & Suspense](./Nextjs/Streaming-And-Suspense.md)
-- [x] `103` [Server Components](./Nextjs/Server-Components.md)
-- [x] `104` [Client-Server Interleaving](./Nextjs/Client-Server-Interleaving.md)
-- [x] `105` [Server Actions](./Nextjs/Server-Actions.md)
-- [x] `106` [Route Handlers](./Nextjs/Route-Handlers.md)
-- [x] `107` [Middleware](./Nextjs/Middleware.md)
-- [x] `108` [Authentication (NextAuth)](./Nextjs/Authentication-NextAuth.md)
-- [x] `109` [Metadata & SEO](./Nextjs/Metadata-And-SEO.md)
-- [x] `110` [Image & Font Optimization](./Nextjs/Image-And-Font-Optimization.md)
-- [x] `111` [Backend Integration (Supabase)](./Nextjs/Backend-Integration-Supabase.md)
+- [ ] `94` [نمای کلی Next.js](./Nextjs/README.md)
+- [ ] `95` [Project Setup](./Nextjs/Project-Setup.md)
+- [ ] `96` [Routing & Pages](./Nextjs/Routing-And-Pages.md)
+- [ ] `97` [Layouts](./Nextjs/Layouts.md)
+- [ ] `98` [Navigation](./Nextjs/Navigation.md)
+- [ ] `99` [Loading & Error States](./Nextjs/Loading-And-Error-States.md)
+- [ ] `100` [Data Fetching & Caching](./Nextjs/Data-Fetching-And-Caching.md)
+- [ ] `101` [Rendering Strategies](./Nextjs/Rendering-Strategies.md)
+- [ ] `102` [Streaming & Suspense](./Nextjs/Streaming-And-Suspense.md)
+- [ ] `103` [Server Components](./Nextjs/Server-Components.md)
+- [ ] `104` [Client-Server Interleaving](./Nextjs/Client-Server-Interleaving.md)
+- [ ] `105` [Server Actions](./Nextjs/Server-Actions.md)
+- [ ] `106` [Route Handlers](./Nextjs/Route-Handlers.md)
+- [ ] `107` [Middleware](./Nextjs/Middleware.md)
+- [ ] `108` [Authentication (NextAuth)](./Nextjs/Authentication-NextAuth.md)
+- [ ] `109` [Metadata & SEO](./Nextjs/Metadata-And-SEO.md)
+- [ ] `110` [Image & Font Optimization](./Nextjs/Image-And-Font-Optimization.md)
+- [ ] `111` [Backend Integration (Supabase)](./Nextjs/Backend-Integration-Supabase.md)
 
 ---
 
