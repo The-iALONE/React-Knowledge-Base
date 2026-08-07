@@ -2,6 +2,8 @@
 
 > عادت‌های روزانه برای UI روان — بدون بهینه‌سازی زودهنگام.
 
+> 🧭 پیش‌نیاز: [Optimization Techniques](./Optimization-Techniques.md) · بعدی: [Common Mistakes](./Common-Mistakes.md)
+
 ---
 
 ## 📖 مفهوم
@@ -24,7 +26,21 @@
 
 ---
 
-## چک‌لیست توسعه
+## ⚙️ نحوه کار — روش سه‌مرحله‌ای
+
+ترتیب رسمی [react.dev](https://react.dev/reference/react/memo) و مسیر دوره:
+
+```
+۱. ساختار درست (colocation، key، pure render)
+۲. اندازه‌گیری (Profiler baseline)
+۳. بهینه‌سازی هدفمند (memo / splitting / Compiler)
+```
+
+قبل از مرحله ۳، مطمئن شوید مرحله ۱ و ۲ انجام شده — بیشتر lagها با ساختار درست حل می‌شوند.
+
+---
+
+## 🚀 Best Practices — چک‌لیست توسعه
 
 ### ساختار و داده
 
@@ -81,6 +97,14 @@
 
 ---
 
+## ⚠️ اشتباهات رایج
+
+- شروع از `memo` بدون Profiler — جزئیات در [Common-Mistakes.md](./Common-Mistakes.md)
+- `Context` سراسری برای `state` محلی پرتکرار
+- بهینه‌سازی فقط در dev با داده mock کوچک
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [Optimization-Techniques.md](./Optimization-Techniques.md)
@@ -97,6 +121,6 @@
 
 ## 📚 منابع
 
-- [React — memo](https://react.dev/reference/react/memo)
+- [React — memo (principles)](https://react.dev/reference/react/memo)
 - [React — Keeping Components Pure](https://react.dev/learn/keeping-components-pure)
 - [React — React Compiler](https://react.dev/learn/react-compiler)

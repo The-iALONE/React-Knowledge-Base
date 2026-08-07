@@ -104,16 +104,18 @@
 
 ## ماژول ۰۷ — Performance
 
+> نمای کلی: [Performance/README.md](./Performance/README.md) · ترتیب مطالعه: Virtual DOM → Render Cycle → Re-render → Reconciliation → Diffing → Keys → State Colocation → Memoization → Code Splitting → Profiling → Optimization → Best/Common
+
 - [x] `57` [نمای کلی Performance](./Performance/README.md)
-- [x] `58` [Re-render](./Performance/Re-render.md)
+- [x] `58` [Virtual DOM](./Performance/Virtual-DOM.md)
 - [x] `59` [Render Cycle](./Performance/Render-Cycle.md)
-- [x] `60` [Reconciliation](./Performance/Reconciliation.md)
-- [x] `61` [Virtual DOM](./Performance/Virtual-DOM.md)
+- [x] `60` [Re-render](./Performance/Re-render.md)
+- [x] `61` [Reconciliation](./Performance/Reconciliation.md)
 - [x] `62` [Diffing Algorithm](./Performance/Diffing-Algorithm.md)
-- [x] `63` [Memoization](./Performance/Memoization.md)
-- [x] `64` [Code Splitting](./Performance/Code-Splitting.md)
-- [x] `65` [State Colocation](./Performance/State-Colocation.md)
-- [x] `66` [Keys & Performance](./Performance/Keys-And-Performance.md)
+- [x] `63` [Keys & Performance](./Performance/Keys-And-Performance.md)
+- [x] `64` [State Colocation](./Performance/State-Colocation.md)
+- [x] `65` [Memoization](./Performance/Memoization.md)
+- [x] `66` [Code Splitting](./Performance/Code-Splitting.md)
 - [x] `67` [Profiling](./Performance/Profiling.md)
 - [x] `68` [Optimization Techniques](./Performance/Optimization-Techniques.md)
 - [x] `69` [Best Practices](./Performance/Best-Practices.md)

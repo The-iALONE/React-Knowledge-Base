@@ -2,6 +2,8 @@
 
 > نگه‌داشتن `state` در پایین‌ترین سطح ممکن در درخت کامپوننت تا فقط همان `subtree` که به داده وابسته است `re-render` شود.
 
+> 🧭 پیش‌نیاز: [Keys & Performance](./Keys-And-Performance.md) · بعدی: [Memoization](./Memoization.md)
+
 ---
 
 ## 📖 مفهوم
@@ -140,6 +142,7 @@ function CounterSection() {
 - [Re-render.md](./Re-render.md)
 - [Memoization.md](./Memoization.md) — colocation اغلب جایگزین `memo` است
 - [Context.md](../Context.md) · [State-Management/README.md](../State-Management/README.md) (M7)
+- [State-Types](../State-Management/State-Types.md) — `UI state` محلی vs `Global`
 - [Sharing-State.md](../Sharing-State.md)
 
 ---

@@ -2,6 +2,8 @@
 
 > هر به‌روزرسانی UI از `Trigger` شروع می‌شود، از `Render Phase` عبور می‌کند و با `Commit Phase` روی صفحه دیده می‌شود.
 
+> 🧭 پیش‌نیاز: [Virtual DOM](./Virtual-DOM.md) · بعدی: [Re-render](./Re-render.md)
+
 ---
 
 ## 📖 مفهوم
@@ -19,7 +21,27 @@ Trigger → Render Phase → Commit Phase → (Effects) → Browser Paint
 
 ---
 
-## فاز رندر (`Render Phase`)
+## چرا این ویژگی وجود دارد؟
+
+جداسازی **محاسبه** (`Render`) از **اعمال** (`Commit`) به React اجازه می‌دهد:
+
+- چند `render` را `batch` کند
+- کار را `interrupt` و اولویت‌بندی کند
+- Effects را بعد از DOM به‌روز اجرا کند
+
+---
+
+## چه مشکلی را حل می‌کند؟
+
+- UI همیشه با آخرین `state` **سازگار** است قبل از نمایش
+- `Side effect`ها در زمان **امن** اجرا می‌شوند
+- امکان `Concurrent Rendering` بدون نمایش UI نیمه‌کاره
+
+---
+
+## ⚙️ نحوه کار
+
+### فاز رندر (`Render Phase`)
 
 - تابع هر کامپوننت affected **دوباره اجرا** می‌شود
 - خروجی JSX با نسخه قبلی **مقایسه** می‌شود (`Reconciliation`)
@@ -36,9 +58,7 @@ function SearchBar({ query, onChange }) {
 }
 ```
 
----
-
-## فاز کامیت (`Commit Phase`)
+### فاز کامیت (`Commit Phase`)
 
 - تغییرات روی **DOM واقعی** اعمال می‌شود
 - **همگام** — قابل `interrupt` نیست
@@ -65,27 +85,7 @@ function Tooltip({ text }) {
 }
 ```
 
----
-
-## چرا این ویژگی وجود دارد؟
-
-جداسازی **محاسبه** (`Render`) از **اعمال** (`Commit`) به React اجازه می‌دهد:
-
-- چند `render` را `batch` کند
-- کار را `interrupt` و اولویت‌بندی کند
-- Effects را بعد از DOM به‌روز اجرا کند
-
----
-
-## چه مشکلی را حل می‌کند؟
-
-- UI همیشه با آخرین `state` **سازگار** است قبل از نمایش
-- `Side effect`ها در زمان **امن** اجرا می‌شوند
-- امکان `Concurrent Rendering` بدون نمایش UI نیمه‌کاره
-
----
-
-## ⚙️ نحوه کار — دیاگرام کامل
+### دیاگرام کامل
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -113,9 +113,7 @@ function Tooltip({ text }) {
 └─────────────────────────────────────────────────────────┘
 ```
 
----
-
-## دسته‌بندی `state` در چرخه رندر (`State Batching`)
+### دسته‌بندی `state` در چرخه رندر (`State Batching`)
 
 در React 18+، `Automatic Batching` چند `state update` را در یک `Render` + `Commit` ادغام می‌کند.
 
@@ -171,7 +169,7 @@ function App() {
 
 ## مثال واقعی در پروژه
 
-**Modal با اندازه‌گیری DOM:**
+**مودال با اندازه‌گیری DOM:**
 
 ```jsx
 function ConfirmModal({ isOpen, message }) {

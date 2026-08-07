@@ -1,3 +1,5 @@
+// Examples/performance/ChildrenOptimization.jsx
+// الگوی children-as-prop — Performance/Memoization.md
 import { useState } from "react";
 
 function SlowComponent() {

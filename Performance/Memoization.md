@@ -2,6 +2,8 @@
 
 > تکنیک‌هایی برای جلوگیری از کار تکراری در رندر: `React.memo`، `useMemo`، `useCallback` و الگوی `children-as-prop` — با تمرکز بر **چه زمانی** لازم است، نه فقط نحوه استفاده.
 
+> 🧭 پیش‌نیاز: [State Colocation](./State-Colocation.md) · [React.memo](../Patterns/React-Memo.md) · بعدی: [Code Splitting](./Code-Splitting.md)
+
 ---
 
 ## 📖 مفهوم
@@ -105,6 +107,18 @@ const [posts] = useState(() =>
 
 ---
 
+## تفاوت با گزینه‌های مشابه
+
+| گزینه | کی اولویت دارد؟ |
+|-------|-----------------|
+| `state colocation` vs `memo` | اول colocation — اغلب `memo` لازم نمی‌شود |
+| `children` pattern vs `memo` | وقتی `state` والد و subtree سنگین جدا هستند، `children` ساده‌تر است |
+| `useMemo` vs محاسبه در `render` | فقط برای محاسبه واقعاً گران یا `object` پایدار برای `memo` |
+| `React Compiler` vs `memo` دستی | با Compiler، بهینه‌سازی دستی را کم کنید |
+| `Context` vs `memo` | `memo` جلوی `context` تغییرکرده را نمی‌گیرد — split یا colocation |
+
+---
+
 ## 💡 مثال ترکیبی
 
 ```jsx
@@ -162,7 +176,7 @@ function ProductList({ products }) {
 
 ## ارتباط با مفاهیم دیگر
 
-- [Re-render.md](./Re-render.md) — چرا memo لازم می‌شود
+- [Re-render.md](./Re-render.md) — چرا `memo` لازم می‌شود
 - [Patterns/React-Memo.md](../Patterns/React-Memo.md)
 - [Hooks/useMemo.md](../Hooks/useMemo.md) · [Hooks/useCallback.md](../Hooks/useCallback.md)
 - [Rendering.md](../Rendering.md) — بهینه‌سازی `children` در M2

@@ -2,6 +2,8 @@
 
 > اندازه‌گیری قبل از بهینه‌سازی — با React DevTools Profiler و API `<Profiler>`.
 
+> 🧭 پیش‌نیاز: [Code Splitting](./Code-Splitting.md) · بعدی: [Optimization Techniques](./Optimization-Techniques.md)
+
 ---
 
 ## 📖 مفهوم
@@ -18,7 +20,7 @@
 
 ## چه مشکلی را حل می‌کند؟
 
-- بهینه‌سازی زودهنگام (premature optimization)
+- بهینه‌سازی زودهنگام (`premature optimization`)
 - هدر رفتن زمان روی کامپوننت‌های ارزان
 - نادیده گرفتن `commit`های پرتکرار در تعاملات granular
 

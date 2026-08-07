@@ -83,12 +83,11 @@
 ### Performance
 
 - [Performance Overview](./Performance/README.md)
-- [Re-render](./Performance/Re-render.md) · [Render Cycle](./Performance/Render-Cycle.md)
-- [Reconciliation](./Performance/Reconciliation.md) · [Virtual DOM](./Performance/Virtual-DOM.md)
-- [Diffing Algorithm](./Performance/Diffing-Algorithm.md) · [Memoization](./Performance/Memoization.md)
-- [Code Splitting](./Performance/Code-Splitting.md) · [State Colocation](./Performance/State-Colocation.md)
-- [Keys & Performance](./Performance/Keys-And-Performance.md) · [Profiling](./Performance/Profiling.md)
-- [Optimization Techniques](./Performance/Optimization-Techniques.md)
+- [Virtual DOM](./Performance/Virtual-DOM.md) · [Render Cycle](./Performance/Render-Cycle.md) · [Re-render](./Performance/Re-render.md)
+- [Reconciliation](./Performance/Reconciliation.md) · [Diffing Algorithm](./Performance/Diffing-Algorithm.md)
+- [Keys & Performance](./Performance/Keys-And-Performance.md) · [State Colocation](./Performance/State-Colocation.md)
+- [Memoization](./Performance/Memoization.md) · [Code Splitting](./Performance/Code-Splitting.md)
+- [Profiling](./Performance/Profiling.md) · [Optimization Techniques](./Performance/Optimization-Techniques.md)
 - [Best Practices](./Performance/Best-Practices.md) · [Common Mistakes](./Performance/Common-Mistakes.md)
 
 ### State Management

@@ -1,3 +1,5 @@
+// Examples/performance/MemoizedList.jsx
+// memo + useMemo + useCallback — Performance/Memoization.md
 import { memo, useCallback, useMemo, useState } from "react";
 
 const ProductRow = memo(function ProductRow({ product, onSelect }) {

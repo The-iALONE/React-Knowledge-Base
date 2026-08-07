@@ -1,3 +1,5 @@
+// Examples/performance/StateColocation.jsx
+// نزدیک‌سازی state — Performance/State-Colocation.md
 import { useState } from "react";
 
 function SearchBar() {

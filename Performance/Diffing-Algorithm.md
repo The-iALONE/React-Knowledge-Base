@@ -2,6 +2,8 @@
 
 > قوانین O(n) که React برای مقایسه دو درخت `React Element` در یک سطح استفاده می‌کند — پایه رفتار `key`، حفظ `state` و عملکرد لیست‌ها.
 
+> 🧭 پیش‌نیاز: [Reconciliation](./Reconciliation.md) · بعدی: [Keys & Performance](./Keys-And-Performance.md)
+
 ---
 
 ## 📖 مفهوم

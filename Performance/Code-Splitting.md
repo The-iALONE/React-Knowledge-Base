@@ -1,6 +1,8 @@
 # Code Splitting — تقسیم کد
 
-> بارگذاری بخشی از JavaScript فقط وقتی لازم است — کاهش حجم `bundle` اولیه و بهبود زمان بارگذاری اول.
+> بارگذاری بخشی از `JavaScript` فقط وقتی لازم است — کاهش حجم `bundle` اولیه و بهبود زمان بارگذاری اول.
+
+> 🧭 پیش‌نیاز: [Memoization](./Memoization.md) · [Lazy Loading](../Escape-Hatches/Lazy-Loading.md) · بعدی: [Profiling](./Profiling.md)
 
 ---
 
@@ -12,7 +14,7 @@
 
 ## چرا این ویژگی وجود دارد؟
 
-کاربر در اولین بازدید به همه featureها نیاز ندارد — پنل ادمین، تنظیمات، ویرایشگر پیشرفته می‌توانند بعداً بیایند. `bundle` کوچک‌تر = Time to Interactive بهتر.
+کاربر در اولین بازدید به همه `feature`ها نیاز ندارد — پنل ادمین، تنظیمات، ویرایشگر پیشرفته می‌توانند بعداً بیایند. `bundle` کوچک‌تر → زمان تعاملی بهتر.
 
 ---
 
@@ -61,6 +63,8 @@ function Dashboard() {
 
 پیاده‌سازی کامل: [Lazy-Loading.md](../Escape-Hatches/Lazy-Loading.md)، [Suspense.md](../Escape-Hatches/Suspense.md)
 
+**تفاوت با M5:** در Escape Hatches API و رفتار `lazy`/`Suspense` پوشش داده می‌شود؛ این فایل **استراتژی** split (route vs component) و معیار انتخاب chunk را توضیح می‌دهد.
+
 ---
 
 ## معیار انتخاب — چه چیزی را split کنیم؟
@@ -84,7 +88,7 @@ function Dashboard() {
 
 ## مثال واقعی در پروژه
 
-**Wild Oasis — پنل ادمین:** مسیر `/account` جدا از صفحه اصلی رزرو. کاربر مهمان هرگز chunk ادمین را دانلود نمی‌کند.
+**پنل ادمین Wild Oasis:** مسیر `/account` جدا از صفحه اصلی رزرو. کاربر مهمان هرگز `chunk` ادمین را دانلود نمی‌کند.
 
 ---
 

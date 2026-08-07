@@ -2,6 +2,8 @@
 
 > فرآیندی که React با آن درخت JSX جدید را با درخت قبلی مقایسه می‌کند و حداقل تغییرات لازم برای DOM را تعیین می‌کند.
 
+> 🧭 پیش‌نیاز: [Re-render](./Re-render.md) · بعدی: [Diffing Algorithm](./Diffing-Algorithm.md)
+
 ---
 
 ## 📖 مفهوم

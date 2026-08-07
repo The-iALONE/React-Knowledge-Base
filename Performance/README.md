@@ -2,6 +2,8 @@
 
 > این بخش **کامل‌ترین** بخش Knowledge Base است. هدف: فهم عمیق چرخه رندر، `Reconciliation`، و تکنیک‌های بهینه‌سازی — نه فقط «`memo` بزن».
 
+> 🧭 پیش‌نیاز: [React.memo](../Patterns/React-Memo.md) · [Rendering](../Rendering.md) · بعدی: [Virtual DOM](./Virtual-DOM.md)
+
 ---
 
 ## 📖 مفهوم
@@ -12,19 +14,30 @@
 
 ---
 
-## چرا
+## چرا این ویژگی وجود دارد؟
 
 در اپ‌های واقعی، کندی UI اغلب از `state` در جای اشتباه، `key` نادرست، یا بهینه‌سازی بدون اندازه‌گیری ناشی می‌شود — نه از نبود React. بدون فهم `Render Phase` / `Commit Phase` و `reconciliation`، `memo` فقط پیچیدگی اضافه می‌کند.
 
 ---
 
+## چه مشکلی را حل می‌کند؟
+
+- کندی UI بدون دانستن **علت** (`re-render`، `commit`، `bundle` سنگین)
+- بهینه‌سازی زودهنگام با `memo`/`useMemo` روی همه‌چیز
+- باگ‌های `state` در لیست و تب‌ها از `key` یا `type` نادرست
+- انتخاب اشتباه تکنیک (مثلاً `Context` سراسری به‌جای colocation)
+
+---
+
 ## مسیر یادگیری پیشنهادی
+
+ترتیب مطابق [react.dev](https://react.dev/learn) (درخت UI → Render/Commit → Keys → colocation → memo) و مسیر دوره:
 
 ```
 Virtual DOM → Render Cycle → Re-render → Reconciliation
-    → Diffing Algorithm → Keys → Memoization → State Colocation
+    → Diffing Algorithm → Keys → State Colocation → Memoization
     → Code Splitting → Profiling → Optimization Techniques
-    → Best Practices / Common Mistakes
+    → Best Practices → Common Mistakes
 ```
 
 ---
@@ -39,8 +52,8 @@ Virtual DOM → Render Cycle → Re-render → Reconciliation
 | [Reconciliation.md](./Reconciliation.md)                   | فرآیند همگام‌سازی درخت                 | پایه        |
 | [Diffing-Algorithm.md](./Diffing-Algorithm.md)             | الگوریتم diff و قوانین آن              | پایه        |
 | [Keys-And-Performance.md](./Keys-And-Performance.md)       | `key` و تأثیر روی performance          | پایه        |
+| [State-Colocation.md](./State-Colocation.md)               | نزدیک‌کردن `state` به مصرف‌کننده       | ساختاری   |
 | [Memoization.md](./Memoization.md)                         | `React.memo`, `useMemo`, `useCallback` | بهینه‌سازی  |
-| [State-Colocation.md](./State-Colocation.md)               | نزدیک‌کردن `state` به مصرف‌کننده       | بهینه‌سازی  |
 | [Code-Splitting.md](./Code-Splitting.md)                   | `lazy`, `Suspense`, route splitting    | بهینه‌سازی  |
 | [Profiling.md](./Profiling.md)                             | React DevTools Profiler                | اندازه‌گیری |
 | [Optimization-Techniques.md](./Optimization-Techniques.md) | جدول کامل تکنیک‌ها + هزینه/فایده       | مرجع        |
@@ -107,7 +120,7 @@ function App() {
 
 ---
 
-## ارتباط با بخش‌های دیگر
+## ارتباط با مفاهیم دیگر
 
 - [Rendering](../Rendering.md) — مقدمه رندر
 - [Hooks/useMemo](../Hooks/useMemo.md) · [Hooks/useCallback](../Hooks/useCallback.md)
@@ -115,6 +128,7 @@ function App() {
 - [Lazy Loading](../Escape-Hatches/Lazy-Loading.md) · [Suspense](../Escape-Hatches/Suspense.md)
 - [Concurrent Features](../Escape-Hatches/Concurrent-Features.md)
 - [React Compiler](../Escape-Hatches/React-Compiler.md)
+- [State Management](../State-Management/README.md) — `Context` vs colocation (M7)
 - [Examples/performance/](../Examples/performance/) — `MemoizedList`، `ChildrenOptimization`، `StateColocation`
 
 ---
@@ -136,4 +150,5 @@ function App() {
 - [React — Keeping Components Pure](https://react.dev/learn/keeping-components-pure)
 - [React — Render and Commit](https://react.dev/learn/render-and-commit)
 - [React — Preserving and Resetting State](https://react.dev/learn/preserving-and-resetting-state)
-- [React — Optimizing Performance](https://react.dev/learn/render-and-commit#optimizing-performance)
+- [React — memo (principles)](https://react.dev/reference/react/memo)
+- [React — React Compiler](https://react.dev/learn/react-compiler)

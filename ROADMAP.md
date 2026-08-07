@@ -36,7 +36,7 @@
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-07 (M5 retrofit Escape Hatches)
+**آخرین به‌روزرسانی:** 2026-08-07 (M6 retrofit Performance)
 
 ---
 
@@ -182,13 +182,13 @@
 | **M3** | Hooks | [x] | 2026-08-07 | ۲۱ فایل — retrofit: ناوبری، ساختار M7، لحن آموزشی، react.dev، لینک M2/M7 |
 | **M4** | Patterns | [x] | 2026-08-06 | README + ۵ الگو + Examples — جزوه الگوهای پیشرفته |
 | **M5** | Escape Hatches / Concurrent | [x] | 2026-08-06 | ۷ فایل + `Hooks/use.md` + `WhatsNew.md` + Examples — `use()`, `<Activity>`, RSC |
-| **M6** | Performance | [x] | 2026-08-06 | README + ۱۳ فایل موضوع + Examples — Virtual DOM، diff، memoization، profiling |
+| **M6** | Performance | [x] | 2026-08-06 | retrofit 2026-08-07: ناوبری، ترتیب react.dev، ساختار M7 — Virtual DOM تا Common Mistakes |
 | **M7** | State Management | [x] | 2026-08-07 | State-Types + ۱۰ ابزار + Examples — Zustand/Jotai/MobX/Recoil/RTK Query |
 | **M8** | React Router | [ ] | | |
 | **M9** | Styling | [ ] | | |
 | **M10** | Next.js | [ ] | | بدهی react.dev: `cacheSignal`, APIهای `prerender`/`resume` در `react-dom/static` (RSC) |
 | **M11** | Reference / FAQ / Interview | [ ] | | |
-| **M12** | QA نهایی | [ ] | | بدهی: retrofit M6 (M2، M3، M4، M5 انجام شد؛ M1 بدون تغییر) |
+| **M12** | QA نهایی | [ ] | | بدهی: retrofit M6 [x]؛ M1 بدون تغییر |
 
 ---
 
@@ -208,7 +208,21 @@
 | `herlpers for react + rfc +`               | Components.md, Quick-Start.md                              | [x]                      |
 | _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [x] M7 State / [ ] M10 |
 | _(غیرجزوه — M7)_                           | Zustand, Jotai, MobX, Recoil, State-Types, RTK Query       | [x] M7                 |
-| _(retrofit — M12)_                         | M2: [x] · M3: [x] · M4: [x] · M5: [x] · M6: باقی‌مانده    | [ ] M12 (M2–M5 [x]) |
+| _(retrofit — M12)_                         | M2: [x] · M3: [x] · M4: [x] · M5: [x] · M6: [x]           | [x] M12 (M1 بدون تغییر) |
+
+### 2026-08-07 (retrofit M6 — Performance)
+
+- خط ناوبری `> 🧭 پیش‌نیاز` در هر ۱۴ فایل M6 (زنجیره README → Virtual DOM → … → Common Mistakes → State Management)
+- ترتیب یادگیری: react.dev + مسیر دوره — Virtual DOM → Render Cycle → Re-render → Reconciliation → Diffing → Keys → **State Colocation** → Memoization → Code Splitting → Profiling → Optimization → Best/Common
+- یکدست‌سازی ساختار M7: `## چه مشکلی` در README؛ `## ⚙️ نحوه کار` در Best-Practices و Common-Mistakes؛ بازچینی Render-Cycle
+- غنی‌سازی HIGH: README، Render-Cycle، Memoization (`تفاوت با گزینه‌های مشابه`)، Best-Practices، Common-Mistakes
+- غنی‌سازی MEDIUM: Code-Splitting (تفکیک M5)، Optimization-Techniques (virtualization)
+- لینک‌های M4/M5/M7: React-Memo، Lazy-Loading، State-Types، Context-API
+- اصلاح scaffold `Syntax (if applicable)` در Virtual-DOM
+- Learning-Path ماژول ۰۷: ترتیب ۵۷–۷۰ هم‌تراز README
+- کامنت Examples/performance/*.jsx → فایل markdown مربوط
+- محتوای جزوه (Wild Oasis، Archive، CabinTable) حفظ شد
+- M1، M7–M12+ بدون تغییر محتوایی
 
 ### 2026-08-07 (retrofit M5 — Escape Hatches)
 
@@ -277,7 +291,7 @@
 - ابزارهای غیرجزوه: Zustand، Jotai، MobX، Recoil، RTK Query
 - `Examples/state-management/`: ۵ فایل نمونه
 - به‌روزرسانی README، Learning-Path (ماژول ۰۸، شماره ۷۰–۸۱)، WhatsNew M7، Glossary، Cheatsheet
-- بدهی M12: retrofit M6 (M2–M5 انجام شد)؛ بازبینی RTL M3 در changelog
+- بدهی M12: retrofit M2–M6 [x] (M1 بدون تغییر)؛ بازبینی RTL M3 در changelog
 - Milestone فعلی: **M7** → بعدی **M8**
 
 ### 2026-08-06 (بازبینی RTL M6 + WhatsNew)

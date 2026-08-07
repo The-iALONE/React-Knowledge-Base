@@ -2,6 +2,8 @@
 
 > در React از یک Virtual DOM — **نمایش در حافظه** از UI — برای محاسبه تغییرات لازم قبل از دستکاری DOM واقعی استفاده می‌شود.
 
+> 🧭 پیش‌نیاز: [Performance — نمای کلی](./README.md) · بعدی: [Render Cycle](./Render-Cycle.md)
+
 ---
 
 ## 📖 مفهوم
@@ -40,7 +42,7 @@ Reconciliation: مقایسه با درخت قبلی
 
 ---
 
-## Syntax (if applicable)
+## Syntax — از JSX به `React Element`
 
 ```jsx
 // این JSX:

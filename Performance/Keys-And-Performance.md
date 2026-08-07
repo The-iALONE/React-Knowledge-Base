@@ -2,6 +2,8 @@
 
 > در لیست‌های JSX، `key` به React می‌گوید کدام آیتم همان instance قبلی است — روی حفظ `state`، صحت `reconciliation` و هزینه `diff` اثر مستقیم دارد.
 
+> 🧭 پیش‌نیاز: [Diffing Algorithm](./Diffing-Algorithm.md) · بعدی: [State Colocation](./State-Colocation.md)
+
 ---
 
 ## 📖 مفهوم

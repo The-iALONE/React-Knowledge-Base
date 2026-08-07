@@ -2,6 +2,8 @@
 
 > ضدالگوهایی که بیشتر از کمک، پیچیدگی و باگ اضافه می‌کنند.
 
+> 🧭 پیش‌نیاز: [Best Practices](./Best-Practices.md) · بعدی: [State Management](../State-Management/README.md)
+
 ---
 
 ## 📖 مفهوم
@@ -10,7 +12,7 @@
 
 ---
 
-## چرا
+## چرا این ویژگی وجود دارد؟
 
 شناخت ضدالگو سریع‌تر از دیباگ است. بسیاری از «مشکلات performance» در واقع مشکل طراحی `state` یا `reconciliation` هستند.
 
@@ -24,15 +26,25 @@
 
 ---
 
-## ضدالگوها
+## ⚙️ نحوه کار — تشخیص ضدالگو
+
+```
+علامت (`lag`، باگ `state`) → علت ریشه‌ای → جایگزین ساختاری
+```
+
+مثال: هر `keystroke` کل صفحه رندر → `state` در ریشه → [State-Colocation](./State-Colocation.md)
+
+---
+
+## ⚠️ اشتباهات رایج
 
 ### ۱. بهینه‌سازی زودهنگام
 
-**علامت:** `memo` روی همه کامپوننت‌ها قبل از lag واقعی.
+**علامت:** `memo` روی همه کامپوننت‌ها قبل از `lag` واقعی.
 
 **چرا بد:** هزینه مقایسه `props` + خوانایی کمتر.
 
-**جایگزین:** [Profiling.md](./Profiling.md) → react.dev: *Don't optimize prematurely*
+**جایگزین:** [Profiling.md](./Profiling.md) — اصل react.dev: «بهینه‌سازی زودهنگام نکنید»
 
 ---
 
@@ -43,9 +55,9 @@
 <Child onClick={() => doSomething()} />
 ```
 
-**چرا بد:** `{}` و `() =>` هر رندر reference جدید → `memo` بی‌فایده.
+**چرا بد:** `{}` و `() =>` هر رندر `reference` جدید → `memo` بی‌فایده.
 
-**جایگزین:** `useMemo`/`useCallback`، colocation، یا Compiler — [Memoization.md](./Memoization.md)
+**جایگزین:** `useMemo`/`useCallback`، `colocation`، یا `Compiler` — [Memoization.md](./Memoization.md)
 
 ---
 
@@ -71,7 +83,7 @@
 const doubled = useMemo(() => count * 2, [count]);
 ```
 
-**چرا بد:** ضرب ارزان‌تر از overhead cache.
+**چرا بد:** ضرب ارزان‌تر از `overhead` cache.
 
 **قانون:** فقط محاسبات یا ساخت `object`/`array` گران.
 
@@ -89,7 +101,7 @@ const doubled = useMemo(() => count * 2, [count]);
 
 **علامت:** تغییر تم یا فیلتر کوچک → صدها مصرف‌کننده `Context` رندر.
 
-**جایگزین:** colocation؛ split context؛ M7 patterns.
+**جایگزین:** `colocation`؛ split `context`؛ [State-Types](../State-Management/State-Types.md)
 
 ---
 
@@ -110,7 +122,7 @@ function Bad() {
 
 **علامت:** blocking قبل از paint بدون نیاز.
 
-**جایگزین:** فقط برای measure/layout قبل از paint — [Hooks/useLayoutEffect.md](../Hooks/useLayoutEffect.md)
+**جایگزین:** فقط برای `measure`/`layout` قبل از `paint` — [Hooks/useLayoutEffect.md](../Hooks/useLayoutEffect.md)
 
 ---
 
@@ -126,7 +138,7 @@ function Bad() {
 
 **علامت:** فکر کردن production دوبرابر کند است.
 
-**واقعیت:** فقط dev برای کشف impure render.
+**واقعیت:** فقط `dev` برای کشف `impure render`.
 
 ---
 
@@ -134,7 +146,7 @@ function Bad() {
 
 **علامت:** ده‌ها chunk کوچک → waterfall شبکه.
 
-**جایگزین:** route-level اول — [Code-Splitting.md](./Code-Splitting.md)
+**جایگزین:** `route-level` اول — [Code-Splitting.md](./Code-Splitting.md)
 
 ---
 
@@ -144,11 +156,24 @@ function Bad() {
 
 ---
 
+## 🚀 Best Practices — جایگزین‌های ساختاری
+
+| ضدالگو | جایگزین |
+|--------|---------|
+| `memo` بی‌هدف | Profiler → colocation اول |
+| `props` ناپایدار | `useMemo`/`useCallback` یا Compiler |
+| `state` در ریشه | [State-Colocation.md](./State-Colocation.md) |
+| `Context` سنگین | split `context` یا state library (M7) |
+| بهینه‌سازی زودهنگام | [Best-Practices.md](./Best-Practices.md) چک‌لیست |
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [Best-Practices.md](./Best-Practices.md)
 - [Optimization-Techniques.md](./Optimization-Techniques.md)
 - [Re-render.md](./Re-render.md)
+- [State-Management/README.md](../State-Management/README.md) — بعد از Performance
 
 ---
 

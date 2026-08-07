@@ -2,6 +2,8 @@
 
 > هر بار که React تابع کامپوننت را دوباره اجرا می‌کند، یک `re-render` رخ داده — حتی اگر در نهایت DOM تغییری نکند.
 
+> 🧭 پیش‌نیاز: [Render Cycle](./Render-Cycle.md) · بعدی: [Reconciliation](./Reconciliation.md)
+
 ---
 
 ## 📖 مفهوم
@@ -134,6 +136,7 @@ function Counter() {
 - [Patterns/React-Memo.md](../Patterns/React-Memo.md) — API `memo`
 - [Rendering.md](../Rendering.md) — مقدمه M2
 - [Escape-Hatches/React-Compiler.md](../Escape-Hatches/React-Compiler.md)
+- [State-Types](../State-Management/State-Types.md) — `Context` به‌عنوان `trigger`
 
 ---
 
