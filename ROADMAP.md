@@ -32,11 +32,11 @@
    - `git push origin main` (یا شاخهٔ فعال) به ریپازیتوری GitHub انجام دهد
    - در `ROADMAP.md` changelog ثبت کند
 
-**Milestone فعلی:** `M10` (Next.js — بعدی)  
+**Milestone فعلی:** `M11` (Reference — بعدی)  
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-07 (M9 Styling)
+**آخرین به‌روزرسانی:** 2026-08-07 (M10 Next.js)
 
 ---
 
@@ -136,7 +136,7 @@
 | ریپازیتوری | `React-Knowledge-Base` (خصوصی، GitHub) |
 | شاخهٔ اصلی | `main` |
 | مسیر محلی | ریشهٔ همین پوشه (`React-Knowledge-Base/`) |
-| Milestone فعلی | **M9** — Styling (تکمیل)؛ Milestone بعدی: **M10** — Next.js |
+| Milestone فعلی | **M10** — Next.js (تکمیل)؛ Milestone بعدی: **M11** — Reference |
 
 ### قانون کامیت و پوش
 
@@ -186,7 +186,7 @@
 | **M7** | State Management | [x] | 2026-08-07 | State-Types + ۱۰ ابزار + Examples — Zustand/Jotai/MobX/Recoil/RTK Query |
 | **M8** | React Router | [x] | 2026-08-07 | README + ۵ موضوع + Protected Routes + Examples |
 | **M9** | Styling | [x] | 2026-08-07 | README + Global/CSS Modules/Tailwind/CSS-in-JS + Examples |
-| **M10** | Next.js | [ ] | | بدهی react.dev: `cacheSignal`, APIهای `prerender`/`resume` در `react-dom/static` (RSC) |
+| **M10** | Next.js | [x] | 2026-08-07 | README + ۱۷ موضوع + Examples — nav M7، Wild Oasis، nextjs.org |
 | **M11** | Reference / FAQ / Interview | [ ] | | |
 | **M12** | QA نهایی | [ ] | | بدهی: retrofit M6 [x]؛ M1 بدون تغییر |
 
@@ -203,12 +203,23 @@
 | `مدیریت state/Context api and Redux/*`     | State-Management/\*, Context.md                            | [x] M7                 |
 | `مدیریت state/React Query - remote data/*` | State-Management/React-Query.md                            | [x] M7                 |
 | `مدیریت state/جزوه React Router/*`         | React-Router/\*                                            | [x] M8                 |
-| `Next.js/*`                                | Nextjs/\*, Server-Components, Client-Components            | [ ]                      |
-| `Supabase/*`                               | Nextjs/Backend-Integration-Supabase.md                     | [ ]                      |
+| `Next.js/*`                                | Nextjs/\*, Server-Components, Client-Components            | [x] M10                |
+| `Supabase/*`                               | Nextjs/Backend-Integration-Supabase.md                     | [x] M10                |
 | `herlpers for react + rfc +`               | Components.md, Quick-Start.md                              | [x]                      |
-| _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [x] M7 State / [ ] M10 |
+| _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [x] M7 State / [x] M10 |
 | _(غیرجزوه — M7)_                           | Zustand, Jotai, MobX, Recoil, State-Types, RTK Query       | [x] M7                 |
 | _(retrofit — M12)_                         | M2: [x] · M3: [x] · M4: [x] · M5: [x] · M6: [x]           | [x] M12 (M1 بدون تغییر) |
+
+### 2026-08-07 (M10 — Next.js)
+
+- تکمیل `Nextjs/`: README + ۱۷ فایل موضوعی (۷ retrofit + ۱۱ جدید)
+- خط ناوبری `> 🧭 پیش‌نیاز` در هر ۱۸ فایل (زنجیره CSS-in-JS → … → FAQ)
+- ساختار M7: `## ⚠️ اشتباهات رایج`، غنی‌سازی از جزوه Wild Oasis (۶۷ نوت Next.js + ۷ Supabase)
+- فایل‌های جدید: Rendering-Strategies، Streaming-And-Suspense، Server-Components (زاویه App Router)، Client-Server-Interleaving، Server-Actions، Route-Handlers، Middleware، Authentication-NextAuth، Metadata-And-SEO، Image-And-Font-Optimization، Backend-Integration-Supabase
+- react.dev: `cacheSignal`، `prerender`/`resume` در Server-Components و Streaming
+- `Examples/nextjs/`: OptimisticDelete، server-actions، RouteHandler، MiddlewareAuth، GenerateMetadata
+- Learning-Path ماژول ۱۱ (`94`–`111`)؛ Glossary، Cheatsheet، WhatsNew M10
+- M1، M7، M8، M9، M11–M12+ بدون تغییر محتوایی
 
 ### 2026-08-07 (M9 — Styling)
 

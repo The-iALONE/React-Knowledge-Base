@@ -1,5 +1,7 @@
 # Data Fetching and Caching
 
+> 🧭 پیش‌نیاز: [Loading & Error States](./Loading-And-Error-States.md) · بعدی: [Rendering Strategies](./Rendering-Strategies.md)
+
 دریافت داده در Server Components، `cache` پیش‌فرض Next.js و `revalidate`.
 
 ---
@@ -151,7 +153,7 @@ export default async function Page() {
 
 ## مثال واقعی در پروژه
 
-Wild Oasis:
+در پروژهٔ Wild Oasis:
 
 - لیست کابین‌ها با `revalidate` یا static + `revalidateTag` پس از رزرو
 - صفحه account با `no-store` (داده کاربر خصوصی)
@@ -168,10 +170,20 @@ Wild Oasis:
 
 ---
 
+## ⚠️ اشتباهات رایج
+
+❌ `fetch` در Client Component برای دادهٔ اولیه — در RSC انجام دهید  
+❌ فراموش کردن `revalidatePath`/`revalidateTag` پس از mutation  
+❌ `cache` کردن دادهٔ خصوصی کاربر — `no-store` یا dynamic route  
+❌ اتکا به پیش‌فرض `cache` برای دادهٔ real-time  
+❌ duplicate `fetch` بدون `tag` — از `unstable_cache` با key مشترک استفاده کنید
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [Rendering-Strategies](./Rendering-Strategies.md)
-- [Server-Components](./Escape-Hatches/Server-Components.md)
+- [Server-Components](./Server-Components.md)
 - [Server-Actions](./Server-Actions.md)
 - [Backend-Integration-Supabase](./Backend-Integration-Supabase.md)
 - [React Query](../State-Management/React-Query.md)
@@ -180,7 +192,7 @@ Wild Oasis:
 
 ## خلاصه
 
-`fetch` `async` در RSC + `revalidate` / `tags` / `no-store` = کنترل `cache` در Next.js.
+در RSC از `fetch` `async` با `revalidate` / `tags` / `no-store` برای کنترل `cache` در Next.js استفاده کنید.
 
 ---
 

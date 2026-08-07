@@ -131,6 +131,14 @@ Trigger → Render Phase → Commit Phase → Browser Paint
 | مفهوم | فایل |
 |-------|------|
 | `"use client"` | [Client Components](./Escape-Hatches/Client-Components.md) |
-| کامپوننت سرور (پیش‌فرض) | [Server Components](./Escape-Hatches/Server-Components.md) |
-| `loading.js` | [Loading States](./Nextjs/Loading-And-Error-States.md) |
+| RSC در App Router | [Server Components (Next.js)](./Nextjs/Server-Components.md) |
+| `loading.js` / `error.js` | [Loading & Error](./Nextjs/Loading-And-Error-States.md) |
+| `fetch` + `revalidate` | [Data Fetching](./Nextjs/Data-Fetching-And-Caching.md) |
+| SSG / ISR / dynamic | [Rendering Strategies](./Nextjs/Rendering-Strategies.md) |
+| `generateStaticParams` | [Rendering Strategies](./Nextjs/Rendering-Strategies.md) |
 | `Server Actions` | [Server Actions](./Nextjs/Server-Actions.md) |
+| `route.ts` API | [Route Handlers](./Nextjs/Route-Handlers.md) |
+| `middleware.ts` | [Middleware](./Nextjs/Middleware.md) |
+| `metadata` / `generateMetadata` | [Metadata & SEO](./Nextjs/Metadata-And-SEO.md) |
+| `next/image` · `next/font` | [Image & Font](./Nextjs/Image-And-Font-Optimization.md) |
+| Supabase | [Backend Integration](./Nextjs/Backend-Integration-Supabase.md) |

@@ -175,7 +175,7 @@ export default function LikeButton({ postId, likes }) {
 - [Client-Components.md](./Client-Components.md)
 - [Suspense.md](./Suspense.md) — `streaming`
 - [Hooks/use.md](../Hooks/use.md) — محدودیت `use(context)` در RSC
-- [Nextjs/README.md](../Nextjs/README.md) — پیاده‌سازی (M10)
+- [Nextjs/Server-Components.md](../Nextjs/Server-Components.md) — پیاده‌سازی App Router (M10)
 
 ---
 

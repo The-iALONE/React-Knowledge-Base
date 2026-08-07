@@ -1,3 +1,6 @@
+// Examples/nextjs/OptimisticDelete.jsx
+// مستندات: Nextjs/Server-Actions.md — useOptimistic
+
 "use client";
 
 import { useOptimistic, useTransition } from "react";
@@ -6,7 +9,7 @@ import { deleteReservation } from "./server-actions";
 export function ReservationList({ reservations }) {
   const [optimisticReservations, removeOptimistic] = useOptimistic(
     reservations,
-    (state, deletedId) => state.filter((r) => r.id !== deletedId)
+    (state, deletedId) => state.filter((r) => r.id !== deletedId),
   );
   const [isPending, startTransition] = useTransition();
 

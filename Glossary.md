@@ -54,5 +54,12 @@
 | `composes` | `composes` | ترکیب/ارث‌بری کلاس در CSS Modules (spec رسمی) |
 | `:global` | `:global` | استثنا از scope در CSS Modules |
 | `Utility-first` | utility-first | استایل با کلاس‌های کوچک (Tailwind) |
+| `App Router` | App Router | مسیریابی فایل‌محور Next.js در پوشه `app/` |
+| `Route Handler` | Route Handler | endpoint HTTP در `route.ts` |
+| `Data Cache` | کش داده | لایه cache Next.js روی `fetch` و query |
+| `Next.js Middleware` | میان‌افزار Next.js | اجرای کد قبل از `route` در `middleware.ts` |
+| `generateStaticParams` | `generateStaticParams` | پیش‌ساخت مسیرهای dynamic در SSG |
+| `generateMetadata` | `generateMetadata` | metadata پویا per route در App Router |
+| `PPR` | پیش‌رندر جزئی | Partial Prerender — shell استاتیک + بخش dynamic |
 
 > این فایل با افزودن مباحث جدید گسترش می‌یابد.

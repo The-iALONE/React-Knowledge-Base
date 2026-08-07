@@ -1,5 +1,7 @@
 # Next.js — Overview
 
+> 🧭 پیش‌نیاز: [CSS-in-JS](../Styling/CSS-in-JS.md) · بعدی: [Project Setup](./Project-Setup.md)
+
 مرور کلی فریم‌ورک Next.js و App Router برای ساخت اپلیکیشن‌های React در سطح `production`.
 
 ---
@@ -28,6 +30,8 @@
 ---
 
 ## ⚙️ نحوه کار
+
+در App Router، پاسخ سرور از این مسیر عبور می‌کند:
 
 ```
 Request → Middleware → App Router → Layout + Page (RSC/Client) → Response (HTML + RSC Payload)
@@ -103,8 +107,18 @@ export default async function HomePage() {
 ✅ پیش‌فرض App Router و Server Components را در نظر بگیرید  
 ✅ `"use client"` فقط وقتی hook یا event لازم است  
 ✅ داده را نزدیک محل مصرف `fetch` کنید ([colocation](../Performance/State-Colocation.md))  
-✅ از `loading.js` و `error.js` برای UX بهتر استفاده کنید  
+✅ از `loading.js` و `error.js` برای تجربهٔ کاربری بهتر استفاده کنید  
 ✅ `cache` و `revalidate` را صریح مدیریت کنید
+
+---
+
+## مسیر یادگیری پیشنهادی
+
+```
+نمای کلی → راه‌اندازی → مسیریابی → چیدمان → ناوبری → بارگذاری/خطا
+→ واکشی داده → استراتژی رندر → استریمینگ → کامپوننت سرور → ترکیب کلاینت/سرور
+→ اکشن سرور → Route Handler → میان‌افزار → احراز هویت → متادیتا → تصویر/فونت → Supabase
+```
 
 ---
 
@@ -116,19 +130,29 @@ export default async function HomePage() {
 | مسیریابی            | [Routing-And-Pages](./Routing-And-Pages.md)                       |
 | چیدمان              | [Layouts](./Layouts.md)                                           |
 | ناوبری              | [Navigation](./Navigation.md)                                     |
-| Loading / Error     | [Loading-And-Error-States](./Loading-And-Error-States.md)         |
+| بارگذاری و خطا      | [Loading-And-Error-States](./Loading-And-Error-States.md)       |
 | داده و cache        | [Data-Fetching-And-Caching](./Data-Fetching-And-Caching.md)       |
 | SSR / SSG / ISR     | [Rendering-Strategies](./Rendering-Strategies.md)                 |
-| Streaming           | [Streaming-And-Suspense](./Streaming-And-Suspense.md)             |
-| RSC                 | [Server-Components](./Escape-Hatches/Server-Components.md)                       |
+| استریمینگ           | [Streaming-And-Suspense](./Streaming-And-Suspense.md)             |
+| RSC در App Router   | [Server-Components](./Server-Components.md)                       |
 | ترکیب Server/Client | [Client-Server-Interleaving](./Client-Server-Interleaving.md)     |
-| Server Actions      | [Server-Actions](./Server-Actions.md)                             |
+| اکشن سرور           | [Server-Actions](./Server-Actions.md)                             |
 | API Routes          | [Route-Handlers](./Route-Handlers.md)                             |
-| Middleware          | [Middleware](./Middleware.md)                                     |
-| NextAuth            | [Authentication-NextAuth](./Authentication-NextAuth.md)           |
-| SEO                 | [Metadata-And-SEO](./Metadata-And-SEO.md)                         |
-| Image / Font        | [Image-And-Font-Optimization](./Image-And-Font-Optimization.md)   |
+| میان‌افزار          | [Middleware](./Middleware.md)                                     |
+| احراز هویت          | [Authentication-NextAuth](./Authentication-NextAuth.md)           |
+| سئو                 | [Metadata-And-SEO](./Metadata-And-SEO.md)                         |
+| تصویر و فونت        | [Image-And-Font-Optimization](./Image-And-Font-Optimization.md)   |
 | Supabase            | [Backend-Integration-Supabase](./Backend-Integration-Supabase.md) |
+
+---
+
+## ⚠️ اشتباهات رایج
+
+❌ استفاده از Pages Router (`pages/`) در پروژهٔ جدید — App Router (`app/`) استاندارد فعلی است  
+❌ گذاشتن `"use client"` در همهٔ فایل‌ها — پیش‌فرض Server Component است  
+❌ `fetch` در Client Component به‌جای Server Component یا React Query  
+❌ اشتباه گرفتن `next/router` (قدیمی) با `next/navigation` (App Router)  
+❌ فراموش کردن `await params` در Next.js 15+
 
 ---
 
@@ -138,7 +162,8 @@ export default async function HomePage() {
 - [Client Components](../Escape-Hatches/Client-Components.md)
 - [Suspense](../Escape-Hatches/Suspense.md)
 - [React Query](../State-Management/React-Query.md)
-- [Best Practices](../Best-Practices.md)
+- [Performance — Best Practices](../Performance/Best-Practices.md)
+- [React Router](../React-Router/README.md) — مسیریابی SPA (مقایسه)
 
 ---
 

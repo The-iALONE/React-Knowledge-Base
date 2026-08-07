@@ -1,5 +1,7 @@
 # Navigation
 
+> 🧭 پیش‌نیاز: [Layouts](./Layouts.md) · بعدی: [Loading & Error States](./Loading-And-Error-States.md)
+
 ناوبری در App Router: `Link`، `useRouter`، `redirect` و `prefetch`.
 
 ---
@@ -141,7 +143,7 @@ export function LogoutButton() {
 
 ## مثال واقعی در پروژه
 
-Wild Oasis:
+در پروژهٔ Wild Oasis:
 - کارت کابین → `/cabins/[cabinId]`
 - پس از login موفق → `redirect("/account")`
 - `router.refresh()` پس از رزرو برای به‌روز لیست
@@ -157,6 +159,16 @@ Wild Oasis:
 
 ---
 
+## ⚠️ اشتباهات رایج
+
+❌ استفاده از `<a href="/internal">` به‌جای `<Link>` — reload کامل صفحه  
+❌ import از `next/router` در App Router — باید `next/navigation` باشد  
+❌ فراموش کردن `router.refresh()` پس از mutation سمت سرور  
+❌ `redirect()` بعد از `return` یا داخل try/catch بدون re-throw  
+❌ `useSearchParams` در Server Component — از `searchParams` prop استفاده کنید
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [Routing-And-Pages](./Routing-And-Pages.md)
@@ -169,7 +181,7 @@ Wild Oasis:
 
 ## خلاصه
 
-`Link` برای `declarative`؛ `redirect` در Server؛ `useRouter` برای `imperative` + `refresh`.
+برای ناوبری declarative از `Link`؛ در Server از `redirect`؛ برای imperative و `refresh` از `useRouter`.
 
 ---
 

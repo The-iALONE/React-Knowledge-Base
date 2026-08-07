@@ -1,5 +1,7 @@
 # Loading and Error States
 
+> 🧭 پیش‌نیاز: [Navigation](./Navigation.md) · بعدی: [Data Fetching & Caching](./Data-Fetching-And-Caching.md)
+
 مدیریت loading و error با `loading.tsx`، `error.tsx` و error boundaries در App Router.
 
 ---
@@ -12,7 +14,7 @@
 
 ## چرا این ویژگی وجود دارد؟
 
-UX بهتر هنگام Server Components `async` و `fetch`؛ جلوگیری از صفحه سفید یا crash کل اپ.
+برای تجربهٔ کاربری بهتر هنگام Server Components `async` و `fetch`؛ جلوگیری از صفحه سفید یا crash کل اپ.
 
 ---
 
@@ -40,7 +42,7 @@ UX بهتر هنگام Server Components `async` و `fetch`؛ جلوگیری ا�
 
 ## چه زمانی استفاده نکنیم؟
 
-loading خیلی کوتاه — ممکن است flash ایجاد کند؛ از Suspense granular استفاده کنید.
+وقتی `fetch` `async` طولانی است — نه برای عملیات زیر ۲۰۰ms که فقط flash ایجاد می‌کند.
 
 ---
 
@@ -152,7 +154,7 @@ export default function Loading() {
 
 ## مثال واقعی در پروژه
 
-Wild Oasis:
+در پروژهٔ Wild Oasis:
 
 - `app/cabins/loading.tsx` — skeleton کارت کابین
 - `app/cabins/[cabinId]/error.tsx` — خطای Supabase
@@ -165,7 +167,17 @@ Wild Oasis:
 ✅ skeleton شبیه `layout` نهایی (کاهش CLS)  
 ✅ پیام خطا کاربرپسند؛ جزئیات در log سرور  
 ✅ `reset()` برای re-render segment  
-✅ loading در سطح component با `<Suspense>` برای کنترل دقیق‌تر
+✅ بارگذاری در سطح component با `<Suspense>` برای کنترل دقیق‌تر
+
+---
+
+## ⚠️ اشتباهات رایج
+
+❌ فراموش کردن `"use client"` در `error.tsx` — اجباری است  
+❌ throw کردن خطا در Client Component بدون `error.tsx` والد  
+❌ استفاده از `notFound()` بدون `not-found.tsx` سفارشی  
+❌ نمایش stack trace به کاربر در production  
+❌ `global-error.tsx` بدون `<html>` و `<body>` — layout ریشه را جایگزین می‌کند
 
 ---
 
@@ -180,7 +192,7 @@ Wild Oasis:
 
 ## خلاصه
 
-`loading.tsx` = Suspense UI؛ `error.tsx` = Client boundary + `reset`؛ `notFound()` برای 404.
+فایل `loading.tsx` یعنی UI بارگذاری Suspense؛ `error.tsx` مرز خطای Client با `reset`؛ `notFound()` برای 404.
 
 ---
 

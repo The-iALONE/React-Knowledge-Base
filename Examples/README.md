@@ -14,7 +14,7 @@
 | [patterns/](./patterns/) | Compound Modal (ساده + named), Render Props, HOC | [Patterns](../Patterns/README.md) |
 | [escape-hatches/](./escape-hatches/) | Suspense+lazy, use(promise), Activity | [Escape-Hatches](../Escape-Hatches/README.md) |
 | [performance/](./performance/) | memoization, children pattern, colocation | [Performance](../Performance/README.md) |
-| [nextjs/](./nextjs/) | Server Actions, RSC, Route Handlers | [Nextjs](../Nextjs/README.md) |
+| [nextjs/](./nextjs/) | Server Actions, `useOptimistic`, Route Handler, Middleware, `generateMetadata` | [Nextjs](../Nextjs/README.md) |
 
 ---
 

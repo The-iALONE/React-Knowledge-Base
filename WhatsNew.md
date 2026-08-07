@@ -135,23 +135,26 @@
 
 ---
 
-## M10 — بدهی‌های باقی‌مانده (هنوز تکمیل نشده)
+## M10 — Next.js (تکمیل ۲۰۲۶-۰۸-۰۷)
 
-| مفهوم | فایل مقصد (آینده) | یادداشت |
-|-------|-------------------|---------|
-| `cacheSignal` | Nextjs/RSC | react.dev |
-| `prerender` / `resume` | Nextjs/RSC | `react-dom/static` |
-| RSC جزئیات Next.js | Nextjs/Server-Components.md | M10 |
+| مفهوم | نسخه | فایل | خلاصه |
+|-------|------|------|--------|
+| `cacheSignal` | 19.2 | [Nextjs/Server-Components.md](./Nextjs/Server-Components.md) | abort-aware cache در RSC |
+| `prerender` / `resume` | 19+ | [Nextjs/Server-Components.md](./Nextjs/Server-Components.md) · [Streaming-And-Suspense.md](./Nextjs/Streaming-And-Suspense.md) | `react-dom/static` |
+| RSC در App Router | — | [Nextjs/Server-Components.md](./Nextjs/Server-Components.md) | زاویه Next.js جدا از M5 |
+| `params` as `Promise` | 15+ | [Nextjs/Routing-And-Pages.md](./Nextjs/Routing-And-Pages.md) | `await params` در page |
+| Auth.js v5 | — | [Nextjs/Authentication-NextAuth.md](./Nextjs/Authentication-NextAuth.md) | `auth()` + handlers |
 
 ---
 
 ## چگونه از این فایل استفاده کنید
 
-1. **فقط M7:** بخش M7 — State Management + مثال‌ها
-2. **فقط M6:** بخش M6 — ماژول Performance + مثال‌ها
-3. **فقط M5:** بخش M5 — ۷ فایل + `use()` + مثال‌ها
-4. **همه چیز جدید:** از بالا به پایین — M7 → M6 → M5 → M3 → M2 → M4
-5. **مسیر یادگیری:** [Learning-Path.md](./Learning-Path.md) ماژول ۰۸ (State Management) و ۰۷ (Performance)
+1. **فقط M10:** بخش M10 — ۱۸ فایل `Nextjs/` + مثال‌ها
+2. **فقط M7:** بخش M7 — State Management + مثال‌ها
+3. **فقط M6:** بخش M6 — ماژول Performance + مثال‌ها
+4. **فقط M5:** بخش M5 — ۷ فایل + `use()` + مثال‌ها
+5. **همه چیز جدید:** از بالا به پایین — M10 → M7 → M6 → M5 → M3 → M2 → M4
+6. **مسیر یادگیری:** [Learning-Path.md](./Learning-Path.md) ماژول ۱۱ (Next.js)
 
 ---
 

@@ -1,5 +1,7 @@
 # Project Setup
 
+> 🧭 پیش‌نیاز: [Next.js — نمای کلی](./README.md) · بعدی: [Routing & Pages](./Routing-And-Pages.md)
+
 راه‌اندازی پروژه Next.js 14+ با App Router، TypeScript و ابزارهای توسعه.
 
 ---
@@ -121,6 +123,8 @@ SUPABASE_ANON_KEY=your-anon-key
 
 ## next.config.ts — تنظیمات رایج
 
+در فایل `next.config.ts` در ریشهٔ پروژه:
+
 ```ts
 import type { NextConfig } from "next";
 
@@ -142,7 +146,7 @@ export default nextConfig;
 
 ## مثال واقعی در پروژه
 
-در Wild Oasis پس از setup:
+در پروژهٔ Wild Oasis پس از setup:
 1. نصب `@supabase/supabase-js` و `next-auth`
 2. ساخت `lib/supabase.ts` و `app/api/auth/[...nextauth]/route.ts`
 3. پیکربندی `remotePatterns` برای تصاویر کابین از Supabase Storage
@@ -158,6 +162,16 @@ export default nextConfig;
 
 ---
 
+## ⚠️ اشتباهات رایج
+
+❌ commit کردن `.env.local` با secret واقعی  
+❌ نصب `next-auth` بدون تنظیم `NEXTAUTH_SECRET` و `NEXTAUTH_URL`  
+❌ فراموش کردن `remotePatterns` برای تصاویر Supabase — `next/image` خطا می‌دهد  
+❌ استفاده از `pages/` و `app/` هم‌زمان بدون برنامهٔ migration  
+❌ غیرفعال کردن TypeScript به‌خاطر خطاهای اولیه — بهتر است از ابتدا type-safe بمانید
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [Routing-And-Pages](./Routing-And-Pages.md)
@@ -170,7 +184,7 @@ export default nextConfig;
 
 ## خلاصه
 
-`npx create-next-app@latest` → App Router + TypeScript → `.env.local` → `npm run dev`.
+با `npx create-next-app@latest` شروع کنید → App Router + TypeScript → `.env.local` → `npm run dev`.
 
 ---
 

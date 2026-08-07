@@ -1,5 +1,7 @@
 # Routing and Pages
 
+> 🧭 پیش‌نیاز: [Project Setup](./Project-Setup.md) · بعدی: [Layouts](./Layouts.md)
+
 مسیریابی فایل‌محور در App Router: صفحات، segmentهای داینامیک و `route` groups.
 
 ---
@@ -145,7 +147,7 @@ export default function ReservationsPage() {
 
 ## مثال واقعی در پروژه
 
-Wild Oasis:
+در پروژهٔ Wild Oasis:
 - `/cabins` — لیست با فیلتر `?sort=price`
 - `/cabins/[cabinId]` — جزئیات + فرم رزرو
 - `/account` — داشبورد کاربر لاگین‌شده
@@ -162,6 +164,16 @@ Wild Oasis:
 
 ---
 
+## ⚠️ اشتباهات رایج
+
+❌ فراموش کردن `page.tsx` — پوشه بدون `page` عمومی نیست  
+❌ استفاده از `useParams` در Server Component — از `params` prop استفاده کنید  
+❌ فراموش کردن `await params` در Next.js 15+  
+❌ نام‌گذاری ناسازگار dynamic segment (`[id]` در یک جا، `[cabinId]` در جای دیگر)  
+❌ قرار دادن کامپوننت‌های بدون URL داخل `app/` — به `components/` منتقل کنید
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [Layouts](./Layouts.md)
@@ -174,7 +186,7 @@ Wild Oasis:
 
 ## خلاصه
 
-`app/` + `page.tsx` = `route`؛ `[param]` برای dynamic؛ `(group)` برای سازماندهی بدون تغییر URL.
+پوشه `app/` + `page.tsx` یعنی `route`؛ `[param]` برای dynamic؛ `(group)` برای سازماندهی بدون تغییر URL.
 
 ---
 

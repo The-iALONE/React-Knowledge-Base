@@ -1,5 +1,7 @@
 # Layouts
 
+> 🧭 پیش‌نیاز: [Routing & Pages](./Routing-And-Pages.md) · بعدی: [Navigation](./Navigation.md)
+
 چیدمان‌های تودرتو (nested layouts) در App Router — UI مشترک بین `route`های فرزند.
 
 ---
@@ -26,7 +28,7 @@
 
 ## ⚙️ نحوه کار
 
-Layoutها به‌صورت تو در تو رندر می‌شوند:
+چیدمان‌ها به‌صورت تو در تو رندر می‌شوند:
 
 ```
 RootLayout
@@ -131,7 +133,7 @@ export default function MarketingLayout({
 
 ## مثال واقعی در پروژه
 
-Wild Oasis:
+در پروژهٔ Wild Oasis:
 - `layout` ریشه: فونت، theme، `SessionProvider` (client wrapper)
 - `layout` حساب کاربری: sidebar «پروفایل / رزروها / تنظیمات»
 - `layout` کابین‌ها (اختیاری): breadcrumb مشترک
@@ -160,6 +162,16 @@ app/
 
 ---
 
+## ⚠️ اشتباهات رایج
+
+❌ چند root `layout` با `<html>` — فقط یکی در `app/layout.tsx`  
+❌ گذاشتن `"use client"` روی کل `layout` — فقط wrapper client جدا بسازید  
+❌ `fetch` سنگین در `layout` والد که همهٔ childها به آن نیاز ندارند  
+❌ انتظار `remount` از `layout` — برای animation از `template.tsx` استفاده کنید  
+❌ فراموش کردن `children` در return — بدون آن صفحه خالی می‌ماند
+
+---
+
 ## ارتباط با مفاهیم دیگر
 
 - [Routing-And-Pages](./Routing-And-Pages.md)
@@ -171,7 +183,7 @@ app/
 
 ## خلاصه
 
-`layout.tsx` = shell پایدار + `{children}`؛ nested برای بخش‌های مختلف اپ.
+فایل `layout.tsx` یعنی shell پایدار + `{children}`؛ nested layout برای بخش‌های مختلف اپ.
 
 ---
 
