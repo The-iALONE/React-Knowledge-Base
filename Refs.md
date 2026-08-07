@@ -1,7 +1,8 @@
 # Refs — ارجاع به DOM و مقادیر پایدار
 
-> با `ref` می‌توانید ارجاع به DOM node یا هر مقداری را نگه دارید که تغییر آن باعث `re-render` نمی‌شود.
+> 🧭 پیش‌نیاز: [Context](./Context.md) · بعدی: [DOM Manipulation](./DOM-Manipulation.md)
 
+> با `ref` می‌توانید ارجاع به DOM node یا هر مقداری را نگه دارید که تغییر آن باعث `re-render` نمی‌شود.
 ## 📖 مفهوم
 
 ارجاع (`ref` یا `Ref`) یک «جعبه» است که `.current` دارد. برخلاف `state`، تغییر `ref.current` کامپوننت را `re-render` نمی‌کند.
@@ -68,8 +69,7 @@ function MyInput({ ref, ...props }) {
 
 ## مقدار بازگشتی
 
-`{ current: initialValue }` — `object` پایدار بین `render`ها
-
+تابع `useRef` یک `object` پایدار با فیلد `current` برمی‌گرداند — بین `render`ها همان `reference` است.
 ## مثال واقعی در پروژه
 
 **جستجوی فیلم:** `useRef` برای نگه‌داری `abortController` درخواست `fetch` — با هر جستجوی جدید، درخواست قبلی `cancel` می‌شود بدون `re-render`.

@@ -1,5 +1,7 @@
 # Portals — رندر خارج از والد
 
+> 🧭 پیش‌نیاز: [Error Boundaries](./Error-Boundaries.md) · بعدی: [Custom Hooks](./Custom-Hooks.md)
+
 > با `createPortal` می‌توانید فرزند را در DOM node دیگری (مثلاً `document.body`) رندر کنید، در حالی که در درخت React زیر همان والد باقی می‌ماند.
 
 ## 📖 مفهوم
@@ -81,12 +83,13 @@ function Modal({ children, onClose }) {
 
 - [Patterns/Compound-Components](./Patterns/Compound-Components.md)
 - [DOM Manipulation](./DOM-Manipulation.md)
-- [React-DOM-APIs](./React-DOM-APIs.md)
+- [createPortal — react.dev](https://react.dev/reference/react-dom/createPortal)
 
 ## 💡 نکات مهم
 
 - با Portal فقط **مکان DOM** عوض می‌شود؛ `React tree` و `context`/`event` همان‌طور کار می‌کند
 - `createPortal` از `react-dom` `import` می‌شود
+- **رویدادها** در فاز `bubble` از طریق **درخت React** (نه لزوماً DOM) بالا می‌روند — کلیک روی مودال همچنان `handler` والد React را می‌بیند اگر `stopPropagation` نکرده باشید ([react.dev — Portals](https://react.dev/reference/react-dom/createPortal))
 
 ## 🎯 سوالات رایج مصاحبه
 

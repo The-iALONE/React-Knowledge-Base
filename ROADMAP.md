@@ -36,7 +36,7 @@
 **شاخهٔ اصلی:** `main`  
 **ریپازیتوری:** [github.com](https://github.com) — `React-Knowledge-Base` (خصوصی)
 
-**آخرین به‌روزرسانی:** 2026-08-07 (M7 State Management + استانداردهای جدید)
+**آخرین به‌روزرسانی:** 2026-08-07 (M2 retrofit Core React)
 
 ---
 
@@ -177,7 +177,7 @@
 | Milestone | فاز | وضعیت | تاریخ تکمیل | یادداشت |
 | --------- | --- | ----- | ----------- | ------- |
 | **M1** | Setup (تغییر نام پوشه‌ها، استخراج Word، اسکلت) | [x] | 2026-08-06 | 141 فایل Word استخراج شد |
-| **M2** | Core React (فایل‌های ریشه) | [x] | 2026-08-06 | 24 فایل ریشه تکمیل شد |
+| **M2** | Core React (فایل‌های ریشه) | [x] | 2026-08-07 | 24 فایل — retrofit: ناوبری، لحن آموزشی، react.dev، RTL |
 | **M3** | Hooks | [x] | 2026-08-06 | ۲۰ فایل Hooks (README + ۱۹ hook) — هم‌تراز با react.dev |
 | **M4** | Patterns | [x] | 2026-08-06 | README + ۵ الگو + Examples — جزوه الگوهای پیشرفته |
 | **M5** | Escape Hatches / Concurrent | [x] | 2026-08-06 | ۷ فایل + `Hooks/use.md` + `WhatsNew.md` + Examples — `use()`, `<Activity>`, RSC |
@@ -187,7 +187,7 @@
 | **M9** | Styling | [ ] | | |
 | **M10** | Next.js | [ ] | | بدهی react.dev: `cacheSignal`, APIهای `prerender`/`resume` در `react-dom/static` (RSC) |
 | **M11** | Reference / FAQ / Interview | [ ] | | |
-| **M12** | QA نهایی | [ ] | | بدهی: retrofit M1–M6 (ناوبری + لحن آموزشی) |
+| **M12** | QA نهایی | [ ] | | بدهی: retrofit M3–M6 (M2 انجام شد؛ M1 بدون تغییر) |
 
 ---
 
@@ -207,7 +207,17 @@
 | `herlpers for react + rfc +`               | Components.md, Quick-Start.md                              | [x]                      |
 | _(react.dev — React 19.2)_                 | Hooks/useEffectEvent, Escape-Hatches, Activity, Nextjs/RSC | [x] M3 Hooks / [x] M5 / [x] M6 Performance / [x] M7 State / [ ] M10 |
 | _(غیرجزوه — M7)_                           | Zustand, Jotai, MobX, Recoil, State-Types, RTK Query       | [x] M7                 |
-| _(retrofit — M12)_                         | M1–M6: ناوبری + لحن آموزشی جدید                            | [ ] M12                |
+| _(retrofit — M12)_                         | M2: [x] ناوبری + لحن · M3–M6: باقی‌مانده              | [ ] M12 (M2 [x])       |
+
+### 2026-08-07 (retrofit M2 — Core React)
+
+- خط ناوبری `> 🧭 پیش‌نیاز` در هر ۲۴ فایل M2 (زنجیره Learning-Path ماژول ۰۰–۰۳)
+- غنی‌سازی HIGH: Introduction، Installation، Quick-Start، Thinking-in-React، Components، Props، State، JSX
+- پولیش MEDIUM/LOW: Effects + `useEffectEvent`، Context split، `flushSync`، Error Boundary `resetKeys`، Portal bubbling
+- اصلاح لینک‌های شکسته: `Common-Pitfalls`/`React-DOM-APIs` → Learning-Path / react.dev
+- RTL: Rendering diagram، Forms/Lifting گام‌های شماره‌دار، Refs مقدار بازگشتی
+- حذف scaffold `(if applicable)` از ۵ فایل؛ `Project-Structure` بخش اشتباهات جدا
+- M1 بدون تغییر (Setup)
 
 ### 2026-08-07 (بازبینی RTL M7)
 
@@ -225,7 +235,7 @@
 - ابزارهای غیرجزوه: Zustand، Jotai، MobX، Recoil، RTK Query
 - `Examples/state-management/`: ۵ فایل نمونه
 - به‌روزرسانی README، Learning-Path (ماژول ۰۸، شماره ۷۰–۸۱)، WhatsNew M7، Glossary، Cheatsheet
-- بدهی M12: retrofit M1–M6 با استاندارد ناوبری/لحن
+- بدهی M12: retrofit M3–M6 (M2 انجام شد)
 - Milestone فعلی: **M7** → بعدی **M8**
 
 ### 2026-08-06 (بازبینی RTL M6 + WhatsNew)

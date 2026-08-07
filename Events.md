@@ -1,5 +1,7 @@
 # Events — رویدادها و `Event Delegation`
 
+> 🧭 پیش‌نیاز: [Lists](./Lists.md) · بعدی: [Forms](./Forms.md)
+
 > رویدادهای DOM را در React با `Synthetic Events` مدیریت کنید؛ از `Event Delegation` در `root` برای کارایی بهتر استفاده می‌شود.
 
 ## 📖 مفهوم
@@ -27,7 +29,7 @@
 
 **تفویض رویداد (`Event Delegation`):** رویداد در فاز `bubbling` به `root` می‌رسد؛ React `target` اصلی را پیدا و `handler` مناسب را اجرا می‌کند.
 
-## Syntax (if applicable)
+## Syntax
 
 ```jsx
 function Button({ onSave }) {
@@ -53,7 +55,7 @@ function Button({ onSave }) {
 }}>
 ```
 
-## 💡 مثال ساده (if needed)
+## 💡 مثال ساده
 
 ```jsx
 function Counter() {

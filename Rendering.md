@@ -1,6 +1,8 @@
 # Rendering — نحوه رندر و بازرندر در React
 
-> هر بار که `state` یا `props` تغییر کند، React کامپوننت را دوباره اجرا می‌کند تا UI به‌روز شود. درک `Render Phase` و `Commit Phase` پایه‌ی بهینه‌سازی و دیباگ است.
+> 🧭 پیش‌نیاز: [State](./State.md) · بعدی: [Conditional Rendering](./Conditional-Rendering.md)
+
+> هر بار که `state` یا `props` تغییر کند، React کامپوننت را دوباره اجرا می‌کند تا UI به‌روز شود. درک فاز رندر و فاز commit پایهٔ بهینه‌سازی و دیباگ است.
 
 ## 📖 مفهوم
 
@@ -24,11 +26,11 @@
 ## ⚙️ نحوه کار
 
 ```
-تغییر `state`/`props`
+تغییر state/props
     ↓
-`Render Phase` (محاسبه JSX + Diff)
+فاز رندر (محاسبه JSX + Diff)
     ↓
-`Commit Phase` (اعمال به DOM + Effects)
+فاز commit (اعمال به DOM + Effects)
     ↓
 به‌روزرسانی UI
 ```
@@ -44,7 +46,7 @@
 </Layout>
 ```
 
-## Syntax (if applicable)
+## Syntax
 
 ```jsx
 function Dashboard({ user }) {
@@ -70,7 +72,7 @@ function handleClick() {
 }
 ```
 
-## 💡 مثال ساده (if needed)
+## 💡 مثال ساده
 
 ```jsx
 function App() {

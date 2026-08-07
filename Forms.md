@@ -1,5 +1,7 @@
 # Forms — فرم‌ها و ورودی `controlled`
 
+> 🧭 پیش‌نیاز: [Events](./Events.md) · بعدی: [Lifting State Up](./Lifting-State-Up.md)
+
 > فرم‌ها در React با `controlled components` مدیریت می‌شوند: مقدار `input` از `state` می‌آید و با `onChange` به‌روز می‌شود.
 
 ## 📖 مفهوم
@@ -18,12 +20,14 @@
 
 ## ⚙️ نحوه کار
 
-1. `value={state}` روی `input`
-2. `onChange` → `setState`
-3. `onSubmit` → `preventDefault` → ارسال داده
+گام‌های الگوی `controlled`:
+
+1. مقدار فیلد از `state` می‌آید — `value={state}`
+2. با `onChange` مقدار `state` به‌روز می‌شود
+3. در `onSubmit` ابتدا `preventDefault` سپس ارسال داده
 4. هر تغییر → `re-render` → مقدار `input` از `state`
 
-## Syntax (if applicable)
+## Syntax
 
 ```jsx
 function LoginForm() {
@@ -85,7 +89,7 @@ function handleChange(e) {
 }
 ```
 
-## 💡 مثال ساده (if needed)
+## 💡 مثال ساده
 
 ```jsx
 <textarea value={text} onChange={(e) => setText(e.target.value)} />

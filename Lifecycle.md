@@ -1,5 +1,7 @@
 # Lifecycle — چرخه حیات در Function Components
 
+> 🧭 پیش‌نیاز: [Effects](./Effects.md) · بعدی: [Error Boundaries](./Error-Boundaries.md)
+
 > در React مدرن (`function components` + `hooks`)، `lifecycle` با `useEffect` و `mount`/`unmount` شبیه‌سازی می‌شود — نه متدهای `class component`.
 
 ## 📖 مفهوم
@@ -17,7 +19,7 @@
 
 ## ⚙️ نحوه کار
 
-| Class (قدیمی) | Function (مدرن) |
+| معادل کلاس (قدیمی) | معادل `function` (مدرن) |
 |---------------|-----------------|
 | `componentDidMount` | `useEffect(() => { ... }, [])` |
 | `componentDidUpdate` | `useEffect(() => { ... }, [dep])` |
@@ -71,6 +73,7 @@ function ChatRoom({ roomId }) {
 
 - در React 18+ Strict Mode `effect` را دوبار `mount`/`unmount` می‌کند در `dev` — برای تست `cleanup`
 - `lifecycle` مبتنی بر `class` دیگر توصیه نمی‌شود
+- برای جزئیات بیشتر: [Lifecycle of Reactive Effects](https://react.dev/learn/lifecycle-of-reactive-effects)
 
 ## 🎯 سوالات رایج مصاحبه
 

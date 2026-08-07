@@ -1,5 +1,7 @@
 # Lists — رندر لیست و اهمیت Key
 
+> 🧭 پیش‌نیاز: [Conditional Rendering](./Conditional-Rendering.md) · بعدی: [Events](./Events.md)
+
 > آرایه‌ها را با `map` به JSX تبدیل کنید. `prop` `key` به React می‌گوید هر آیتم کدام است — بدون آن، به‌روزرسانی لیست باگ و کندی ایجاد می‌کند.
 
 ## 📖 مفهوم
@@ -24,7 +26,7 @@
 - `key` جدید → `unmount` قدیم + `mount` جدید
 - `key` حذف → `unmount`
 
-## Syntax (if applicable)
+## Syntax
 
 ```jsx
 const cabins = [
@@ -49,7 +51,7 @@ function CabinList({ cabins }) {
 - **پایدار** باشد (نه `Math.random()` یا `index` در لیست قابل مرتب‌سازی/فیلتر)
 - روی **عنصر بیرونی `map`** باشد، نه داخل `child`
 
-## 💡 مثال ساده (if needed)
+## 💡 مثال ساده
 
 ```jsx
 function NumberList({ numbers }) {

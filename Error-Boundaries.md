@@ -1,5 +1,7 @@
 # Error Boundaries — مرزهای خطا
 
+> 🧭 پیش‌نیاز: [Lifecycle](./Lifecycle.md) · بعدی: [Portals](./Portals.md)
+
 > کامپوننت‌هایی که خطای JavaScript در `subtree` خود را می‌گیرند و UI `fallback` نمایش می‌دهند.
 
 ## 📖 مفهوم
@@ -49,15 +51,22 @@ class ErrorBoundary extends Component {
 </ErrorBoundary>
 ```
 
-**با `react-error-boundary` (توصیه):**
+**با `react-error-boundary` (توصیه) — شامل `resetKeys` برای بازیابی:**
 
 ```jsx
 import { ErrorBoundary } from "react-error-boundary";
 
-<ErrorBoundary fallback={<ErrorFallback />} onError={logError}>
+<ErrorBoundary
+  fallback={<ErrorFallback />}
+  onError={logError}
+  resetKeys={[userId]}
+  onReset={() => refetch()}
+>
   <Dashboard />
 </ErrorBoundary>
 ```
+
+`resetKeys` وقتی عوض شوند، boundary را `reset` می‌کند — مثلاً بعد از تغییر کاربر.
 
 ## چه چیزهایی `catch` **نمی‌شود**؟
 
@@ -98,7 +107,7 @@ import { ErrorBoundary } from "react-error-boundary";
 ## ارتباط با مفاهیم دیگر
 
 - [Nextjs/Loading-And-Error-States](./Nextjs/Loading-And-Error-States.md)
-- [Common-Pitfalls](./Common-Pitfalls.md)
+- [Learning-Path — ضمیمه](./Learning-Path.md#ضمیمه--مراجع-غیرخطی) — FAQ و مراجع (M11)
 
 ## 💡 نکات مهم
 

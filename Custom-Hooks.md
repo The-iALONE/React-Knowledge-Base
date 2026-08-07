@@ -1,5 +1,7 @@
 # Custom Hooks — هوک‌های سفارشی
 
+> 🧭 پیش‌نیاز: [Portals](./Portals.md) · بعدی: [Hooks — نمای کلی](./Hooks/README.md)
+
 > تابعی که نامش با `use` شروع می‌شود و می‌تواند `hook`های دیگر را فراخوانی کند — برای `reuse` کردن `stateful logic`.
 
 ## 📖 مفهوم
@@ -126,8 +128,9 @@ function useCabins() {
 ## 💡 نکات مهم
 
 - هر فراخوانی `hook` `state` **جداگانه** دارد — دو کامپوننت `state` مشترک ندارند مگر از Context
-- `custom hook` فقط **`logic`** را `share` می‌کند
+- `custom hook` فقط **`logic`** را `share` می‌کند — **قوانین Hooks** (`Rules of Hooks`) در خود `custom hook` هم اعمال می‌شود: فقط در سطح بالای تابع، نه داخل `if`/`loop`
 - برای `hook`های `shared` پیچیده: `useDebugValue` `label` در DevTools اضافه می‌کند — [Hooks/useDebugValue](./Hooks/useDebugValue.md)
+- برای اشتراک با منبع خارجی: [`useSyncExternalStore`](./Hooks/useSyncExternalStore.md)
 
 ## 🎯 سوالات رایج مصاحبه
 

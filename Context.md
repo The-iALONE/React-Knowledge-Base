@@ -1,5 +1,7 @@
 # Context — Context API
 
+> 🧭 پیش‌نیاز: [Sharing State](./Sharing-State.md) · بعدی: [Refs](./Refs.md)
+
 > مکانیزم React برای پاس دادن داده به عمق درخت کامپوننت بدون `prop drilling`.
 
 ## 📖 مفهوم
@@ -92,9 +94,10 @@ const value = useContext(MyContext);
 ## 🚀 Best Practices
 
 - ✅ `custom hook` (`useAuth`) برای `encapsulation`
-- ✅ چند `context` کوچک به‌جای یک `context` غول‌پیکر
+- ✅ چند `context` کوچک به‌جای یک `context` غول‌پیکر — مثلاً `ThemeContext` جدا از `AuthContext`
 - ✅ `useMemo` برای `value object` اگر باعث `re-render` غیرضروری می‌شود
 - ✅ برای `state` پیچیده: Context + `useReducer`
+- ✅ فقط `consumer`هایی که واقعاً به بخشی از `value` نیاز دارند را جدا کنید (split context)
 
 ## چه زمانی استفاده کنیم؟
 

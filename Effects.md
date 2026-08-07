@@ -1,5 +1,7 @@
 # Effects — `side effect`ها در React
 
+> 🧭 پیش‌نیاز: [DOM Manipulation](./DOM-Manipulation.md) · بعدی: [Lifecycle](./Lifecycle.md)
+
 > برای همگام‌سازی کامپوننت با سیستم‌های خارجی — API، `subscription`، `timer`، DOM — از `useEffect` استفاده کنید.
 
 ## 📖 مفهوم
@@ -70,6 +72,7 @@ useEffect(() => {
 - ✅ `cleanup` برای `subscription`/`timer`/`fetch`
 - ✅ برای `fetch`: React Query یا SWR
 - ✅ `effect` جدا برای `concern` جدا
+- ✅ برای منطق رویداد داخل `effect` از [`useEffectEvent`](./Hooks/useEffectEvent.md) (React 19) استفاده کنید — وابستگی اضافی کمتر
 
 ## چه زمانی استفاده کنیم؟
 
@@ -87,6 +90,7 @@ useEffect(() => {
 
 - [Hooks/useEffect](./Hooks/useEffect.md)
 - [Hooks/useLayoutEffect](./Hooks/useLayoutEffect.md)
+- [Hooks/useEffectEvent](./Hooks/useEffectEvent.md)
 - [Lifecycle](./Lifecycle.md)
 - [State-Management/React-Query](./State-Management/React-Query.md)
 

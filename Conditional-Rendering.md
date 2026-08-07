@@ -1,5 +1,7 @@
 # Conditional Rendering — نمایش شرطی UI
 
+> 🧭 پیش‌نیاز: [Rendering](./Rendering.md) · بعدی: [Lists](./Lists.md)
+
 > با تغییر `state` یا `props`، بخش‌های مختلف UI را نشان دهید یا مخفی کنید — بدون دستکاری مستقیم DOM.
 
 ## 📖 مفهوم
@@ -20,7 +22,7 @@
 
 در `Render Phase`، React JSX را می‌سازد. شرط در JavaScript ارزیابی می‌شود؛ شاخه انتخاب‌شده وارد Virtual DOM می‌شود و در `Commit Phase` به DOM اعمال می‌شود.
 
-## Syntax (if applicable)
+## Syntax
 
 ```jsx
 // Early return
@@ -42,7 +44,7 @@ else content = <DataView data={data} />;
 return <div>{content}</div>;
 ```
 
-## 💡 مثال ساده (if needed)
+## 💡 مثال ساده
 
 ```jsx
 function Greeting({ isLoggedIn }) {

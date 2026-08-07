@@ -1,7 +1,8 @@
 # Sharing State — اشتراک `state`
 
-> روش‌های مختلف به‌اشتراک‌گذاری `state` بین کامپوننت‌ها: از بالا بردن `state` تا Context و `state management`.
+> 🧭 پیش‌نیاز: [Lifting State Up](./Lifting-State-Up.md) · بعدی: [Context](./Context.md)
 
+> روش‌های مختلف به‌اشتراک‌گذاری `state` بین کامپوننت‌ها: از بالا بردن `state` تا Context و `state management`.
 ## 📖 مفهوم
 
 اشتراک `state` (`Sharing State`) شامل تمام الگوهایی است که `state` را بین چند کامپوننت در دسترس قرار می‌دهد. سطح پیچیدگی از ساده به پیشرفته:
@@ -32,20 +33,19 @@
 | `URL state` | `state` قابل `share`/`bookmark` | فیلتر، `pagination` |
 
 ```jsx
-// Context — ساده
+// Context — ساده (React 19: بدون .Provider)
 const ThemeContext = createContext("light");
 
 function App() {
   const [theme, setTheme] = useState("light");
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext value={{ theme, setTheme }}>
       <Header />
       <Main />
-    </ThemeContext.Provider>
+    </ThemeContext>
   );
 }
 ```
-
 ## مثال واقعی در پروژه
 
 **فروشگاه پیتزا:** `cart` در Redux Toolkit (افزودن/حذف آیتم، محاسبه قیمت). **داشبورد کابین:** فیلتر و مرتب‌سازی در URL با React Router. **`Auth`:** `session` در Context.
@@ -66,19 +66,18 @@ function App() {
 
 | وضعیت | روش |
 |-------|-----|
-| ۲ `sibling` | بالا بردن `state` |
+| ۲ `sibling` نزدیک | بالا بردن `state` |
 | `prop drilling` ۳+ سطح | Context |
 | `state` پیچیده + `logic` زیاد | `useReducer` یا Redux |
 | داده از API | React Query |
-| فیلتر/صفحه‌بندی | `URL state` |
-
+| فیلتر/صفحه‌بندی قابل اشتراک | `URL state` ([Learning-Path — ماژول ۰۹](./Learning-Path.md#ماژول-۰۹--react-router)) |
 ## ارتباط با مفاهیم دیگر
 
 - [Lifting State Up](./Lifting-State-Up.md)
 - [Context](./Context.md)
 - [State-Management/Context-API](./State-Management/Context-API.md)
 - [State-Management/React-Query](./State-Management/React-Query.md)
-- [React-Router/State-In-URL](./React-Router/State-In-URL.md)
+- [Learning-Path — ماژول ۰۹ React Router](./Learning-Path.md#ماژول-۰۹--react-router) — `URL state` (M8)
 
 ## 💡 نکات مهم
 

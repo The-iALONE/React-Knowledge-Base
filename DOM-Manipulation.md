@@ -1,5 +1,7 @@
 # DOM Manipulation — دستکاری DOM
 
+> 🧭 پیش‌نیاز: [Refs](./Refs.md) · بعدی: [Effects](./Effects.md)
+
 > معمولاً DOM را در React به‌صورت `declarative` مدیریت کنید. گاهی نیاز به دستکاری `imperative` دارید — با `ref` و `escape hatch`ها.
 
 ## 📖 مفهوم
@@ -35,7 +37,16 @@ function VideoPlayer({ src, isPlaying }) {
 }
 ```
 
-**روش دوم:** `flushSync` برای `force sync commit` (نادر)
+**روش دوم:** `flushSync` از `react-dom` برای `force sync commit` (نادر — وقتی باید DOM فوراً قبل از کد بعدی به‌روز شود)
+
+```jsx
+import { flushSync } from "react-dom";
+
+flushSync(() => {
+  setCount((c) => c + 1);
+});
+// DOM هم‌اکنون به‌روز است
+```
 
 **روش سوم:** `dangerouslySetInnerHTML` برای HTML خام (با احتیاط XSS)
 
